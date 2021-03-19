@@ -7,6 +7,12 @@ target 'SpeedMaster' do
 
   # Pods for SpeedMaster
 
-pod 'Alamofire'
+	pod 'Firebase/Database'
+	pod 'Firebase/Core'
+	pod 'Firebase/Auth'
+  	pod 'Firebase/Storage'
+  	pod 'Firebase/Analytics'
+	pod 'Alamofire'
+	pod 'SwiftyStoreKit'
 
 end
