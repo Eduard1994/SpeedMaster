@@ -1,0 +1,6 @@
+framework module Pods_SpeedMaster {
+  umbrella header "Pods-SpeedMaster-umbrella.h"
+
+  export *
+  module * { export * }
+}

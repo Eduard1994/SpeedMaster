@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		711477476963AFA8F2ED3064 /* Pods_SpeedMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4722208A4602E3B287827483 /* Pods_SpeedMaster.framework */; };
 		FF0A8974260230CD00ADF896 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A8973260230CD00ADF896 /* Switcher.swift */; };
 		FF0A89782602313400ADF896 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A89772602313400ADF896 /* UIViewController+Extension.swift */; };
 		FF0A897B2602314D00ADF896 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A897A2602314D00ADF896 /* UIView+Extension.swift */; };
@@ -43,6 +44,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		108DA1997D8FDD5F81296C83 /* Pods-SpeedMaster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeedMaster.release.xcconfig"; path = "Target Support Files/Pods-SpeedMaster/Pods-SpeedMaster.release.xcconfig"; sourceTree = "<group>"; };
+		4722208A4602E3B287827483 /* Pods_SpeedMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeedMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5E85D7C7F1E2F6CF0B6A7BF /* Pods-SpeedMaster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeedMaster.debug.xcconfig"; path = "Target Support Files/Pods-SpeedMaster/Pods-SpeedMaster.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0A8973260230CD00ADF896 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		FF0A89772602313400ADF896 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		FF0A897A2602314D00ADF896 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -86,12 +90,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF0EA9C926022EC50051FFB7 /* StoreKit.framework in Frameworks */,
+				711477476963AFA8F2ED3064 /* Pods_SpeedMaster.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA654C2973A0FF6E464DD7D0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B5E85D7C7F1E2F6CF0B6A7BF /* Pods-SpeedMaster.debug.xcconfig */,
+				108DA1997D8FDD5F81296C83 /* Pods-SpeedMaster.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FF0A8986260231D500ADF896 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +151,7 @@
 				FF0EA9AF26022E860051FFB7 /* SpeedMaster */,
 				FF0EA9AE26022E860051FFB7 /* Products */,
 				FF0EA9C726022EC50051FFB7 /* Frameworks */,
+				CA654C2973A0FF6E464DD7D0 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				FF0EA9C826022EC50051FFB7 /* StoreKit.framework */,
+				4722208A4602E3B287827483 /* Pods_SpeedMaster.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -276,9 +293,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF0EA9C126022E890051FFB7 /* Build configuration list for PBXNativeTarget "SpeedMaster" */;
 			buildPhases = (
+				8E3AE4BC151704C823B4794C /* [CP] Check Pods Manifest.lock */,
 				FF0EA9A926022E860051FFB7 /* Sources */,
 				FF0EA9AA26022E860051FFB7 /* Frameworks */,
 				FF0EA9AB26022E860051FFB7 /* Resources */,
+				DDAC30DF90130F065AE3BC87 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -348,6 +367,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8E3AE4BC151704C823B4794C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpeedMaster-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDAC30DF90130F065AE3BC87 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SpeedMaster/Pods-SpeedMaster-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SpeedMaster/Pods-SpeedMaster-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SpeedMaster/Pods-SpeedMaster-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FF0EA9A926022E860051FFB7 /* Sources */ = {
@@ -511,6 +572,7 @@
 		};
 		FF0EA9C226022E890051FFB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5E85D7C7F1E2F6CF0B6A7BF /* Pods-SpeedMaster.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -530,6 +592,7 @@
 		};
 		FF0EA9C326022E890051FFB7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 108DA1997D8FDD5F81296C83 /* Pods-SpeedMaster.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
