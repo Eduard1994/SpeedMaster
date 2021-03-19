@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PrivacyViewController.swift
 //  SpeedMaster
 //
 //  Created by Eduard Shahnazaryan on 3/17/21.
@@ -7,13 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PrivacyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
-
-
 }
-
