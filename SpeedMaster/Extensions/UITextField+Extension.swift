@@ -59,7 +59,7 @@ extension UITextField {
     }
     
     // Done Button
-    func addDoneClearButtonOnKeyboard(clearButtonColor: UIColor = .mainRed, doneButtonColor: UIColor = .mainBlue) {
+    func addDoneClearButtonOnKeyboard(clearButtonColor: UIColor = .mainYellow, doneButtonColor: UIColor = .mainBlue) {
         let toolBar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         toolBar.barStyle = .default
         

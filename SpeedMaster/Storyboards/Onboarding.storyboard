@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-BlackItalic.otf">
+            <string>SFProDisplay-BlackItalic</string>
+        </array>
+        <array key="SF-Pro-Display-Semibold.otf">
+            <string>SFProDisplay-Semibold</string>
+        </array>
+        <array key="SF-Pro-Text-BoldItalic.otf">
+            <string>SFProText-BoldItalic</string>
+        </array>
+        <array key="SF-Pro-Text-HeavyItalic.otf">
+            <string>SFProText-HeavyItalic</string>
+        </array>
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Privacy View Controller-->
+        <scene sceneID="0eZ-i9-X6E">
+            <objects>
+                <viewController storyboardIdentifier="PrivacyViewController" id="vXd-ji-8cV" customClass="PrivacyViewController" customModule="SpeedMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hvy-st-dI1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zd3-Hl-qfQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gbt-Pm-Pti">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="712.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="privacyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="cvS-nI-mv4">
+                                                <rect key="frame" x="175" y="62" width="25" height="32"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="Mzp-kZ-Oks"/>
+                                                    <constraint firstAttribute="width" constant="25" id="zO6-4m-4SC"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your privacy comes first" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZY-Jq-HV7">
+                                                <rect key="frame" x="15" y="106" width="345" height="84"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-BlackItalic" family="SF Pro Display" pointSize="35"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HotspotShield collects a minimal amount of data to offer you a fast and reliable VPN service." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x10-U1-WNu">
+                                                <rect key="frame" x="16" y="223" width="343" height="54"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We collect:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0v-Xr-bEH">
+                                                <rect key="frame" x="16" y="292" width="343" height="18"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="SFProText-HeavyItalic" family="SF Pro Text" pointSize="15"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bulletedLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zuo-bS-QVm">
+                                                <rect key="frame" x="16" y="325" width="343" height="18"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Isl-sk-gPf">
+                                                <rect key="frame" x="16" y="344" width="343" height="161.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <string key="text">This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by us. Therefore, we strongly advise you to review the Privacy Policy of these websites. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</string>
+                                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For more information, please read our Privacy Policy." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80W-rR-JfM">
+                                                <rect key="frame" x="16" y="510.5" width="343" height="36"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="SFProText-BoldItalic" family="SF Pro Text" pointSize="15"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="https://qr-bar-app.com/policy.html" translatesAutoresizingMaskIntoConstraints="NO" id="6ma-n0-QyF">
+                                                <rect key="frame" x="16" y="551.5" width="343" height="36"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="SFProText-BoldItalic" family="SF Pro Text" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Z0-dK-h8Y">
+                                                <rect key="frame" x="73" y="637.5" width="229" height="60"/>
+                                                <color key="backgroundColor" red="0.8784313725490196" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="Su5-eG-ez2"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                                <state key="normal" title="Accept and continue">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="acceptTapped:" destination="vXd-ji-8cV" eventType="touchUpInside" id="RDB-V8-6BZ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="80W-rR-JfM" secondAttribute="trailing" constant="16" id="5w6-U0-MjR"/>
+                                            <constraint firstItem="x10-U1-WNu" firstAttribute="top" secondItem="wZY-Jq-HV7" secondAttribute="bottom" constant="33" id="6J8-Gr-xKL"/>
+                                            <constraint firstItem="cvS-nI-mv4" firstAttribute="centerX" secondItem="Gbt-Pm-Pti" secondAttribute="centerX" id="6QP-h5-hTT"/>
+                                            <constraint firstItem="Zuo-bS-QVm" firstAttribute="leading" secondItem="Gbt-Pm-Pti" secondAttribute="leading" constant="16" id="8Tb-TL-G7h"/>
+                                            <constraint firstItem="9Z0-dK-h8Y" firstAttribute="top" secondItem="6ma-n0-QyF" secondAttribute="bottom" constant="50" id="Abj-qt-cg3"/>
+                                            <constraint firstItem="80W-rR-JfM" firstAttribute="leading" secondItem="Gbt-Pm-Pti" secondAttribute="leading" constant="16" id="CDp-Xe-hYE"/>
+                                            <constraint firstAttribute="bottom" secondItem="9Z0-dK-h8Y" secondAttribute="bottom" constant="15" id="Dtr-Wc-dmN"/>
+                                            <constraint firstItem="Isl-sk-gPf" firstAttribute="top" secondItem="Zuo-bS-QVm" secondAttribute="bottom" constant="1" id="F9o-xU-sjH"/>
+                                            <constraint firstItem="T0v-Xr-bEH" firstAttribute="top" secondItem="x10-U1-WNu" secondAttribute="bottom" constant="15" id="FEq-tJ-dtn"/>
+                                            <constraint firstItem="6ma-n0-QyF" firstAttribute="top" secondItem="80W-rR-JfM" secondAttribute="bottom" constant="5" id="Gmz-wh-qFZ"/>
+                                            <constraint firstItem="Isl-sk-gPf" firstAttribute="leading" secondItem="Gbt-Pm-Pti" secondAttribute="leading" constant="16" id="HyI-di-SNl"/>
+                                            <constraint firstItem="80W-rR-JfM" firstAttribute="top" secondItem="Isl-sk-gPf" secondAttribute="bottom" constant="5" id="I9e-1b-dZP"/>
+                                            <constraint firstItem="x10-U1-WNu" firstAttribute="leading" secondItem="Gbt-Pm-Pti" secondAttribute="leading" constant="16" id="JCK-x1-mJO"/>
+                                            <constraint firstAttribute="trailing" secondItem="Zuo-bS-QVm" secondAttribute="trailing" constant="16" id="KUv-RR-A81"/>
+                                            <constraint firstAttribute="trailing" secondItem="x10-U1-WNu" secondAttribute="trailing" constant="16" id="P1K-ou-ppz"/>
+                                            <constraint firstItem="6ma-n0-QyF" firstAttribute="height" secondItem="80W-rR-JfM" secondAttribute="height" id="QrO-le-XJz"/>
+                                            <constraint firstItem="wZY-Jq-HV7" firstAttribute="leading" secondItem="Gbt-Pm-Pti" secondAttribute="leading" constant="15" id="RF3-Tm-rbC"/>
+                                            <constraint firstItem="Zuo-bS-QVm" firstAttribute="top" secondItem="T0v-Xr-bEH" secondAttribute="bottom" constant="15" id="S7z-5X-rpD"/>
+                                            <constraint firstItem="wZY-Jq-HV7" firstAttribute="top" secondItem="cvS-nI-mv4" secondAttribute="bottom" constant="12" id="V2s-8g-JSg"/>
+                                            <constraint firstItem="6ma-n0-QyF" firstAttribute="trailing" secondItem="80W-rR-JfM" secondAttribute="trailing" id="aga-ql-k8K"/>
+                                            <constraint firstItem="wZY-Jq-HV7" firstAttribute="centerX" secondItem="Gbt-Pm-Pti" secondAttribute="centerX" id="ayx-xH-Ypy"/>
+                                            <constraint firstItem="6ma-n0-QyF" firstAttribute="leading" secondItem="80W-rR-JfM" secondAttribute="leading" id="cpW-yB-zRw"/>
+                                            <constraint firstItem="9Z0-dK-h8Y" firstAttribute="leading" secondItem="Gbt-Pm-Pti" secondAttribute="leading" constant="73" id="eGq-fW-ffj"/>
+                                            <constraint firstItem="cvS-nI-mv4" firstAttribute="top" secondItem="Gbt-Pm-Pti" secondAttribute="top" constant="62" id="hG2-eR-ehZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="T0v-Xr-bEH" secondAttribute="trailing" constant="16" id="pzp-iR-ylx"/>
+                                            <constraint firstItem="T0v-Xr-bEH" firstAttribute="leading" secondItem="Gbt-Pm-Pti" secondAttribute="leading" constant="16" id="stp-TP-VgF"/>
+                                            <constraint firstAttribute="trailing" secondItem="Isl-sk-gPf" secondAttribute="trailing" constant="16" id="w2m-6Q-ZWw"/>
+                                            <constraint firstAttribute="trailing" secondItem="9Z0-dK-h8Y" secondAttribute="trailing" constant="73" id="zcd-QP-GXc"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="VZU-Fx-9ol" firstAttribute="trailing" secondItem="Gbt-Pm-Pti" secondAttribute="trailing" id="6mg-AW-W0H"/>
+                                    <constraint firstItem="Gbt-Pm-Pti" firstAttribute="top" secondItem="VZU-Fx-9ol" secondAttribute="top" id="7h8-kD-uRk"/>
+                                    <constraint firstItem="Gbt-Pm-Pti" firstAttribute="leading" secondItem="VZU-Fx-9ol" secondAttribute="leading" id="8h7-Mc-l9x"/>
+                                    <constraint firstItem="Gbt-Pm-Pti" firstAttribute="bottom" secondItem="VZU-Fx-9ol" secondAttribute="bottom" id="CzJ-SV-6lN"/>
+                                    <constraint firstItem="Gbt-Pm-Pti" firstAttribute="width" secondItem="Zd3-Hl-qfQ" secondAttribute="width" id="pjG-QX-fvt"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="VZU-Fx-9ol"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="LXg-SZ-DJk"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ejW-m5-R32"/>
+                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ejW-m5-R32" firstAttribute="bottom" secondItem="Zd3-Hl-qfQ" secondAttribute="bottom" id="8bz-dp-5oX"/>
+                            <constraint firstItem="ejW-m5-R32" firstAttribute="trailing" secondItem="Zd3-Hl-qfQ" secondAttribute="trailing" id="OML-QK-KEy"/>
+                            <constraint firstItem="Zd3-Hl-qfQ" firstAttribute="leading" secondItem="ejW-m5-R32" secondAttribute="leading" id="Qyv-0F-dql"/>
+                            <constraint firstItem="Zd3-Hl-qfQ" firstAttribute="top" secondItem="ejW-m5-R32" secondAttribute="top" id="Ta4-r3-a5n"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="acceptButton" destination="9Z0-dK-h8Y" id="uem-IM-5Vf"/>
+                        <outlet property="bulletedLabel" destination="Zuo-bS-QVm" id="h45-aB-aYt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cSA-LY-mgT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141" y="139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="privacyIcon" width="28" height="39"/>
+    </resources>
+</document>

@@ -9,23 +9,38 @@ import UIKit
 
 enum SFPRODisplayStyle: String {
     case black = "Black"
+    case blackItalic = "BlackItalic"
     case bold = "Bold"
+    case boldItalic = "BoldItalic"
     case heavy = "Heavy"
+    case heavyItalic = "HeavyItalic"
     case light = "Light"
+    case lightItalic = "LightItalic"
     case medium = "Medium"
+    case mediumItalic = "MediumItalic"
     case regular = "Regular"
+    case regularItalic = "RegularItalic"
     case semibold = "Semibold"
+    case semiboldItalic = "SemiboldItalic"
     case thin = "Thin"
+    case thinItalic = "ThinItalic"
     case ultralight = "Ultralight"
+    case ultralightItalic = "UltralightItalic"
 }
 
 enum SFPROTextStyle: String {
     case bold = "Bold"
+    case boldItalic = "BoldItalic"
     case heavy = "Heavy"
+    case heavyItalic = "HeavyItalic"
     case light = "Light"
+    case lightItalic = "LightItalic"
     case medium = "Medium"
+    case mediumItalic = "MediumItalic"
     case regular = "Regular"
+    case regularItalic = "RegularItalic"
     case semibold = "Semibold"
+    case semiboldItalic = "SemiboldItalic"
 }
 
 // MARK: - Fonts

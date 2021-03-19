@@ -9,7 +9,6 @@ import UIKit
 
 let kStatus = "status"
 let kOnboardingStatus = "onboardingStatus"
-let kCameraStatus = "cameraStatus"
 
 class Switcher {
     static func updateRootVC(showLaunch: Bool = true) {
@@ -37,7 +36,7 @@ class Switcher {
         }
         
         if status == true {
-            rootVC = PrivacyViewController.instantiate(from: .Main, with: PrivacyViewController.typeName)
+            rootVC = MainTabBarViewController.instantiate(from: .Main, with: MainTabBarViewController.typeName)
         } else {
             rootVC = PrivacyViewController.instantiate(from: .Onboarding, with: PrivacyViewController.typeName)
         }

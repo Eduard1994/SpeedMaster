@@ -11,7 +11,6 @@ import UIKit
 enum Storyboards: String {
     case Main = "Main"
     case Onboarding = "Onboarding"
-    case Premium = "Premium"
 }
 
 enum BulletSize: CGFloat {

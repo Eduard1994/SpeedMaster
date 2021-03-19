@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="fNw-3l-VaG">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="fNw-3l-VaG" secondAttribute="bottom" id="Afa-Ri-Gy9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fNw-3l-VaG" secondAttribute="trailing" id="PAa-Eo-889"/>
+                <constraint firstItem="fNw-3l-VaG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dH2-SO-duC"/>
+                <constraint firstItem="fNw-3l-VaG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="geP-HV-6gE"/>
+            </constraints>
+            <point key="canvasLocation" x="142" y="154"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="launchBackground" width="375" height="667"/>
+    </resources>
+</document>
