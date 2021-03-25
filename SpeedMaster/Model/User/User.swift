@@ -18,4 +18,24 @@ struct User: Codable {
     enum CodingKeys: String, CodingKey {
         case uid
     }
+    
+    static var currentUser: User? {
+        get {
+            return User.userCache
+        }
+    }
+    
+    private static let userCache: User? = {
+        let path = URL(fileURLWithPath: NSTemporaryDirectory())
+        let disk = DiskStorage(path: path)
+        let storage = CodableStorage(storage: disk)
+        
+        var user: User!
+        
+        do {
+            return try storage.fetch(for: kUserDataKey)
+        } catch {
+            return nil
+        }
+    }()
 }

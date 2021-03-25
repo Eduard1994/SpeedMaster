@@ -26,6 +26,8 @@
 		FF0EA9BD26022E890051FFB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0EA9BB26022E890051FFB7 /* LaunchScreen.storyboard */; };
 		FF0EA9C926022EC50051FFB7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0EA9C826022EC50051FFB7 /* StoreKit.framework */; };
 		FF0EA9D826022FBC0051FFB7 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0EA9D726022FBC0051FFB7 /* PrivacyViewController.swift */; };
+		FF10866E260934E900A738FB /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10866D260934E900A738FB /* OnboardingViewController.swift */; };
+		FF1A65D6260BCE7200ECA29C /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1A65D5260BCE7200ECA29C /* SectionHeader.swift */; };
 		FF6912D826045D2D0049DBA7 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF6912D726045D2D0049DBA7 /* LaunchView.xib */; };
 		FF6912DB260471CE0049DBA7 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6912DA260471CE0049DBA7 /* MainTabBarViewController.swift */; };
 		FF6912DE2604729B0049DBA7 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6912DD2604729B0049DBA7 /* HistoryViewController.swift */; };
@@ -35,6 +37,8 @@
 		FF6912EE260473760049DBA7 /* UpgradeFromSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6912ED260473760049DBA7 /* UpgradeFromSettingsViewController.swift */; };
 		FF6912F12604742D0049DBA7 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6912F02604742D0049DBA7 /* Functions.swift */; };
 		FF6912F4260480870049DBA7 /* UITabBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6912F3260480870049DBA7 /* UITabBar+Extension.swift */; };
+		FF704EAB260AA00700D0919A /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF704EA9260AA00700D0919A /* HistoryTableViewCell.swift */; };
+		FF704EAC260AA00700D0919A /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF704EAA260AA00700D0919A /* HistoryTableViewCell.xib */; };
 		FFB74C702605232D0087AE07 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFB74C6F2605232D0087AE07 /* Onboarding.storyboard */; };
 		FFB74C852605257D0087AE07 /* SF-Pro-Display-UltralightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FFB74C73260525790087AE07 /* SF-Pro-Display-UltralightItalic.otf */; };
 		FFB74C862605257D0087AE07 /* SF-Pro-Display-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FFB74C74260525790087AE07 /* SF-Pro-Display-BlackItalic.otf */; };
@@ -77,6 +81,22 @@
 		FFB74CD0260537FD0087AE07 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB74CCF260537FD0087AE07 /* Settings.swift */; };
 		FFB74CD3260538080087AE07 /* SettingsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB74CD2260538080087AE07 /* SettingsCellModel.swift */; };
 		FFB74CDB260538710087AE07 /* Premium.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFB74CDA260538710087AE07 /* Premium.storyboard */; };
+		FFC5DA9C260539A100B8D5F6 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5DA9B260539A100B8D5F6 /* IAPManager.swift */; };
+		FFC5DAA0260539D800B8D5F6 /* PremiumTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5DA9F260539D800B8D5F6 /* PremiumTitle.swift */; };
+		FFC5DAA92605426C00B8D5F6 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5DAA82605426C00B8D5F6 /* FooterView.swift */; };
+		FFC5DAAF260545A700B8D5F6 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5DAAE260545A700B8D5F6 /* Slide.swift */; };
+		FFC5DAB2260545B100B8D5F6 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFC5DAB1260545B100B8D5F6 /* Slide.xib */; };
+		FFC5DAC0260562A600B8D5F6 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5DABE260562A500B8D5F6 /* SettingsTableViewCell.swift */; };
+		FFC5DAC1260562A600B8D5F6 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFC5DABF260562A600B8D5F6 /* SettingsTableViewCell.xib */; };
+		FFCDECA02608026A00C3A10D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDEC9F2608026A00C3A10D /* Constants.swift */; };
+		FFCDECA426080FCF00C3A10D /* MeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDECA326080FCF00C3A10D /* MeasureViewController.swift */; };
+		FFD5025F260BE880001A9C15 /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD5025E260BE880001A9C15 /* SortViewController.swift */; };
+		FFD50266260BF224001A9C15 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFD50265260BF224001A9C15 /* GoogleService-Info.plist */; };
+		FFD50269260BF2DC001A9C15 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD50268260BF2DC001A9C15 /* Cache.swift */; };
+		FFD50291260C2C03001A9C15 /* Examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD50290260C2C03001A9C15 /* Examples.swift */; };
+		FFD50294260C2C3F001A9C15 /* GraphType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD50293260C2C3F001A9C15 /* GraphType.swift */; };
+		FFD564CB2609245600BC4593 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD564CA2609245600BC4593 /* MainNavigationController.swift */; };
+		FFE56CD02606C29400A8370A /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE56CCF2606C29400A8370A /* UIDevice+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +123,8 @@
 		FF0EA9BE26022E890051FFB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF0EA9C826022EC50051FFB7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FF0EA9D726022FBC0051FFB7 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		FF10866D260934E900A738FB /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		FF1A65D5260BCE7200ECA29C /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		FF6912D726045D2D0049DBA7 /* LaunchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		FF6912DA260471CE0049DBA7 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		FF6912DD2604729B0049DBA7 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +134,8 @@
 		FF6912ED260473760049DBA7 /* UpgradeFromSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeFromSettingsViewController.swift; sourceTree = "<group>"; };
 		FF6912F02604742D0049DBA7 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		FF6912F3260480870049DBA7 /* UITabBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Extension.swift"; sourceTree = "<group>"; };
+		FF704EA9260AA00700D0919A /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		FF704EAA260AA00700D0919A /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		FFB74C6F2605232D0087AE07 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		FFB74C73260525790087AE07 /* SF-Pro-Display-UltralightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-UltralightItalic.otf"; sourceTree = "<group>"; };
 		FFB74C74260525790087AE07 /* SF-Pro-Display-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BlackItalic.otf"; sourceTree = "<group>"; };
@@ -154,6 +178,22 @@
 		FFB74CCF260537FD0087AE07 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		FFB74CD2260538080087AE07 /* SettingsCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellModel.swift; sourceTree = "<group>"; };
 		FFB74CDA260538710087AE07 /* Premium.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Premium.storyboard; sourceTree = "<group>"; };
+		FFC5DA9B260539A100B8D5F6 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
+		FFC5DA9F260539D800B8D5F6 /* PremiumTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTitle.swift; sourceTree = "<group>"; };
+		FFC5DAA82605426C00B8D5F6 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		FFC5DAAE260545A700B8D5F6 /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		FFC5DAB1260545B100B8D5F6 /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
+		FFC5DABE260562A500B8D5F6 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		FFC5DABF260562A600B8D5F6 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		FFCDEC9F2608026A00C3A10D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FFCDECA326080FCF00C3A10D /* MeasureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureViewController.swift; sourceTree = "<group>"; };
+		FFD5025E260BE880001A9C15 /* SortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
+		FFD50265260BF224001A9C15 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FFD50268260BF2DC001A9C15 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		FFD50290260C2C03001A9C15 /* Examples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Examples.swift; sourceTree = "<group>"; };
+		FFD50293260C2C3F001A9C15 /* GraphType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphType.swift; sourceTree = "<group>"; };
+		FFD564CA2609245600BC4593 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		FFE56CCF2606C29400A8370A /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +320,7 @@
 				FF0EA9B026022E860051FFB7 /* AppDelegate.swift */,
 				FF0EA9B926022E890051FFB7 /* Assets.xcassets */,
 				FF0EA9BE26022E890051FFB7 /* Info.plist */,
+				FFD50265260BF224001A9C15 /* GoogleService-Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -306,12 +347,15 @@
 		FF0EA9CE26022F380051FFB7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FFD564C92609243300BC4593 /* MainNavigationController */,
 				FF0EA9D526022F8B0051FFB7 /* MainTabBarController */,
 				FF0EA9D626022F990051FFB7 /* Onboarding */,
 				FF6912E7260472F70049DBA7 /* UpgradeToPremium */,
 				FF6912DD2604729B0049DBA7 /* HistoryViewController.swift */,
 				FF6912E0260472AB0049DBA7 /* SpeedometerViewController.swift */,
 				FF6912E3260472B50049DBA7 /* SettingsViewController.swift */,
+				FFCDECA326080FCF00C3A10D /* MeasureViewController.swift */,
+				FFD5025E260BE880001A9C15 /* SortViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -320,7 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				FF6912D726045D2D0049DBA7 /* LaunchView.xib */,
-				FFB74CD92605382F0087AE07 /* HeaderView */,
+				FFB74CD92605382F0087AE07 /* SectionHeaderView */,
 				FFB74CD82605382A0087AE07 /* FooterView */,
 				FFB74CD7260538270087AE07 /* Slide */,
 				FFB74CD62605381D0087AE07 /* HistoryTableViewCell */,
@@ -335,6 +379,8 @@
 				FFB74CBF260537980087AE07 /* User */,
 				FFB74CC4260537AD0087AE07 /* HistoryModel */,
 				FFB74CCE260537E90087AE07 /* SettingsModel */,
+				FFD50290260C2C03001A9C15 /* Examples.swift */,
+				FFD50293260C2C3F001A9C15 /* GraphType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -352,9 +398,12 @@
 			isa = PBXGroup;
 			children = (
 				FF0A8973260230CD00ADF896 /* Switcher.swift */,
+				FFD50268260BF2DC001A9C15 /* Cache.swift */,
 				FF6912F02604742D0049DBA7 /* Functions.swift */,
 				FFB74CB22605369D0087AE07 /* ErrorHandling.swift */,
+				FFCDEC9F2608026A00C3A10D /* Constants.swift */,
 				FFB74CB5260536DC0087AE07 /* SnakePageControl */,
+				FFC5DA9A2605398800B8D5F6 /* IAP */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -370,6 +419,7 @@
 				FF0A89A8260231E600ADF896 /* UIFont+Extension.swift */,
 				FF6912F3260480870049DBA7 /* UITabBar+Extension.swift */,
 				FF0A89AB2602320000ADF896 /* UITableView+Extension.swift */,
+				FFE56CCF2606C29400A8370A /* UIDevice+Extension.swift */,
 				FF0A89AE2602325300ADF896 /* NSLayoutConstraint+Extension.swift */,
 				FF0A89B12602326B00ADF896 /* String+Extension.swift */,
 				FF0A89B42602328600ADF896 /* Date+Extension.swift */,
@@ -390,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				FF0EA9D726022FBC0051FFB7 /* PrivacyViewController.swift */,
+				FF10866D260934E900A738FB /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -441,6 +492,8 @@
 		FFB74CD5260538100087AE07 /* SettingsTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				FFC5DABE260562A500B8D5F6 /* SettingsTableViewCell.swift */,
+				FFC5DABF260562A600B8D5F6 /* SettingsTableViewCell.xib */,
 			);
 			path = SettingsTableViewCell;
 			sourceTree = "<group>";
@@ -448,6 +501,8 @@
 		FFB74CD62605381D0087AE07 /* HistoryTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				FF704EA9260AA00700D0919A /* HistoryTableViewCell.swift */,
+				FF704EAA260AA00700D0919A /* HistoryTableViewCell.xib */,
 			);
 			path = HistoryTableViewCell;
 			sourceTree = "<group>";
@@ -455,6 +510,8 @@
 		FFB74CD7260538270087AE07 /* Slide */ = {
 			isa = PBXGroup;
 			children = (
+				FFC5DAAE260545A700B8D5F6 /* Slide.swift */,
+				FFC5DAB1260545B100B8D5F6 /* Slide.xib */,
 			);
 			path = Slide;
 			sourceTree = "<group>";
@@ -462,15 +519,34 @@
 		FFB74CD82605382A0087AE07 /* FooterView */ = {
 			isa = PBXGroup;
 			children = (
+				FFC5DAA82605426C00B8D5F6 /* FooterView.swift */,
 			);
 			path = FooterView;
 			sourceTree = "<group>";
 		};
-		FFB74CD92605382F0087AE07 /* HeaderView */ = {
+		FFB74CD92605382F0087AE07 /* SectionHeaderView */ = {
 			isa = PBXGroup;
 			children = (
+				FF1A65D5260BCE7200ECA29C /* SectionHeader.swift */,
 			);
-			path = HeaderView;
+			path = SectionHeaderView;
+			sourceTree = "<group>";
+		};
+		FFC5DA9A2605398800B8D5F6 /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				FFC5DA9B260539A100B8D5F6 /* IAPManager.swift */,
+				FFC5DA9F260539D800B8D5F6 /* PremiumTitle.swift */,
+			);
+			path = IAP;
+			sourceTree = "<group>";
+		};
+		FFD564C92609243300BC4593 /* MainNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				FFD564CA2609245600BC4593 /* MainNavigationController.swift */,
+			);
+			path = MainNavigationController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -540,6 +616,7 @@
 				FFB74CAE260527F00087AE07 /* SF-Pro-Text-Medium.otf in Resources */,
 				FFB74C952605257D0087AE07 /* SF-Pro-Display-BoldItalic.otf in Resources */,
 				FFB74C8F2605257D0087AE07 /* SF-Pro-Display-Heavy.otf in Resources */,
+				FFC5DAB2260545B100B8D5F6 /* Slide.xib in Resources */,
 				FFB74C912605257D0087AE07 /* SF-Pro-Display-Ultralight.otf in Resources */,
 				FF0EA9BD26022E890051FFB7 /* LaunchScreen.storyboard in Resources */,
 				FFB74C8B2605257D0087AE07 /* SF-Pro-Display-Light.otf in Resources */,
@@ -548,6 +625,7 @@
 				FFB74C872605257D0087AE07 /* SF-Pro-Display-Black.otf in Resources */,
 				FF0EA9BA26022E890051FFB7 /* Assets.xcassets in Resources */,
 				FFB74CA5260527F00087AE07 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
+				FFD50266260BF224001A9C15 /* GoogleService-Info.plist in Resources */,
 				FFB74C8E2605257D0087AE07 /* SF-Pro-Display-Bold.otf in Resources */,
 				FFB74C702605232D0087AE07 /* Onboarding.storyboard in Resources */,
 				FFB74CAD260527F00087AE07 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
@@ -555,6 +633,7 @@
 				FFB74C8C2605257D0087AE07 /* SF-Pro-Display-Thin.otf in Resources */,
 				FFB74CA6260527F00087AE07 /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				FFB74CA8260527F00087AE07 /* SF-Pro-Text-Bold.otf in Resources */,
+				FFC5DAC1260562A600B8D5F6 /* SettingsTableViewCell.xib in Resources */,
 				FF0EA9B826022E860051FFB7 /* Main.storyboard in Resources */,
 				FFB74C882605257D0087AE07 /* SF-Pro-Display-ThinItalic.otf in Resources */,
 				FFB74CA9260527F00087AE07 /* SF-Pro-Text-Semibold.otf in Resources */,
@@ -564,6 +643,7 @@
 				FFB74C902605257D0087AE07 /* SF-Pro-Display-RegularItalic.otf in Resources */,
 				FFB74CB0260527F00087AE07 /* SF-Pro-Text-LightItalic.otf in Resources */,
 				FFB74C942605257D0087AE07 /* SF-Pro-Display-Medium.otf in Resources */,
+				FF704EAC260AA00700D0919A /* HistoryTableViewCell.xib in Resources */,
 				FFB74CDB260538710087AE07 /* Premium.storyboard in Resources */,
 				FFB74C8D2605257D0087AE07 /* SF-Pro-Display-Regular.otf in Resources */,
 				FFB74CAB260527F00087AE07 /* SF-Pro-Text-BoldItalic.otf in Resources */,
@@ -620,36 +700,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFD50269260BF2DC001A9C15 /* Cache.swift in Sources */,
 				FF6912DB260471CE0049DBA7 /* MainTabBarViewController.swift in Sources */,
 				FF0A89782602313400ADF896 /* UIViewController+Extension.swift in Sources */,
 				FFB74CC6260537C00087AE07 /* History.swift in Sources */,
 				FFB74CBA2605371F0087AE07 /* Service.swift in Sources */,
+				FFC5DAC0260562A600B8D5F6 /* SettingsTableViewCell.swift in Sources */,
 				FFB74CC9260537CC0087AE07 /* HistoryCellModel.swift in Sources */,
 				FFB74CBD2605377C0087AE07 /* NetworkActivityIndicatorManager.swift in Sources */,
+				FFC5DAA92605426C00B8D5F6 /* FooterView.swift in Sources */,
+				FF1A65D6260BCE7200ECA29C /* SectionHeader.swift in Sources */,
 				FF0A89812602318500ADF896 /* UIImage+Extension.swift in Sources */,
 				FFB74CC1260537A20087AE07 /* User.swift in Sources */,
+				FFC5DAA0260539D800B8D5F6 /* PremiumTitle.swift in Sources */,
 				FF0A89B82602329D00ADF896 /* Double+Extension.swift in Sources */,
 				FFB74CB32605369D0087AE07 /* ErrorHandling.swift in Sources */,
 				FF0A89B52602328600ADF896 /* Date+Extension.swift in Sources */,
 				FF6912EA260473600049DBA7 /* UpgradeToPremiumViewController.swift in Sources */,
 				FF0EA9B126022E860051FFB7 /* AppDelegate.swift in Sources */,
 				FF0A89AF2602325300ADF896 /* NSLayoutConstraint+Extension.swift in Sources */,
+				FFD564CB2609245600BC4593 /* MainNavigationController.swift in Sources */,
 				FF6912DE2604729B0049DBA7 /* HistoryViewController.swift in Sources */,
+				FFD5025F260BE880001A9C15 /* SortViewController.swift in Sources */,
 				FF0A89B22602326B00ADF896 /* String+Extension.swift in Sources */,
 				FF6912EE260473760049DBA7 /* UpgradeFromSettingsViewController.swift in Sources */,
 				FF6912E1260472AB0049DBA7 /* SpeedometerViewController.swift in Sources */,
 				FF0EA9D826022FBC0051FFB7 /* PrivacyViewController.swift in Sources */,
+				FFCDECA02608026A00C3A10D /* Constants.swift in Sources */,
 				FF0A897E2602316900ADF896 /* UITextField+Extension.swift in Sources */,
 				FFB74CD3260538080087AE07 /* SettingsCellModel.swift in Sources */,
 				FF0A897B2602314D00ADF896 /* UIView+Extension.swift in Sources */,
+				FFD50294260C2C3F001A9C15 /* GraphType.swift in Sources */,
+				FF10866E260934E900A738FB /* OnboardingViewController.swift in Sources */,
 				FFB74CD0260537FD0087AE07 /* Settings.swift in Sources */,
+				FF704EAB260AA00700D0919A /* HistoryTableViewCell.swift in Sources */,
 				FF0A89A9260231E600ADF896 /* UIFont+Extension.swift in Sources */,
+				FFC5DA9C260539A100B8D5F6 /* IAPManager.swift in Sources */,
 				FFB74CB7260536EC0087AE07 /* SnakePageControl.swift in Sources */,
 				FFB74CCC260537E30087AE07 /* SpeedMasterProducts.swift in Sources */,
+				FFCDECA426080FCF00C3A10D /* MeasureViewController.swift in Sources */,
 				FF0A89AC2602320000ADF896 /* UITableView+Extension.swift in Sources */,
+				FFD50291260C2C03001A9C15 /* Examples.swift in Sources */,
+				FFE56CD02606C29400A8370A /* UIDevice+Extension.swift in Sources */,
 				FF6912F12604742D0049DBA7 /* Functions.swift in Sources */,
 				FF0A8974260230CD00ADF896 /* Switcher.swift in Sources */,
 				FF6912F4260480870049DBA7 /* UITabBar+Extension.swift in Sources */,
+				FFC5DAAF260545A700B8D5F6 /* Slide.swift in Sources */,
 				FF0A8984260231A600ADF896 /* UIColor+Extension.swift in Sources */,
 				FF6912E4260472B50049DBA7 /* SettingsViewController.swift in Sources */,
 			);
@@ -800,13 +896,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9487YL2FBF;
+				DEVELOPMENT_TEAM = 4KD9R5PHDJ;
 				INFOPLIST_FILE = "$(SRCROOT)/SpeedMaster/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pcmrail.SpeedMaster;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mpsdev.speed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -820,13 +916,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9487YL2FBF;
+				DEVELOPMENT_TEAM = 4KD9R5PHDJ;
 				INFOPLIST_FILE = "$(SRCROOT)/SpeedMaster/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pcmrail.SpeedMaster;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mpsdev.speed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

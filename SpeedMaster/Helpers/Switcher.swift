@@ -7,9 +7,6 @@
 
 import UIKit
 
-let kStatus = "status"
-let kOnboardingStatus = "onboardingStatus"
-
 class Switcher {
     static func updateRootVC(showLaunch: Bool = true) {
         let status = UserDefaults.standard.bool(forKey: kStatus)
@@ -37,6 +34,7 @@ class Switcher {
         
         if status == true {
             rootVC = MainTabBarViewController.instantiate(from: .Main, with: MainTabBarViewController.typeName)
+//            rootVC = OnboardingViewController.instantiate(from: .Onboarding, with: OnboardingViewController.typeName)
         } else {
             rootVC = PrivacyViewController.instantiate(from: .Onboarding, with: PrivacyViewController.typeName)
         }

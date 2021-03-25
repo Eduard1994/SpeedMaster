@@ -14,5 +14,6 @@ target 'SpeedMaster' do
   	pod 'Firebase/Analytics'
 	pod 'Alamofire'
 	pod 'SwiftyStoreKit'
+	pod 'ScrollableGraphView'
 
 end

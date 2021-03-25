@@ -11,6 +11,7 @@ import UIKit
 enum Storyboards: String {
     case Main = "Main"
     case Onboarding = "Onboarding"
+    case Premium = "Premium"
 }
 
 enum BulletSize: CGFloat {
@@ -155,13 +156,32 @@ extension UIViewController: UIGestureRecognizerDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    func presentFullScreen(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+    private func present(_ viewControllerToPresent: UIViewController, style: UIModalPresentationStyle = .fullScreen, animated flag: Bool, completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {
-            viewControllerToPresent.modalPresentationStyle = .fullScreen
+            viewControllerToPresent.modalPresentationStyle = style
             self.present(viewControllerToPresent, animated: flag, completion: completion)
         }
     }
     
+    func push(_ viewControllerToPush: UIViewController, animated flag: Bool) {
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(viewControllerToPush, animated: true)
+        }
+    }
+    
+    func pop(animated flag: Bool) {
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: flag)
+        }
+    }
+    
+    func presentOverFullScreen(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        present(viewControllerToPresent, style: .overFullScreen, animated: flag, completion: completion)
+    }
+    
+    func presentPopover(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        present(viewControllerToPresent, style: .popover, animated: flag, completion: completion)
+    }
     
     func bulletedList(strings: [String], textColor: UIColor, font: UIFont, bulletColor: UIColor, bulletSize: BulletSize) -> NSAttributedString {
         let textAttributesDictionary = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: textColor]

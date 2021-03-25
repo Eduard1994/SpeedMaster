@@ -35,23 +35,32 @@ extension UITableView {
         }
     }
     
-    func reload(for codes: [Any], emptyLabeltext: String) {
-        if codes.isEmpty {
-            let label = UILabel()
-            label.text = emptyLabeltext
-            label.textColor = UIColor.gray
-            label.textAlignment = .center
-            label.font = .sfProText(ofSize: 25, style: .medium)
-            self.backgroundView = label
-            self.withoutSeparator()
+    func reload(for histories: [Any], upcomingButton: UIButton, upcomingArrow: UIButton) {
+        if histories.isEmpty {
+            upcomingButton.setTitle("History is empty!", for: .normal)
+            upcomingButton.isEnabled = false
+            upcomingArrow.isHidden = true
+            upcomingArrow.isEnabled = false
+            let imageView = UIImageView()
+            imageView.backgroundColor = .clear
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = imageNamed("noHistory")
+            self.backgroundColor = .clear
+            self.backgroundView = imageView
+//            self.withoutSeparator()
         } else {
+            upcomingButton.setTitle("Upcoming", for: .normal)
+            upcomingButton.isEnabled = true
+            upcomingArrow.isHidden = false
+            upcomingArrow.isEnabled = true
+            self.backgroundColor = .mainBlack
             self.backgroundView = nil
-            self.withSeparator()
+//            self.withSeparator()
         }
     }
     
     func withSeparator() {
-        self.separatorColor = .mainGrayAverage
+        self.separatorColor = .mainDarkGray
     }
     
     func withoutSeparator() {

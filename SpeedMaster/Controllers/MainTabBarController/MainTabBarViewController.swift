@@ -33,9 +33,9 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let historyVC = HistoryViewController.instantiate(from: .Main, with: HistoryViewController.typeName)
-        let speedometerVC = SpeedometerViewController.instantiate(from: .Main, with: SpeedometerViewController.typeName)
-        let settingsVC = SettingsViewController.instantiate(from: .Main, with: SettingsViewController.typeName)
+        let historyVC = UINavigationController.instantiate(from: .Main, with: "MainHistoryNavigationController")
+        let speedometerVC = UINavigationController.instantiate(from: .Main, with: "MainSpeedometerNavigationController")
+        let settingsVC = UINavigationController.instantiate(from: .Main, with: "MainSettingsNavigationController")
         
         let historyImage = imageNamed("historyIcon")
         let historySelectedImage = imageNamed("historyIconColored")
@@ -56,7 +56,7 @@ class MainTabBarViewController: UITabBarController {
         settingsVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
 
         let tabBarList = [historyVC, speedometerVC, settingsVC]
-
+        
         viewControllers = tabBarList
         
         selectedIndex = 1

@@ -87,6 +87,7 @@ PODS:
   - nanopb/decode (2.30907.0)
   - nanopb/encode (2.30907.0)
   - PromisesObjC (1.2.12)
+  - ScrollableGraphView (4.0.6)
   - SwiftyStoreKit (0.16.1)
 
 DEPENDENCIES:
@@ -96,6 +97,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - ScrollableGraphView
   - SwiftyStoreKit
 
 SPEC REPOS:
@@ -116,6 +118,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - ScrollableGraphView
     - SwiftyStoreKit
 
 SPEC CHECKSUMS:
@@ -135,8 +138,9 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
 
-PODFILE CHECKSUM: e8e483d1b10d7a52c0559acf4a5af8682da7887e
+PODFILE CHECKSUM: 4ba6fa84dc15ab412866b28a1b1124fdc43616d8
 
 COCOAPODS: 1.10.1

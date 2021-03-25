@@ -157,14 +157,14 @@ extension UIView {
     private var activityIndicatorView: UIActivityIndicatorView {
         if #available(iOS 13.0, *) {
             let view: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
-            view.color = .mainGrayAverage
+            view.color = .mainDarkGray
             view.translatesAutoresizingMaskIntoConstraints = false
             view.tag = activityIndicatorViewTag
             return view
         } else {
             // Fallback on earlier versions
             let view: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
-            view.color = .mainGrayAverage
+            view.color = .mainDarkGray
             view.translatesAutoresizingMaskIntoConstraints = false
             view.tag = activityIndicatorViewTag
             return view
