@@ -21,6 +21,9 @@
         <array key="SF-Pro-Text-Medium.otf">
             <string>SFProText-Medium</string>
         </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Main Tab Bar View Controller-->
@@ -71,16 +74,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEW-FD-p8o">
-                                                <rect key="frame" x="15" y="55" width="345" height="58.5"/>
+                                                <rect key="frame" x="15" y="55" width="345" height="60"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-BlackItalic" family="SF Pro Display" pointSize="50"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="W4l-Ai-vth">
-                                                <rect key="frame" x="143.5" y="118.5" width="88" height="31.5"/>
+                                                <rect key="frame" x="144.5" y="120" width="86" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kw-Uy-W2p">
-                                                        <rect key="frame" x="0.0" y="0.0" width="74" height="31.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="15"/>
                                                         <state key="normal" title="Upcoming ">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -90,7 +93,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KYn-iv-Ugh">
-                                                        <rect key="frame" x="79" y="0.0" width="9" height="31.5"/>
+                                                        <rect key="frame" x="77" y="0.0" width="9" height="30"/>
                                                         <state key="normal" image="arrowDown"/>
                                                     </button>
                                                 </subviews>
@@ -175,10 +178,78 @@
                     <view key="view" contentMode="scaleToFill" id="7Ae-Mr-7t0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R07-AA-SoB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="409"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationImage" translatesAutoresizingMaskIntoConstraints="NO" id="kIZ-G1-YbL">
+                                        <rect key="frame" x="163.5" y="75" width="48" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="3PW-wy-dRh"/>
+                                            <constraint firstAttribute="width" constant="48" id="u9m-0k-pL5"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow location to start" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWW-fj-5AI">
+                                        <rect key="frame" x="15" y="173" width="345" height="179.5"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-BlackItalic" family="SF Pro Display" pointSize="50"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="RWW-fj-5AI" firstAttribute="top" secondItem="kIZ-G1-YbL" secondAttribute="bottom" constant="33" id="1SS-K2-tdG"/>
+                                    <constraint firstItem="kIZ-G1-YbL" firstAttribute="centerX" secondItem="R07-AA-SoB" secondAttribute="centerX" id="I9I-yh-wzn"/>
+                                    <constraint firstItem="kIZ-G1-YbL" firstAttribute="top" secondItem="R07-AA-SoB" secondAttribute="top" constant="75" id="ehU-ZW-Spx"/>
+                                    <constraint firstItem="RWW-fj-5AI" firstAttribute="centerX" secondItem="R07-AA-SoB" secondAttribute="centerX" id="wYh-SE-pcx"/>
+                                    <constraint firstItem="RWW-fj-5AI" firstAttribute="leading" secondItem="R07-AA-SoB" secondAttribute="leading" constant="15" id="zge-NM-CeW"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41B-Uy-Yim">
+                                <rect key="frame" x="150" y="559" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="5Al-X0-NiN"/>
+                                    <constraint firstAttribute="height" constant="75" id="IJI-rm-jmy"/>
+                                </constraints>
+                                <state key="normal" image="playImage"/>
+                                <connections>
+                                    <action selector="playButtonTapped:" destination="Udg-29-CRc" eventType="touchUpInside" id="CYj-8V-gIr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5h-hG-EDE">
+                                <rect key="frame" x="250" y="576.5" width="90" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="wFv-iO-epQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="16"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetTapped:" destination="Udg-29-CRc" eventType="touchUpInside" id="7Y4-Mb-8vU"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="5Ec-29-Vi5"/>
                         <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="41B-Uy-Yim" firstAttribute="centerX" secondItem="5Ec-29-Vi5" secondAttribute="centerX" id="0Iq-yo-jFj"/>
+                            <constraint firstItem="R07-AA-SoB" firstAttribute="top" secondItem="5Ec-29-Vi5" secondAttribute="top" id="41G-4t-13D"/>
+                            <constraint firstItem="e5h-hG-EDE" firstAttribute="leading" secondItem="41B-Uy-Yim" secondAttribute="trailing" constant="25" id="67y-Hc-QNj"/>
+                            <constraint firstItem="R07-AA-SoB" firstAttribute="leading" secondItem="5Ec-29-Vi5" secondAttribute="leading" id="FCq-g3-IgQ"/>
+                            <constraint firstItem="5Ec-29-Vi5" firstAttribute="bottom" secondItem="41B-Uy-Yim" secondAttribute="bottom" constant="33" id="XVu-AD-z39"/>
+                            <constraint firstItem="41B-Uy-Yim" firstAttribute="top" secondItem="R07-AA-SoB" secondAttribute="bottom" constant="150" id="aIa-n4-v51"/>
+                            <constraint firstItem="5Ec-29-Vi5" firstAttribute="trailing" secondItem="R07-AA-SoB" secondAttribute="trailing" id="ksH-0b-Lk0"/>
+                            <constraint firstItem="e5h-hG-EDE" firstAttribute="centerY" secondItem="41B-Uy-Yim" secondAttribute="centerY" id="rqA-aW-d6W"/>
+                            <constraint firstItem="5Ec-29-Vi5" firstAttribute="trailing" secondItem="e5h-hG-EDE" secondAttribute="trailing" constant="35" id="szH-QP-WxO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1zs-HX-bfm"/>
+                    <connections>
+                        <outlet property="allowLocationView" destination="R07-AA-SoB" id="mGj-a0-IXT"/>
+                        <outlet property="resetButton" destination="e5h-hG-EDE" id="3JA-tq-fJS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a3u-Sl-GDf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -861,6 +932,8 @@
         <image name="check" width="12" height="8.5"/>
         <image name="checkBackgroundBlack" width="20" height="20"/>
         <image name="checkBackgroundBlue" width="20" height="20"/>
+        <image name="locationImage" width="48" height="65"/>
+        <image name="playImage" width="75" height="75"/>
         <image name="settingsHeaderImage" width="32" height="38"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

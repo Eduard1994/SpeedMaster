@@ -28,6 +28,28 @@
 		FF0EA9D826022FBC0051FFB7 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0EA9D726022FBC0051FFB7 /* PrivacyViewController.swift */; };
 		FF10866E260934E900A738FB /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10866D260934E900A738FB /* OnboardingViewController.swift */; };
 		FF1A65D6260BCE7200ECA29C /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1A65D5260BCE7200ECA29C /* SectionHeader.swift */; };
+		FF26C90F260D491B0037965C /* SpeedometerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26C90E260D491B0037965C /* SpeedometerView.swift */; };
+		FF26C914260D55400037965C /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26C913260D55400037965C /* WeatherViewController.swift */; };
+		FF26C918260D5F770037965C /* Weather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF26C917260D5F770037965C /* Weather.storyboard */; };
+		FF26C92F260D70930037965C /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26C92E260D70930037965C /* Weather.swift */; };
+		FF2826E3260D207100C6C7A8 /* ReferenceLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2826E2260D207100C6C7A8 /* ReferenceLines.swift */; };
+		FF2826F9260D214D00C6C7A8 /* ScrollableGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2826F8260D214D00C6C7A8 /* ScrollableGraphView.swift */; };
+		FF2826FC260D217400C6C7A8 /* LabelPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2826FB260D217400C6C7A8 /* LabelPool.swift */; };
+		FF2826FF260D21AA00C6C7A8 /* ScrollableGraphViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2826FE260D21AA00C6C7A8 /* ScrollableGraphViewDataSource.swift */; };
+		FF282702260D21DD00C6C7A8 /* ScrollableGraphViewDrawingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF282701260D21DD00C6C7A8 /* ScrollableGraphViewDrawingDelegate.swift */; };
+		FF282706260D220500C6C7A8 /* Plot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF282705260D220500C6C7A8 /* Plot.swift */; };
+		FF28270A260D221F00C6C7A8 /* BarPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF282709260D221F00C6C7A8 /* BarPlot.swift */; };
+		FF28270E260D223B00C6C7A8 /* GraphPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF28270D260D223B00C6C7A8 /* GraphPoint.swift */; };
+		FF282711260D225000C6C7A8 /* GraphPointAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF282710260D225000C6C7A8 /* GraphPointAnimation.swift */; };
+		FF282714260D227300C6C7A8 /* BarDrawingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF282713260D227300C6C7A8 /* BarDrawingLayer.swift */; };
+		FF282717260D22A200C6C7A8 /* ScrollableGraphViewDrawingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF282716260D22A200C6C7A8 /* ScrollableGraphViewDrawingLayer.swift */; };
+		FF28271A260D233D00C6C7A8 /* ReferenceLineDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF282719260D233D00C6C7A8 /* ReferenceLineDrawingView.swift */; };
+		FF28271D260D237300C6C7A8 /* GradientDrawingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF28271C260D237300C6C7A8 /* GradientDrawingLayer.swift */; };
+		FF282720260D239A00C6C7A8 /* LineDrawingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF28271F260D239A00C6C7A8 /* LineDrawingLayer.swift */; };
+		FF282723260D23D100C6C7A8 /* DotPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF282722260D23D100C6C7A8 /* DotPlot.swift */; };
+		FF282727260D23E300C6C7A8 /* LinePlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF282726260D23E300C6C7A8 /* LinePlot.swift */; };
+		FF28272A260D23FF00C6C7A8 /* DotDrawingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF282729260D23FF00C6C7A8 /* DotDrawingLayer.swift */; };
+		FF28272D260D241400C6C7A8 /* FillDrawingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF28272C260D241400C6C7A8 /* FillDrawingLayer.swift */; };
 		FF6912D826045D2D0049DBA7 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF6912D726045D2D0049DBA7 /* LaunchView.xib */; };
 		FF6912DB260471CE0049DBA7 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6912DA260471CE0049DBA7 /* MainTabBarViewController.swift */; };
 		FF6912DE2604729B0049DBA7 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6912DD2604729B0049DBA7 /* HistoryViewController.swift */; };
@@ -39,6 +61,7 @@
 		FF6912F4260480870049DBA7 /* UITabBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6912F3260480870049DBA7 /* UITabBar+Extension.swift */; };
 		FF704EAB260AA00700D0919A /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF704EA9260AA00700D0919A /* HistoryTableViewCell.swift */; };
 		FF704EAC260AA00700D0919A /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF704EAA260AA00700D0919A /* HistoryTableViewCell.xib */; };
+		FF7B83F4260E327F00021D3A /* CircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7B83F3260E327F00021D3A /* CircularProgress.swift */; };
 		FFB74C702605232D0087AE07 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFB74C6F2605232D0087AE07 /* Onboarding.storyboard */; };
 		FFB74C852605257D0087AE07 /* SF-Pro-Display-UltralightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FFB74C73260525790087AE07 /* SF-Pro-Display-UltralightItalic.otf */; };
 		FFB74C862605257D0087AE07 /* SF-Pro-Display-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FFB74C74260525790087AE07 /* SF-Pro-Display-BlackItalic.otf */; };
@@ -97,6 +120,8 @@
 		FFD50294260C2C3F001A9C15 /* GraphType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD50293260C2C3F001A9C15 /* GraphType.swift */; };
 		FFD564CB2609245600BC4593 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD564CA2609245600BC4593 /* MainNavigationController.swift */; };
 		FFE56CD02606C29400A8370A /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE56CCF2606C29400A8370A /* UIDevice+Extension.swift */; };
+		FFF1D3D6260E805B00133CBD /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1D3D5260E805B00133CBD /* Unit.swift */; };
+		FFF1D3D9260EA68700133CBD /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1D3D8260EA68600133CBD /* Sequence+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +150,28 @@
 		FF0EA9D726022FBC0051FFB7 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		FF10866D260934E900A738FB /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		FF1A65D5260BCE7200ECA29C /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		FF26C90E260D491B0037965C /* SpeedometerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedometerView.swift; sourceTree = "<group>"; };
+		FF26C913260D55400037965C /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		FF26C917260D5F770037965C /* Weather.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Weather.storyboard; sourceTree = "<group>"; };
+		FF26C92E260D70930037965C /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		FF2826E2260D207100C6C7A8 /* ReferenceLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceLines.swift; sourceTree = "<group>"; };
+		FF2826F8260D214D00C6C7A8 /* ScrollableGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableGraphView.swift; sourceTree = "<group>"; };
+		FF2826FB260D217400C6C7A8 /* LabelPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPool.swift; sourceTree = "<group>"; };
+		FF2826FE260D21AA00C6C7A8 /* ScrollableGraphViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableGraphViewDataSource.swift; sourceTree = "<group>"; };
+		FF282701260D21DD00C6C7A8 /* ScrollableGraphViewDrawingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableGraphViewDrawingDelegate.swift; sourceTree = "<group>"; };
+		FF282705260D220500C6C7A8 /* Plot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plot.swift; sourceTree = "<group>"; };
+		FF282709260D221F00C6C7A8 /* BarPlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarPlot.swift; sourceTree = "<group>"; };
+		FF28270D260D223B00C6C7A8 /* GraphPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphPoint.swift; sourceTree = "<group>"; };
+		FF282710260D225000C6C7A8 /* GraphPointAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphPointAnimation.swift; sourceTree = "<group>"; };
+		FF282713260D227300C6C7A8 /* BarDrawingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarDrawingLayer.swift; sourceTree = "<group>"; };
+		FF282716260D22A200C6C7A8 /* ScrollableGraphViewDrawingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableGraphViewDrawingLayer.swift; sourceTree = "<group>"; };
+		FF282719260D233D00C6C7A8 /* ReferenceLineDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceLineDrawingView.swift; sourceTree = "<group>"; };
+		FF28271C260D237300C6C7A8 /* GradientDrawingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientDrawingLayer.swift; sourceTree = "<group>"; };
+		FF28271F260D239A00C6C7A8 /* LineDrawingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDrawingLayer.swift; sourceTree = "<group>"; };
+		FF282722260D23D100C6C7A8 /* DotPlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotPlot.swift; sourceTree = "<group>"; };
+		FF282726260D23E300C6C7A8 /* LinePlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePlot.swift; sourceTree = "<group>"; };
+		FF282729260D23FF00C6C7A8 /* DotDrawingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotDrawingLayer.swift; sourceTree = "<group>"; };
+		FF28272C260D241400C6C7A8 /* FillDrawingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillDrawingLayer.swift; sourceTree = "<group>"; };
 		FF6912D726045D2D0049DBA7 /* LaunchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		FF6912DA260471CE0049DBA7 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		FF6912DD2604729B0049DBA7 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +183,7 @@
 		FF6912F3260480870049DBA7 /* UITabBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Extension.swift"; sourceTree = "<group>"; };
 		FF704EA9260AA00700D0919A /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		FF704EAA260AA00700D0919A /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
+		FF7B83F3260E327F00021D3A /* CircularProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgress.swift; sourceTree = "<group>"; };
 		FFB74C6F2605232D0087AE07 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		FFB74C73260525790087AE07 /* SF-Pro-Display-UltralightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-UltralightItalic.otf"; sourceTree = "<group>"; };
 		FFB74C74260525790087AE07 /* SF-Pro-Display-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BlackItalic.otf"; sourceTree = "<group>"; };
@@ -194,6 +242,8 @@
 		FFD50293260C2C3F001A9C15 /* GraphType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphType.swift; sourceTree = "<group>"; };
 		FFD564CA2609245600BC4593 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		FFE56CCF2606C29400A8370A /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		FFF1D3D5260E805B00133CBD /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
+		FFF1D3D8260EA68600133CBD /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,6 +388,7 @@
 			children = (
 				FF0EA9BB26022E890051FFB7 /* LaunchScreen.storyboard */,
 				FF0EA9B626022E860051FFB7 /* Main.storyboard */,
+				FF26C917260D5F770037965C /* Weather.storyboard */,
 				FFB74C6F2605232D0087AE07 /* Onboarding.storyboard */,
 				FFB74CDA260538710087AE07 /* Premium.storyboard */,
 			);
@@ -351,6 +402,7 @@
 				FF0EA9D526022F8B0051FFB7 /* MainTabBarController */,
 				FF0EA9D626022F990051FFB7 /* Onboarding */,
 				FF6912E7260472F70049DBA7 /* UpgradeToPremium */,
+				FF26C912260D55240037965C /* WeatherController */,
 				FF6912DD2604729B0049DBA7 /* HistoryViewController.swift */,
 				FF6912E0260472AB0049DBA7 /* SpeedometerViewController.swift */,
 				FF6912E3260472B50049DBA7 /* SettingsViewController.swift */,
@@ -364,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				FF6912D726045D2D0049DBA7 /* LaunchView.xib */,
+				FF26C90D260D48FB0037965C /* SpeedometerView */,
 				FFB74CD92605382F0087AE07 /* SectionHeaderView */,
 				FFB74CD82605382A0087AE07 /* FooterView */,
 				FFB74CD7260538270087AE07 /* Slide */,
@@ -376,11 +429,10 @@
 		FF0EA9D026022F4A0051FFB7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FF26C92D260D70870037965C /* WeatherModel */,
 				FFB74CBF260537980087AE07 /* User */,
 				FFB74CC4260537AD0087AE07 /* HistoryModel */,
 				FFB74CCE260537E90087AE07 /* SettingsModel */,
-				FFD50290260C2C03001A9C15 /* Examples.swift */,
-				FFD50293260C2C3F001A9C15 /* GraphType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -402,6 +454,8 @@
 				FF6912F02604742D0049DBA7 /* Functions.swift */,
 				FFB74CB22605369D0087AE07 /* ErrorHandling.swift */,
 				FFCDEC9F2608026A00C3A10D /* Constants.swift */,
+				FF2826DB260D200400C6C7A8 /* GraphView */,
+				FF7B83ED260E261B00021D3A /* CircularProgressBar */,
 				FFB74CB5260536DC0087AE07 /* SnakePageControl */,
 				FFC5DA9A2605398800B8D5F6 /* IAP */,
 			);
@@ -424,6 +478,7 @@
 				FF0A89B12602326B00ADF896 /* String+Extension.swift */,
 				FF0A89B42602328600ADF896 /* Date+Extension.swift */,
 				FF0A89B72602329D00ADF896 /* Double+Extension.swift */,
+				FFF1D3D8260EA68600133CBD /* Sequence+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -445,6 +500,98 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		FF26C90D260D48FB0037965C /* SpeedometerView */ = {
+			isa = PBXGroup;
+			children = (
+				FF26C90E260D491B0037965C /* SpeedometerView.swift */,
+			);
+			path = SpeedometerView;
+			sourceTree = "<group>";
+		};
+		FF26C912260D55240037965C /* WeatherController */ = {
+			isa = PBXGroup;
+			children = (
+				FF26C913260D55400037965C /* WeatherViewController.swift */,
+			);
+			path = WeatherController;
+			sourceTree = "<group>";
+		};
+		FF26C92D260D70870037965C /* WeatherModel */ = {
+			isa = PBXGroup;
+			children = (
+				FF26C92E260D70930037965C /* Weather.swift */,
+				FFF1D3D5260E805B00133CBD /* Unit.swift */,
+			);
+			path = WeatherModel;
+			sourceTree = "<group>";
+		};
+		FF2826DB260D200400C6C7A8 /* GraphView */ = {
+			isa = PBXGroup;
+			children = (
+				FF2826DE260D203000C6C7A8 /* Drawing */,
+				FF2826E1260D203F00C6C7A8 /* Plots */,
+				FF2826E0260D203D00C6C7A8 /* Protocols */,
+				FF2826DF260D203800C6C7A8 /* Reference */,
+				FF2826F8260D214D00C6C7A8 /* ScrollableGraphView.swift */,
+				FFD50290260C2C03001A9C15 /* Examples.swift */,
+				FFD50293260C2C3F001A9C15 /* GraphType.swift */,
+			);
+			path = GraphView;
+			sourceTree = "<group>";
+		};
+		FF2826DE260D203000C6C7A8 /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				FF282713260D227300C6C7A8 /* BarDrawingLayer.swift */,
+				FF282729260D23FF00C6C7A8 /* DotDrawingLayer.swift */,
+				FF28272C260D241400C6C7A8 /* FillDrawingLayer.swift */,
+				FF28271C260D237300C6C7A8 /* GradientDrawingLayer.swift */,
+				FF28271F260D239A00C6C7A8 /* LineDrawingLayer.swift */,
+				FF282719260D233D00C6C7A8 /* ReferenceLineDrawingView.swift */,
+				FF282716260D22A200C6C7A8 /* ScrollableGraphViewDrawingLayer.swift */,
+			);
+			path = Drawing;
+			sourceTree = "<group>";
+		};
+		FF2826DF260D203800C6C7A8 /* Reference */ = {
+			isa = PBXGroup;
+			children = (
+				FF2826E2260D207100C6C7A8 /* ReferenceLines.swift */,
+				FF2826FB260D217400C6C7A8 /* LabelPool.swift */,
+			);
+			path = Reference;
+			sourceTree = "<group>";
+		};
+		FF2826E0260D203D00C6C7A8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FF2826FE260D21AA00C6C7A8 /* ScrollableGraphViewDataSource.swift */,
+				FF282701260D21DD00C6C7A8 /* ScrollableGraphViewDrawingDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FF2826E1260D203F00C6C7A8 /* Plots */ = {
+			isa = PBXGroup;
+			children = (
+				FF28270C260D222D00C6C7A8 /* Animation */,
+				FF282709260D221F00C6C7A8 /* BarPlot.swift */,
+				FF282722260D23D100C6C7A8 /* DotPlot.swift */,
+				FF282726260D23E300C6C7A8 /* LinePlot.swift */,
+				FF282705260D220500C6C7A8 /* Plot.swift */,
+			);
+			path = Plots;
+			sourceTree = "<group>";
+		};
+		FF28270C260D222D00C6C7A8 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				FF28270D260D223B00C6C7A8 /* GraphPoint.swift */,
+				FF282710260D225000C6C7A8 /* GraphPointAnimation.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		FF6912E7260472F70049DBA7 /* UpgradeToPremium */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +599,14 @@
 				FF6912ED260473760049DBA7 /* UpgradeFromSettingsViewController.swift */,
 			);
 			path = UpgradeToPremium;
+			sourceTree = "<group>";
+		};
+		FF7B83ED260E261B00021D3A /* CircularProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				FF7B83F3260E327F00021D3A /* CircularProgress.swift */,
+			);
+			path = CircularProgressBar;
 			sourceTree = "<group>";
 		};
 		FFB74CB5260536DC0087AE07 /* SnakePageControl */ = {
@@ -608,6 +763,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF26C918260D5F770037965C /* Weather.storyboard in Resources */,
 				FFB74C962605257D0087AE07 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
 				FFB74C932605257D0087AE07 /* SF-Pro-Display-Semibold.otf in Resources */,
 				FFB74CAC260527F00087AE07 /* SF-Pro-Text-Light.otf in Resources */,
@@ -701,25 +857,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFD50269260BF2DC001A9C15 /* Cache.swift in Sources */,
+				FF282711260D225000C6C7A8 /* GraphPointAnimation.swift in Sources */,
 				FF6912DB260471CE0049DBA7 /* MainTabBarViewController.swift in Sources */,
 				FF0A89782602313400ADF896 /* UIViewController+Extension.swift in Sources */,
 				FFB74CC6260537C00087AE07 /* History.swift in Sources */,
 				FFB74CBA2605371F0087AE07 /* Service.swift in Sources */,
+				FF26C914260D55400037965C /* WeatherViewController.swift in Sources */,
 				FFC5DAC0260562A600B8D5F6 /* SettingsTableViewCell.swift in Sources */,
+				FF26C90F260D491B0037965C /* SpeedometerView.swift in Sources */,
 				FFB74CC9260537CC0087AE07 /* HistoryCellModel.swift in Sources */,
 				FFB74CBD2605377C0087AE07 /* NetworkActivityIndicatorManager.swift in Sources */,
 				FFC5DAA92605426C00B8D5F6 /* FooterView.swift in Sources */,
 				FF1A65D6260BCE7200ECA29C /* SectionHeader.swift in Sources */,
 				FF0A89812602318500ADF896 /* UIImage+Extension.swift in Sources */,
+				FFF1D3D6260E805B00133CBD /* Unit.swift in Sources */,
 				FFB74CC1260537A20087AE07 /* User.swift in Sources */,
 				FFC5DAA0260539D800B8D5F6 /* PremiumTitle.swift in Sources */,
+				FF2826E3260D207100C6C7A8 /* ReferenceLines.swift in Sources */,
 				FF0A89B82602329D00ADF896 /* Double+Extension.swift in Sources */,
+				FF28272D260D241400C6C7A8 /* FillDrawingLayer.swift in Sources */,
 				FFB74CB32605369D0087AE07 /* ErrorHandling.swift in Sources */,
 				FF0A89B52602328600ADF896 /* Date+Extension.swift in Sources */,
 				FF6912EA260473600049DBA7 /* UpgradeToPremiumViewController.swift in Sources */,
+				FF26C92F260D70930037965C /* Weather.swift in Sources */,
 				FF0EA9B126022E860051FFB7 /* AppDelegate.swift in Sources */,
+				FF282714260D227300C6C7A8 /* BarDrawingLayer.swift in Sources */,
 				FF0A89AF2602325300ADF896 /* NSLayoutConstraint+Extension.swift in Sources */,
+				FF28271D260D237300C6C7A8 /* GradientDrawingLayer.swift in Sources */,
+				FF7B83F4260E327F00021D3A /* CircularProgress.swift in Sources */,
 				FFD564CB2609245600BC4593 /* MainNavigationController.swift in Sources */,
+				FF282706260D220500C6C7A8 /* Plot.swift in Sources */,
 				FF6912DE2604729B0049DBA7 /* HistoryViewController.swift in Sources */,
 				FFD5025F260BE880001A9C15 /* SortViewController.swift in Sources */,
 				FF0A89B22602326B00ADF896 /* String+Extension.swift in Sources */,
@@ -727,22 +894,35 @@
 				FF6912E1260472AB0049DBA7 /* SpeedometerViewController.swift in Sources */,
 				FF0EA9D826022FBC0051FFB7 /* PrivacyViewController.swift in Sources */,
 				FFCDECA02608026A00C3A10D /* Constants.swift in Sources */,
+				FF282723260D23D100C6C7A8 /* DotPlot.swift in Sources */,
 				FF0A897E2602316900ADF896 /* UITextField+Extension.swift in Sources */,
+				FF28270A260D221F00C6C7A8 /* BarPlot.swift in Sources */,
 				FFB74CD3260538080087AE07 /* SettingsCellModel.swift in Sources */,
 				FF0A897B2602314D00ADF896 /* UIView+Extension.swift in Sources */,
+				FF282727260D23E300C6C7A8 /* LinePlot.swift in Sources */,
+				FF28270E260D223B00C6C7A8 /* GraphPoint.swift in Sources */,
 				FFD50294260C2C3F001A9C15 /* GraphType.swift in Sources */,
+				FF28271A260D233D00C6C7A8 /* ReferenceLineDrawingView.swift in Sources */,
+				FF282702260D21DD00C6C7A8 /* ScrollableGraphViewDrawingDelegate.swift in Sources */,
 				FF10866E260934E900A738FB /* OnboardingViewController.swift in Sources */,
 				FFB74CD0260537FD0087AE07 /* Settings.swift in Sources */,
 				FF704EAB260AA00700D0919A /* HistoryTableViewCell.swift in Sources */,
 				FF0A89A9260231E600ADF896 /* UIFont+Extension.swift in Sources */,
+				FFF1D3D9260EA68700133CBD /* Sequence+Extension.swift in Sources */,
+				FF28272A260D23FF00C6C7A8 /* DotDrawingLayer.swift in Sources */,
+				FF282720260D239A00C6C7A8 /* LineDrawingLayer.swift in Sources */,
 				FFC5DA9C260539A100B8D5F6 /* IAPManager.swift in Sources */,
 				FFB74CB7260536EC0087AE07 /* SnakePageControl.swift in Sources */,
 				FFB74CCC260537E30087AE07 /* SpeedMasterProducts.swift in Sources */,
 				FFCDECA426080FCF00C3A10D /* MeasureViewController.swift in Sources */,
+				FF2826FC260D217400C6C7A8 /* LabelPool.swift in Sources */,
+				FF2826F9260D214D00C6C7A8 /* ScrollableGraphView.swift in Sources */,
 				FF0A89AC2602320000ADF896 /* UITableView+Extension.swift in Sources */,
+				FF2826FF260D21AA00C6C7A8 /* ScrollableGraphViewDataSource.swift in Sources */,
 				FFD50291260C2C03001A9C15 /* Examples.swift in Sources */,
 				FFE56CD02606C29400A8370A /* UIDevice+Extension.swift in Sources */,
 				FF6912F12604742D0049DBA7 /* Functions.swift in Sources */,
+				FF282717260D22A200C6C7A8 /* ScrollableGraphViewDrawingLayer.swift in Sources */,
 				FF0A8974260230CD00ADF896 /* Switcher.swift in Sources */,
 				FF6912F4260480870049DBA7 /* UITabBar+Extension.swift in Sources */,
 				FFC5DAAF260545A700B8D5F6 /* Slide.swift in Sources */,

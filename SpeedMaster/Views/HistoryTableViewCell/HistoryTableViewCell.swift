@@ -6,28 +6,38 @@
 //
 
 import UIKit
-import ScrollableGraphView
 
 class HistoryTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
+    @IBOutlet weak var graphBackgroundView: UIView!
+    @IBOutlet weak var detailsStackView: UIStackView!
+    @IBOutlet weak var averageSpeedLabel: UILabel!
+    @IBOutlet weak var maxSpeedLabel: UILabel!
+    @IBOutlet weak var windLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var minSpeedLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
     
     // MARK: - Properties
     var historyModel: HistoryCellModel! {
         didSet {
-//            speedTitle.text = historyModel.historySpeed
-//            dateTitle.text = historyModel.historyDate
+            maxSpeedLabel.text = historyModel.historyMaxSpeed
+            minSpeedLabel.text = historyModel.historyMinSpeed
+            averageSpeedLabel.text = historyModel.historyAvrSpeed
+            windLabel.text = historyModel.historyWindSpeed
+            durationLabel.text = historyModel.historyDuration
+            distanceLabel.text = historyModel.historyDistance
+            durationLabel.text = historyModel.historyDuration
         }
     }
     
     var examples: Examples!
-    var graph: ScrollableGraphView!
-    var currentGraphType = GraphType.bar
     var graphConstraints = [NSLayoutConstraint]()
     
     lazy var graphView: UIView = {
         examples = Examples()
-        let graphView = examples.createBarGraph(contentView.frame)
+        let graphView = examples.createBarGraph(graphBackgroundView.frame)
         
         return graphView
     }()
@@ -37,7 +47,7 @@ class HistoryTableViewCell: UITableViewCell {
         super.awakeFromNib()
         backgroundColor = .mainBlack
         
-        contentView.addSubview(graphView)
+        graphBackgroundView.addSubview(graphView)
         
         setupConstraints()
     }
@@ -59,10 +69,10 @@ class HistoryTableViewCell: UITableViewCell {
         self.graphView.translatesAutoresizingMaskIntoConstraints = false
         graphConstraints.removeAll()
         
-        let topConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.contentView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
-        let rightConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutConstraint.Attribute.right, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.contentView, attribute: NSLayoutConstraint.Attribute.right, multiplier: 1, constant: -20)
-        let bottomConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.contentView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
-        let leftConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutConstraint.Attribute.left, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.contentView, attribute: NSLayoutConstraint.Attribute.left, multiplier: 1, constant: 30)
+        let topConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.graphBackgroundView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
+        let rightConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutConstraint.Attribute.right, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.graphBackgroundView, attribute: NSLayoutConstraint.Attribute.right, multiplier: 1, constant: -20)
+        let bottomConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.graphBackgroundView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
+        let leftConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutConstraint.Attribute.left, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.graphBackgroundView, attribute: NSLayoutConstraint.Attribute.left, multiplier: 1, constant: 30)
         
         //let heightConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 0)
         

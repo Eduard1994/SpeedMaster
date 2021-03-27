@@ -18,9 +18,11 @@ struct Settings {
         self.speed = speed
     }
     
+    static var unit: Unit = Unit.selected
+    
     static func settings() -> [Settings] {
         return [
-            Settings(title: "Measure units", imageName: "settingsMeasureImage", speed: "Km/h"),
+            Settings(title: "Measure units", imageName: "settingsMeasureImage", speed: unit.rawValue),
             Settings(title: "Restore purchases", imageName: "settingsRestoreImage", speed: nil),
             Settings(title: "Privacy policy", imageName: "settingsPrivacyImage", speed: nil),
             Settings(title: "Terms of service", imageName: "settingsPrivacyImage", speed: nil), // Will be changed soon

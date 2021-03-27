@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FooterView: UIView {
+class FooterView: UIView { // WIll be deleted soon
 
     let label = UILabel(frame: .zero)
     

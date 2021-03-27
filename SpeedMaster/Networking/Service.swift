@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 import Alamofire
+import CoreLocation
 
 enum PremiumSubscriptionType: String {
     case annual = "annualProduct"
@@ -166,5 +167,41 @@ class Service {
         } else {
             completion(nil, .noInternet)
         }
+    }
+    
+    // MARK: - Getting weather data
+    func getWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping(Weather?, NetworkError?) -> Void) {
+        
+        let semaphore = DispatchSemaphore (value: 0)
+        let session = URLSession.shared
+        
+        guard let url = URL(string: "\(kWeatherURL)?lat=\(latitude)&lon=\(longitude)&appid=\(kWeatherAPIKey)") else { return }
+        
+        var request = URLRequest(url: url, timeoutInterval: Double.infinity)
+        request.httpMethod = "GET"
+        
+        let task = session.weatherTask(with: request) { (weather, response, error) in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(nil, .unowned(description: error.localizedDescription))
+                }
+            }
+            
+            guard let weather = weather else {
+                completion(nil, nil)
+                return
+            }
+            DispatchQueue.main.async {
+                completion(weather, nil)
+            }
+            semaphore.signal()
+        }
+        task.resume()
+        semaphore.wait()
+//        if isConnectedToInternet {
+//
+//        } else {
+//            completion(nil, .noInternet)
+//        }
     }
 }

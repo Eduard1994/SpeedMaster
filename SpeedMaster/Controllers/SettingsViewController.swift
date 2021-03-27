@@ -78,8 +78,7 @@ class SettingsViewController: UIViewController {
         tableViewHeight.constant = view.frame.height - 200
         tableView.isScrollEnabled = false
         
-        scrollView.delegate = self
-        
+        scrollView.isScrollEnabled = true
         scrollView.bounces = true
         
         print(upgradeView.height)
@@ -88,11 +87,6 @@ class SettingsViewController: UIViewController {
         
         reloadSettings()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        tabBarController?.tabBar.isHidden = false
-//    }
     
     private func reloadTableView() {
         DispatchQueue.main.async {
@@ -145,11 +139,12 @@ class SettingsViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func upgradeTapped(_ sender: Any) {
-        print("Upgrade tapped")
-        upgradeViewHeight.constant = 0
+        presentOverFullScreen(upgradeFromSettingsVC, animated: true)
+//        print("Upgrade tapped")
+//        upgradeViewHeight.constant = 0
 //        upgradeView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-        tableViewTop.constant = 60
-        self.reloadSettings()
+//        tableViewTop.constant = 60
+//        self.reloadSettings()
     }
 }
 
@@ -176,6 +171,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             print("Measure Tapped")
+            measureVC.delegate = self
             push(measureVC, animated: true)
         case 1:
             print("Restoring...") // Will be updated
@@ -204,11 +200,11 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
     }
 }
 
-// MARK: - ScrollViewDelegate
-extension SettingsViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if upgradeViewHeight.constant > 0 {
-//            updateScrollView(scrollView, tableViewContentOffset: -100, scrollViewContentOffset: 192)
-//        }
+// MARK: - Units Updation Delegate
+extension SettingsViewController: UpdateUnit {
+    func updatedUnit(unit: Unit) {
+        Settings.unit = unit
+        reloadSettings()
+        NotificationCenter.default.post(name: unitChangedNotification, object: nil)
     }
 }

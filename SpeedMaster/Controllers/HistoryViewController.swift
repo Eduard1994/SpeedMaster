@@ -21,6 +21,11 @@ class HistoryViewController: UIViewController {
     @IBOutlet weak var tableViewTop: NSLayoutConstraint!
     
     // MARK: - Properties
+    lazy var upgradeToPremiumVC: UpgradeToPremiumViewController = {
+        let vc = UpgradeToPremiumViewController.instantiate(from: .Premium, with: UpgradeToPremiumViewController.typeName)
+        return vc
+    }()
+    
     lazy var sortVC: SortViewController = {
         let vc = SortViewController.instantiate(from: .Main, with: SortViewController.typeName)
         return vc
@@ -31,6 +36,17 @@ class HistoryViewController: UIViewController {
             self.reloadTableView()
         }
     }
+    
+    var historyHeight: CGFloat! {
+        willSet {
+            DispatchQueue.main.async {
+                self.tableViewHeight.constant = newValue
+            }
+        }
+    }
+    
+    let sectionHeight: CGFloat = 95
+    var rowHeight: CGFloat = 0
     
     var currentUser = User.currentUser
     var service = Service()
@@ -59,10 +75,10 @@ class HistoryViewController: UIViewController {
         tableView.cornerRadius(to: 25)
         tableView.withoutSeparator()
         
-        tableView.estimatedRowHeight = 95
+        tableView.estimatedRowHeight = 370
         tableView.rowHeight = UITableView.automaticDimension
         
-        tableViewHeight.constant = view.frame.height - 100
+        tableViewHeight.constant = 0
         tableView.isScrollEnabled = false
         scrollView.isScrollEnabled = true
         
@@ -93,12 +109,23 @@ class HistoryViewController: UIViewController {
         let uid = currentUser?.uid ?? ""
         service.getHistories(userID: uid) { (sectioned, error) in
             if let error = error {
-                ErrorHandling.showError(message: error.localizedDescription, controller: self)
-                self.sectionedHistories = []
+                DispatchQueue.main.async {
+                    ErrorHandling.showError(message: error.localizedDescription, controller: self)
+                    self.sectionedHistories.removeAll()
+                }
             }
             if let sectioned = sectioned {
-                self.sectionedHistories = sectioned
+                DispatchQueue.main.async {
+                    self.sectionedHistories = sectioned
+                    if self.sectionedHistories.count != 0 {
+                        self.historyHeight = self.sectionHeight * CGFloat(self.sectionedHistories.count)
+                    }
+                }
             }
+        }
+        
+        DispatchQueue.main.after(1) {
+            self.presentOverFullScreen(self.upgradeToPremiumVC, animated: true)
         }
     }
     
@@ -134,12 +161,9 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.identifier, for: indexPath) as! HistoryTableViewCell
         let history = sectionedHistories[indexPath.section]
         cell.historyModel = HistoryCellModel(history)
+        rowHeight = cell.height
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 95
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -149,7 +173,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? SectionHeader ?? SectionHeader(reuseIdentifier: "header")
         
-        let speed = sectionedHistories[section].speed
+        let speed = sectionedHistories[section].maxSpeed
         let date = sectionedHistories[section].date
         
         header.speedLabel.text = speed
@@ -170,7 +194,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 95
+        return sectionHeight
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -181,7 +205,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - ScrollViewDelegate
 extension HistoryViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        updateScrollView(scrollView, tableViewContentOffset: -100, scrollViewContentOffset: -1)
+//        updateScrollView(scrollView, tableViewContentOffset: -100, scrollViewContentOffset: -1)
     }
 }
 
@@ -195,5 +219,6 @@ extension HistoryViewController: SectionHeaderDelegate {
         header.setCollapsed(collapsed)
         
         tableView.reloadSections(IndexSet(integer: section), with: .automatic)
+        historyHeight = collapsed ? historyHeight - 370 : historyHeight + 370
     }
 }

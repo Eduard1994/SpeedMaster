@@ -7,11 +7,18 @@
 
 import UIKit
 
+protocol UpdateUnit: class {
+    func updatedUnit(unit: Unit)
+}
+
 class MeasureViewController: UIViewController {
     @IBOutlet weak var measureView: UIView!
     @IBOutlet weak var measureStackView: UIStackView!
     @IBOutlet var linedViews: [UIView]!
     @IBOutlet weak var okayButton: UIButton!
+    
+    var unit: Unit = Unit.selected
+    weak var delegate: UpdateUnit?
     
     // MARK: - Override properties
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -44,6 +51,8 @@ class MeasureViewController: UIViewController {
         measureView.cornerRadius(to: 24)
         okayButton.cornerRadius(to: 10)
         
+        unit = .selected
+        
         linedViews.forEach { (view) in
             view.addLine(position: .LINE_POSITION_BOTTOM, color: .black, width: 1)
         }
@@ -73,18 +82,22 @@ class MeasureViewController: UIViewController {
     
     @IBAction func okayTapped(_ sender: Any) {
         print("Okay Tapped")
+        delegate?.updatedUnit(unit: unit)
         pop(animated: true)
     }
     
     @IBAction func kmTapped(_ sender: Any) {
         setImagesForButton(tags: [100, 110, 120])
+        unit = unit.kilometers
     }
     
     @IBAction func mphTapped(_ sender: Any) {
         setImagesForButton(tags: [110, 100, 120])
+        unit = unit.miles
     }
     
     @IBAction func knotsTapped(_ sender: Any) {
         setImagesForButton(tags: [120, 100, 110])
+        unit = unit.knots
     }
 }

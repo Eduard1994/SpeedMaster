@@ -29,3 +29,20 @@ func imageNamed(_ name: String) -> UIImage {
     return image
 }
 
+func convertTemp(temp: Double, from inputTempType: UnitTemperature, to outputTempType: UnitTemperature) -> String {
+    let mf = MeasurementFormatter()
+    mf.numberFormatter.maximumFractionDigits = 0
+    mf.unitOptions = .providedUnit
+    let input = Measurement(value: temp, unit: inputTempType)
+    let output = input.converted(to: outputTempType)
+    return mf.string(from: output)
+}
+
+func fromIntToDate(time: Int) -> String {
+    let date = Date(timeIntervalSince1970: TimeInterval(time))
+    let dateFormatter = DateFormatter()
+    dateFormatter.timeStyle = DateFormatter.Style.short //Set time style
+    dateFormatter.timeZone = .current
+    let localDate = dateFormatter.string(from: date)
+    return localDate
+}

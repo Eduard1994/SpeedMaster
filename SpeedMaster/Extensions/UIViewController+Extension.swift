@@ -10,6 +10,7 @@ import UIKit
 // MARK: - Storyboard Names Enumeration
 enum Storyboards: String {
     case Main = "Main"
+    case Weather = "Weather"
     case Onboarding = "Onboarding"
     case Premium = "Premium"
 }
