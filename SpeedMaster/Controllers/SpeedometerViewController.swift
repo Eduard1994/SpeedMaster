@@ -19,8 +19,10 @@ class SpeedometerViewController: UIViewController {
     private let service = Service()
     private var weather: Weather!
     
+    /// Main Timer
     var timer = Timer()
     
+    /// Boolean to check if the speedometer started
     var started: Bool = false {
         willSet {
             resetButton.isHidden = !newValue
@@ -28,25 +30,29 @@ class SpeedometerViewController: UIViewController {
         }
     }
     
+    /// Speed of the run or action
     var speed: Double = 0.0 {
         willSet {
             average.append(newValue)
-            speedometerView.progress = Settings.unit.calculateSpeed(for: newValue)
+            speedometerView.progress = newValue
         }
     }
     
+    /// Main Counter of timer
     var counter: Double = 0.0 {
         willSet {
             speedometerView.counter = newValue
         }
     }
     
+    /// All speeds from which we are getting average, max and min speeds
     var average: [Double] = [] {
         willSet {
             speedometerView.average = newValue
         }
     }
     
+    /// Current distance was travelled
     var currentDistance: Double = 0.0 {
         willSet {
             speedometerView.currentDistance = newValue
@@ -55,6 +61,7 @@ class SpeedometerViewController: UIViewController {
     
     var startLocation: CLLocation!
     var lastLocation: CLLocation!
+    
     /// Total Data
     var currentDate: Date = Date()
     var maxSpeed: Double!
@@ -65,6 +72,7 @@ class SpeedometerViewController: UIViewController {
     var distance: Double!
     var allSpeeds: [Double]!
     
+    /// Main Speedometer View
     lazy var speedometerView: SpeedometerView = {
         let view = SpeedometerView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -118,6 +126,7 @@ class SpeedometerViewController: UIViewController {
         speedometerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -187).isActive = true
     }
     
+    /// Preparing Location checking
     private func prepareLocation() {
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
@@ -145,6 +154,7 @@ class SpeedometerViewController: UIViewController {
         }
     }
     
+    /// Updating Weather data
     private func updateWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         DispatchQueue.global(qos: .userInitiated).async {
             self.service.getWeather(latitude: latitude, longitude: longitude) { (weather, error) in
@@ -186,7 +196,8 @@ class SpeedometerViewController: UIViewController {
                 if self.startLocation == nil {
                     self.startLocation = locations.first
                 } else if let location = locations.last {
-                    self.currentDistance += self.lastLocation.distance(from: location)
+                    let current = self.lastLocation.distance(from: location)
+                    self.currentDistance += current.rounded(toPlaces: 2)
                     print("Traveled Distance:",  self.currentDistance)
                     print("Straight Distance:", self.startLocation.distance(from: locations.last!))
                 }
@@ -196,13 +207,14 @@ class SpeedometerViewController: UIViewController {
         }
     }
     
+    /// Updating Locations
     private func update(with locations: [CLLocation]) {
         guard let location = locations.last else { return }
         let latitude = location.coordinate.latitude
         let longitude = location.coordinate.longitude
-        let speed = location.speed
-        
-        print("Speed = \(location.speed), Latitude = \(location.coordinate.latitude), Longitude = \(location.coordinate.longitude)")
+        let speedInMetersPerSecond = location.speed
+        let speed = Settings.unit.calculateSpeed(for: speedInMetersPerSecond).rounded(toPlaces: 1)
+        print("Speed = \(speedInMetersPerSecond) m/s, Real Speed = \(speed), Latitude = \(latitude), Longitude = \(longitude)")
         
         updateDistance(locations: locations)
         update(with: speed, at: latitude, longitude: longitude)
@@ -210,12 +222,13 @@ class SpeedometerViewController: UIViewController {
     }
     
     private func startLocationManager() {
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startMonitoringSignificantLocationChanges()
-        locationManager.distanceFilter = 10
         locationManager.startUpdatingLocation()
+        locationManager.pausesLocationUpdatesAutomatically = true
+        locationManager.activityType = .fitness
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
     }
     
+    /// Start Speedometer
     private func start() {
         if started {
             print("Started")
@@ -227,12 +240,15 @@ class SpeedometerViewController: UIViewController {
         }
     }
     
+    /// Stop Speedometer
     private func stop() {
         print("Stopped")
         print("Total:/nDate = \(Date()), Max Speed = ")
         self.timer.invalidate()
+        self.addHistory()
     }
     
+    /// Reset Speedometer
     private func reset() {
         counter = 0.0
         average = []
@@ -240,6 +256,40 @@ class SpeedometerViewController: UIViewController {
         speed = 0.0
         startLocation = nil
         lastLocation = nil
+    }
+    
+    /// Adding History
+    private func addHistory() {
+        guard let userID = User.currentUser?.uid else {
+            ErrorHandling.showError(message: "No User found", controller: self)
+            return
+        }
+        
+        let maxSpeed = average.maximum().rounded(toPlaces: 1)
+        let minSpeed = average.minimum().rounded(toPlaces: 1)
+        let avrSpeed = average.average().rounded(toPlaces: 1)
+        let windSpeed = weather != nil ? weather.current?.windSpeed ?? 0 : 0
+        let duration = counter.duration()
+        let distance = Settings.unit.calculate(from: currentDistance).rounded(toPlaces: 2)
+        let allSpeeds = average.map { $0.rounded(toPlaces: 1) }
+        let speedMetric = Settings.unit.rawValue
+        let distanceMetric = Settings.unit.distanceMetric
+
+        let history = History(userID: userID, maxSpeed: maxSpeed, minSpeed: minSpeed, avrSpeed: avrSpeed, windSpeed: windSpeed, duration: duration, distance: distance, allSpeeds: allSpeeds, date: Date().formattedDateString(), collapsed: true, speedMetric: speedMetric, distanceMetric: distanceMetric)
+        print("History = \(history)")
+        
+        self.alert(title: nil, message: "Do you want to add the result to histories?", preferredStyle: .alert, cancelTitle: "Cancel", cancelHandler: nil, actionTitle: "Yes", actionHandler: {
+            self.service.addNewHistory(history: history) { (childUpdates, error) in
+                if let error = error {
+                    ErrorHandling.showError(message: error.localizedDescription, controller: self)
+                    return
+                }
+                
+                if let updates = childUpdates {
+                    print(updates)
+                }
+            }
+        })
     }
     
     // MARK: - Objc Functions

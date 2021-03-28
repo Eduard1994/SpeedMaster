@@ -36,7 +36,8 @@ class SpeedometerView: UIView {
     var progress: Double = 0.0 {
         willSet {
             circularSlider.angle = newValue < 0 ? 0.0 : newValue
-            speedLabel.text = "\(Int(unit.calculateSpeed(for: newValue)))"
+//            speedLabel.text = "\(Int(unit.calculateSpeed(for: newValue)))"
+            speedLabel.text = "\(Int(newValue))"
         }
     }
     
@@ -48,10 +49,10 @@ class SpeedometerView: UIView {
     
     var counter: Double = 0.0 {
         willSet {
-            let hours = Int(counter) / 3600
-            let minutes = Int(counter) / 60 % 60
-            let seconds = Int(counter) % 60
-            durationLabel.text = String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+//            let hours = Int(counter) / 3600
+//            let minutes = Int(counter) / 60 % 60
+//            let seconds = Int(counter) % 60
+            durationLabel.text = counter.duration()
         }
     }
     

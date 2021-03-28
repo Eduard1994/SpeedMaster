@@ -17,6 +17,7 @@ class MeasureViewController: UIViewController {
     @IBOutlet var linedViews: [UIView]!
     @IBOutlet weak var okayButton: UIButton!
     
+    // MARK: - Properties
     var unit: Unit = Unit.selected
     weak var delegate: UpdateUnit?
     
@@ -52,9 +53,23 @@ class MeasureViewController: UIViewController {
         okayButton.cornerRadius(to: 10)
         
         unit = .selected
+        prepareUnits()
         
         linedViews.forEach { (view) in
             view.addLine(position: .LINE_POSITION_BOTTOM, color: .black, width: 1)
+        }
+    }
+    
+    private func prepareUnits() {
+        switch unit {
+        case .kilometersPerHour:
+            setImagesForButton(tags: [100, 110, 120])
+        case .milesPerHour:
+            setImagesForButton(tags: [110, 100, 120])
+        case .knots:
+            setImagesForButton(tags: [120, 100, 110])
+        default:
+            break
         }
     }
     

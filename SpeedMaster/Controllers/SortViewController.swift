@@ -7,11 +7,18 @@
 
 import UIKit
 
+protocol UpdatedSort: class {
+    func sortUpdated()
+}
+
 class SortViewController: UIViewController {
     @IBOutlet weak var sortView: UIView!
     @IBOutlet weak var sortStackView: UIStackView!
     @IBOutlet var linedViews: [UIView]!
     @IBOutlet weak var okayButton: UIButton!
+    
+    // MARK: - Properties
+    weak var delegate: UpdatedSort?
     
     // MARK: - Override properties
     override var preferredStatusBarStyle: UIStatusBarStyle {

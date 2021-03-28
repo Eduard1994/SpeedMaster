@@ -16,6 +16,8 @@ class OnboardingViewController: UIViewController {
     
     // MARK: - Properties
     var slides: [Slide] = []
+    let service = Service()
+    var subscriptions: Subscriptions = Subscriptions()
     
     // MARK: - Override properties
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -41,6 +43,8 @@ class OnboardingViewController: UIViewController {
         
         setupSlideScrollView(slides: slides)
         
+        getOnboardingTitles()
+        
         nextButton.isEnabled = true
         nextButton.isHidden = false
         nextButton.cornerRadius(to: 10)
@@ -50,6 +54,47 @@ class OnboardingViewController: UIViewController {
         snakePageControl.previousTint = .mainDarkGray
         
         view.bringSubviewToFront(snakePageControl)
+    }
+    
+    /// Get Onboarding Titles
+    func getOnboardingTitles() {
+        service.getOnboardingTitles(for: PremiumTab.Onboarding.rawValue) { (onboarding, error) in
+            if let error = error {
+                for slide in self.slides {
+                    DispatchQueue.main.async {
+                        ErrorHandling.showError(message: error.localizedDescription, controller: self)
+                        self.configureSlideLabels(slide: slide, onboarding: OnboardingTitle(), subscriptions: self.subscriptions)
+                    }
+                }
+                return
+            }
+            if let onboarding = onboarding {
+                for slide in self.slides {
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.configureSlideLabels(slide: slide, onboarding: onboarding, subscriptions: self.subscriptions)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func configureSlideLabels(slide: Slide, onboarding: OnboardingTitle, subscriptions: Subscriptions) {
+        slide.notNowButton.isHidden = !onboarding.closeButton
+        slide.notNowButton.isEnabled = onboarding.closeButton
+        slide.upgradeLabel.text = onboarding.firstTitle
+//        slide.gpsLabel.text = onboarding.gpsTitle
+//        slide.trackLabel.text = onboarding.gpsSecondTitle
+        slide.startFreeLabel.text = "\(onboarding.secondTitle) $\(subscriptions.monthlyProductPrice) a month"
+        slide.proceedWithBasic.setTitle(onboarding.basicTitle, for: UIControl.State())
+        slide.tryFreeButton.setTitle(onboarding.tryFreeTitle, for: UIControl.State())
+        slide.startMonthlyButton.setTitle(onboarding.startMonthlyFirstTitle, for: UIControl.State())
+        slide.startMonthlySecondButton.setTitle("$\(subscriptions.monthlyProductPrice) \(onboarding.startMonthlySecondTitle)", for: UIControl.State())
+        slide.privacyLabel.text = onboarding.privacyEulaTitle
+        slides[0].gpsLabel.text = onboarding.gpsTitle
+        slides[0].trackLabel.text = onboarding.gpsSecondTitle
+        slides[1].gpsLabel.text = onboarding.tripTitle
+        slides[1].trackLabel.text = onboarding.tripSecondTitle
     }
     
     /// Setting up Slide Scroll View

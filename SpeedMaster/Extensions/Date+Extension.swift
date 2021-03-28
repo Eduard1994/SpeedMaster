@@ -15,15 +15,12 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    func formattedDateString(format: String? = "yyyy-MMM-d") -> String {
+    func formattedDateString(format: String? = "yyyy-MMM-d, HH:mm") -> String {
         let dateFormatter = DateFormatter()
-        //        dateFormatter.locale = Locale(identifier: "en_AU")
-        //        dateFormatter.timeZone = TimeZone(abbreviation: "Australia/Sydney")
         dateFormatter.dateStyle = .full
-        dateFormatter.timeStyle = .full
+        dateFormatter.timeStyle = .medium
         dateFormatter.amSymbol = "AM"
         dateFormatter.pmSymbol = "PM"
-        //        dateFormatter.calendar = Calendar(identifier: .gregorian)
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
     }

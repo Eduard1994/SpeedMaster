@@ -87,14 +87,11 @@ class HistoryViewController: UIViewController {
         tableView.bounces = true
         scrollView.bounces = true
         
-        print(tableView.height)
-        print(scrollView.height)
-        
         reloadHistories()
     }
     
     private func reloadTableView() {
-        tableView.reload(for: sectionedHistories, upcomingButton: upcomingButton, upcomingArrow: upcomingArrow)
+        tableView.reload(for: sectionedHistories, upcomingButton: upcomingButton, upcomingArrow: upcomingArrow, tableViewHeight: tableViewHeight)
         
         DispatchQueue.main.async {
             UIView.transition(with: self.tableView, duration: 0.3, options: .transitionCrossDissolve) {
@@ -129,6 +126,18 @@ class HistoryViewController: UIViewController {
         }
     }
     
+    private func removeHistory(history: History) {
+        guard let userID = User.currentUser?.uid else {
+            ErrorHandling.showError(message: "No User found", controller: self)
+            return
+        }
+        service.removeHistory(withID: history.id, userID: userID) { (error) in
+            if let error = error {
+                ErrorHandling.showError(message: error.localizedDescription, controller: self)
+            }
+        }
+    }
+    
     private func updateScrollView(_ scrollView: UIScrollView, tableViewContentOffset: CGFloat, scrollViewContentOffset: CGFloat) {
         if scrollView == self.scrollView {
             print("ScrollView's contentOfset.y = \(scrollView.contentOffset.y)")
@@ -141,6 +150,7 @@ class HistoryViewController: UIViewController {
         }
     }
     
+    // MARK: - IBActions
     @IBAction func upcomingTapped(_ sender: Any) {
         print("Upcoming tapped")
         push(sortVC, animated: true)
@@ -166,19 +176,33 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let history = sectionedHistories[indexPath.section]
+        let deleteAction: UIContextualAction.Handler = { action, view, completion in
+            self.alert(title: nil, message: "Are you sure, you want to delete this result?", preferredStyle: .alert, cancelTitle: "No", cancelHandler: nil, actionTitle: "Yes, sure", actionHandler: {
+                self.removeHistory(history: history)
+            })
+            completion(true)
+        }
+        let delete = UIContextualAction(style: .destructive, title: "Delete", handler: deleteAction)
+        delete.backgroundColor = .red
+        
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? SectionHeader ?? SectionHeader(reuseIdentifier: "header")
+        let history = sectionedHistories[section]
+        let speed = history.maxSpeed
+        let date = history.date
         
-        let speed = sectionedHistories[section].maxSpeed
-        let date = sectionedHistories[section].date
-        
-        header.speedLabel.text = speed
+        header.speedLabel.text = "\(speed) \(history.speedMetric)"
         header.dateLabel.text = date
-        header.setCollapsed(!sectionedHistories[section].collapsed)
+        header.setCollapsed(!history.collapsed)
         
         header.section = section
         header.delegate = self

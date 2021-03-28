@@ -14,16 +14,16 @@ class HistoryCellModel {
     let historyWindSpeed: String
     let historyDuration: String
     let historyDistance: String
-    let historyAllSpeeds: [String]
+    let historyAllSpeeds: [Double]
     let historyDate: String
     
     init(_ history: History) {
-        historyMaxSpeed = history.maxSpeed
-        historyMinSpeed = history.minSpeed
-        historyAvrSpeed = history.avrSpeed
-        historyWindSpeed = history.windSpeed
+        historyMaxSpeed = "\(history.maxSpeed) \(history.speedMetric)"
+        historyMinSpeed = "\(history.minSpeed) \(history.speedMetric)"
+        historyAvrSpeed = "\(history.avrSpeed) \(history.speedMetric)"
+        historyWindSpeed = "\(history.windSpeed) m/s"
         historyDuration = history.duration
-        historyDistance = history.distance
+        historyDistance = "\(history.distance) \(history.distanceMetric)"
         historyAllSpeeds = history.allSpeeds
         historyDate = history.date
     }

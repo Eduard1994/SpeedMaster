@@ -21,22 +21,26 @@ struct OnboardingTitle {
     var closeButton: Bool
     var firstTitle: String
     var secondTitle: String
-    var thirdTitle: String
-    var fourthTitle: String
     var basicTitle: String
+    var gpsTitle: String
+    var gpsSecondTitle: String
+    var tripTitle: String
+    var tripSecondTitle: String
     var tryFreeTitle: String
     var startMonthlyFirstTitle: String
     var startMonthlySecondTitle: String
     var privacyEulaTitle: String
     
-    init(closeButton: Bool = false, firstTitle: String = "Upgrade to premium", secondTitle: String = "Enjoy full version of app without ads", thirdTitle: String = "Start your 3-day free trial.", fourthTitle: String = "Then $99.99 a month", basicTitle: String = "Proceed with Basic", tryFreeTitle: String = "Try Free and subscribe", startMonthlyFirstTitle: String = "Start Monthly Plan", startMonthlySecondTitle: String = "$99.99 a month", privacyEulaTitle: String = "This trial automatically renews into a paidsubscribtion and will continue to automatically renew until you cancel. Please see our") {
+    init(closeButton: Bool = false, firstTitle: String = "Upgrade to premium", secondTitle: String = "Enjoy full version of app without ads", gpsTitle: String = "GPS Speedometer", gpsSecondTitle: String = "Track your daily travelling activities with accurate speed data", tripTitle: String = "Trip History", tripSecondTitle: String = "Trip history is the automatic feature that will help you to save information within app", basicTitle: String = "Proceed with Basic", tryFreeTitle: String = "Try Free and subscribe", startMonthlyFirstTitle: String = "Start Monthly Plan", startMonthlySecondTitle: String = "$99.99 a month", privacyEulaTitle: String = "This trial automatically renews into a paidsubscribtion and will continue to automatically renew until you cancel. Please see our") {
         self.ref = nil
         self.key = nil
         self.closeButton = closeButton
         self.firstTitle = firstTitle
         self.secondTitle = secondTitle
-        self.thirdTitle = thirdTitle
-        self.fourthTitle = fourthTitle
+        self.gpsTitle = gpsTitle
+        self.gpsSecondTitle = gpsSecondTitle
+        self.tripTitle = tripTitle
+        self.tripSecondTitle = tripSecondTitle
         self.basicTitle = basicTitle
         self.tryFreeTitle = tryFreeTitle
         self.startMonthlyFirstTitle = startMonthlyFirstTitle
@@ -51,8 +55,10 @@ struct OnboardingTitle {
             let closeButton = value["closeButton"] as? Bool,
             let firstTitle = value["firstTitle"] as? String,
             let secondTitle = value["secondTitle"] as? String,
-            let thirdTitle = value["thirdTitle"] as? String,
-            let fourthTitle = value["fourthTitle"] as? String,
+            let gpsTitle = value["gpsTitle"] as? String,
+            let gpsSecondTitle = value["gpsSecondTitle"] as? String,
+            let tripTitle = value["tripTitle"] as? String,
+            let tripSecondTitle = value["tripSecondTitle"] as? String,
             let basicTitle = value["basicTitle"] as? String,
             let tryFreeTitle = value["tryFreeTitle"] as? String,
             let startMonthlyFirstTitle = value["startMonthlyFirstTitle"] as? String,
@@ -68,8 +74,10 @@ struct OnboardingTitle {
         self.closeButton = closeButton
         self.firstTitle = firstTitle
         self.secondTitle = secondTitle
-        self.thirdTitle = thirdTitle
-        self.fourthTitle = fourthTitle
+        self.gpsTitle = gpsTitle
+        self.gpsSecondTitle = gpsSecondTitle
+        self.tripTitle = tripTitle
+        self.tripSecondTitle = tripSecondTitle
         self.basicTitle = basicTitle
         self.tryFreeTitle = tryFreeTitle
         self.startMonthlyFirstTitle = startMonthlyFirstTitle
@@ -82,8 +90,10 @@ struct OnboardingTitle {
             "closeButton": closeButton,
             "firstTitle": firstTitle,
             "secondTitle": secondTitle,
-            "thirdTitle": thirdTitle,
-            "fourthTitle": fourthTitle,
+            "gpsTitle": gpsTitle,
+            "gpsSecondTitle": gpsSecondTitle,
+            "tripTitle": tripTitle,
+            "tripSecondTitle": tripSecondTitle,
             "basicTitle": basicTitle,
             "tryFreeTitle": tryFreeTitle,
             "startMonthlyFirstTitle": startMonthlyFirstTitle,
@@ -99,7 +109,6 @@ struct SubscribeTitle {
     let key: String?
     var closeButton: Bool
     var firstTitle: String
-    var secondTitle: String
     var annualFirstTitle: String
     var annualSecondTitle: String
     var monthlyFirstTitle: String
@@ -107,12 +116,11 @@ struct SubscribeTitle {
     var weeklyFirstTitle: String
     var weeklySecondTitle: String
     
-    init(closeButton: Bool = false, firstTitle: String = "Upgrade to premium", secondTitle: String = "Enjoy full version of app without ads", annualFirstTitle: String = "Annual", annualSecondTitle: String = "3 day trial - then 9.99/month", monthlyFirstTitle: String = "Monthly", monthlySecondTitle: String = "3 day trial - then 9.99/month", weeklyFirstTitle: String = "Weekly", weeklySecondTitle: String = "3 day trial - then 6.99/month") {
+    init(closeButton: Bool = false, firstTitle: String = "Upgrade to premium", annualFirstTitle: String = "Annual", annualSecondTitle: String = "3 day trial - then 9.99/month", monthlyFirstTitle: String = "Monthly", monthlySecondTitle: String = "3 day trial - then 9.99/month", weeklyFirstTitle: String = "Weekly", weeklySecondTitle: String = "3 day trial - then 6.99/month") {
         self.ref = nil
         self.key = nil
         self.closeButton = closeButton
         self.firstTitle = firstTitle
-        self.secondTitle = secondTitle
         self.annualFirstTitle = annualFirstTitle
         self.annualSecondTitle = annualSecondTitle
         self.monthlyFirstTitle = monthlyFirstTitle
@@ -127,7 +135,6 @@ struct SubscribeTitle {
             let value = snapshot.value as? [String: AnyObject],
             let closeButton = value["closeButton"] as? Bool,
             let firstTitle = value["firstTitle"] as? String,
-            let secondTitle = value["secondTitle"] as? String,
             let annualFirstTitle = value["annualFirstTitle"] as? String,
             let annualSecondTitle = value["annualSecondTitle"] as? String,
             let monthlyFirstTitle = value["monthlyFirstTitle"] as? String,
@@ -143,7 +150,6 @@ struct SubscribeTitle {
         
         self.closeButton = closeButton
         self.firstTitle = firstTitle
-        self.secondTitle = secondTitle
         self.annualFirstTitle = annualFirstTitle
         self.annualSecondTitle = annualSecondTitle
         self.monthlyFirstTitle = monthlyFirstTitle
@@ -156,7 +162,6 @@ struct SubscribeTitle {
         return [
             "closeButton": closeButton,
             "firstTitle": firstTitle,
-            "secondTitle": secondTitle,
             "annualFirstTitle": annualFirstTitle,
             "annualSecondTitle": annualSecondTitle,
             "monthlyFirstTitle": monthlyFirstTitle,

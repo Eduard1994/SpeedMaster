@@ -85,7 +85,32 @@ class SettingsViewController: UIViewController {
         print(tableView.height)
         print(scrollView.height)
         
+        getSettingsTitles()
+        
         reloadSettings()
+    }
+    
+    /// Get Settings Titles
+    private func getSettingsTitles() {
+        service.getSettingsTitles(for: PremiumTab.Settings.rawValue) { (settingsTitle, error) in
+            if let error = error {
+                DispatchQueue.main.async {
+                    ErrorHandling.showError(message: error.localizedDescription, controller: self)
+                    self.configureTitles(settings: SettingsTitle())
+                }
+                return
+            }
+            if let settingsTitle = settingsTitle {
+                DispatchQueue.main.async {
+                    self.configureTitles(settings: settingsTitle)
+                }
+            }
+        }
+    }
+    
+    private func configureTitles(settings: SettingsTitle) {
+        self.upgradeLabel.text = settings.firstTitle
+        self.enjoyLabel.text = settings.secondTitle
     }
     
     private func reloadTableView() {

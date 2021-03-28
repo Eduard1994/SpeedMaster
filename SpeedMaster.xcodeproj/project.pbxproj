@@ -104,6 +104,7 @@
 		FFB74CD0260537FD0087AE07 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB74CCF260537FD0087AE07 /* Settings.swift */; };
 		FFB74CD3260538080087AE07 /* SettingsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB74CD2260538080087AE07 /* SettingsCellModel.swift */; };
 		FFB74CDB260538710087AE07 /* Premium.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFB74CDA260538710087AE07 /* Premium.storyboard */; };
+		FFBBD8B126100879006E678D /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBBD8B026100879006E678D /* Graph.swift */; };
 		FFC5DA9C260539A100B8D5F6 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5DA9B260539A100B8D5F6 /* IAPManager.swift */; };
 		FFC5DAA0260539D800B8D5F6 /* PremiumTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5DA9F260539D800B8D5F6 /* PremiumTitle.swift */; };
 		FFC5DAA92605426C00B8D5F6 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5DAA82605426C00B8D5F6 /* FooterView.swift */; };
@@ -226,6 +227,7 @@
 		FFB74CCF260537FD0087AE07 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		FFB74CD2260538080087AE07 /* SettingsCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellModel.swift; sourceTree = "<group>"; };
 		FFB74CDA260538710087AE07 /* Premium.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Premium.storyboard; sourceTree = "<group>"; };
+		FFBBD8B026100879006E678D /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		FFC5DA9B260539A100B8D5F6 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
 		FFC5DA9F260539D800B8D5F6 /* PremiumTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTitle.swift; sourceTree = "<group>"; };
 		FFC5DAA82605426C00B8D5F6 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 				FF2826DF260D203800C6C7A8 /* Reference */,
 				FF2826F8260D214D00C6C7A8 /* ScrollableGraphView.swift */,
 				FFD50290260C2C03001A9C15 /* Examples.swift */,
+				FFBBD8B026100879006E678D /* Graph.swift */,
 				FFD50293260C2C3F001A9C15 /* GraphType.swift */,
 			);
 			path = GraphView;
@@ -915,6 +918,7 @@
 				FFB74CB7260536EC0087AE07 /* SnakePageControl.swift in Sources */,
 				FFB74CCC260537E30087AE07 /* SpeedMasterProducts.swift in Sources */,
 				FFCDECA426080FCF00C3A10D /* MeasureViewController.swift in Sources */,
+				FFBBD8B126100879006E678D /* Graph.swift in Sources */,
 				FF2826FC260D217400C6C7A8 /* LabelPool.swift in Sources */,
 				FF2826F9260D214D00C6C7A8 /* ScrollableGraphView.swift in Sources */,
 				FF0A89AC2602320000ADF896 /* UITableView+Extension.swift in Sources */,

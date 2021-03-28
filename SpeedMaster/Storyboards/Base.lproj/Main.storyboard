@@ -367,7 +367,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="rrr-kI-4Ev"/>
                     <connections>
-                        <outlet property="enjoyLabel" destination="HkJ-D6-ICP" id="usi-CG-8XJ"/>
+                        <outlet property="enjoyLabel" destination="7mo-kZ-YyK" id="4gD-U7-fxg"/>
                         <outlet property="scrollView" destination="w27-ez-4Of" id="sAM-4J-rQP"/>
                         <outlet property="tableView" destination="Qjl-Sk-b0b" id="Ido-Pd-p8V"/>
                         <outlet property="tableViewHeight" destination="HkJ-D6-ICP" id="5v3-Gd-8Dv"/>

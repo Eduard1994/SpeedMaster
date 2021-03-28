@@ -10,7 +10,7 @@ import Foundation
 enum Unit: String, CaseIterable {
     case kilometersPerHour = "Km/h"
     case milesPerHour = "Mph"
-    case metersPerSecond = "m/s"
+    case metersPerSecond = "M/s"
     case knots = "Knots"
     case split500 = "min./500m"
 
@@ -64,6 +64,19 @@ enum Unit: String, CaseIterable {
 
         return unit
     }
+    
+    var distanceMetric: String {
+        switch self {
+        case .kilometersPerHour:
+            return "KM"
+        case .milesPerHour:
+            return "MI"
+        case .knots:
+            return "M"
+        default:
+            return ""
+        }
+    }
 
     func calculateSpeed(for speedProvidedByDevice: Double) -> Double {
         // There is a minimum of 0.5 m/s needed before the app will return a
@@ -106,23 +119,41 @@ enum Unit: String, CaseIterable {
     }
     
     func calculateAverageSpeed(for speed: Double) -> String {
-        let speed = calculateSpeed(for: speed)
+//        let speed = calculateSpeed(for: speed)
         
         return "\(Int(speed)) \(rawValue)"
     }
     
-    func calculateDistance(for speed: Double) -> String {
-        let speed = calculate(from: speed).rounded(toPlaces: 2)
+    func calculateDistance(for dist: Double) -> String {
+        let distance = calculate(from: dist).rounded(toPlaces: 2)
         
         switch self {
         case .kilometersPerHour:
-            return "\(speed) km"
+            return "\(distance) KM"
         case .milesPerHour:
-            return "\(speed) mi"
+            return "\(distance) MI"
         case .knots:
-            return "\(speed) m"
+            return "\(distance) M"
         default:
-            return "\(speed)"
+            return "\(distance)"
+        }
+    }
+    
+    func showSpeed(for speed: Double) -> String {
+        
+        return "\(speed) \(rawValue)"
+    }
+    
+    func showDistance(for distance: Double) -> String {
+        switch self {
+        case .kilometersPerHour:
+            return "\(distance) KM"
+        case .milesPerHour:
+            return "\(distance) MI"
+        case .knots:
+            return "\(distance) M"
+        default:
+            return "\(distance)"
         }
     }
 

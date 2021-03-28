@@ -35,7 +35,7 @@ extension UITableView {
         }
     }
     
-    func reload(for histories: [Any], upcomingButton: UIButton, upcomingArrow: UIButton) {
+    func reload(for histories: [Any], upcomingButton: UIButton, upcomingArrow: UIButton, tableViewHeight: NSLayoutConstraint) {
         if histories.isEmpty {
             upcomingButton.setTitle("History is empty!", for: .normal)
             upcomingButton.isEnabled = false
@@ -47,7 +47,7 @@ extension UITableView {
             imageView.image = imageNamed("noHistory")
             self.backgroundColor = .clear
             self.backgroundView = imageView
-//            self.withoutSeparator()
+            tableViewHeight.constant = 250
         } else {
             upcomingButton.setTitle("Upcoming", for: .normal)
             upcomingButton.isEnabled = true
@@ -55,7 +55,6 @@ extension UITableView {
             upcomingArrow.isEnabled = true
             self.backgroundColor = .mainBlack
             self.backgroundView = nil
-//            self.withSeparator()
         }
     }
     

@@ -169,6 +169,51 @@ class Service {
         }
     }
     
+    // MARK: - Adding history to Firebase
+    func addNewHistory(history: History, completion: @escaping (([String : [String : Any]]?, NetworkError?) -> Void)) {
+        if isConnectedToInternet {
+            guard let key = reference.childByAutoId().key else { return }
+            let post = [
+                "id": key,
+                "userID": history.userID,
+                "maxSpeed": history.maxSpeed,
+                "minSpeed": history.minSpeed,
+                "avrSpeed": history.avrSpeed,
+                "windSpeed": history.windSpeed,
+                "duration": history.duration,
+                "distance": history.distance,
+                "allSpeeds": history.allSpeeds,
+                "date": history.date,
+                "collapsed": history.collapsed,
+                "speedMetric": history.speedMetric,
+                "distanceMetric": history.distanceMetric
+            ] as [String: Any]
+            let childUpdates = [key: post]
+            updateValues(userID: history.userID, childUpdates)
+        } else {
+            completion(nil, .noInternet)
+        }
+    }
+    
+    private func updateValues(userID: String, _ values: [String : [String : Any]]) {
+        reference.child(userID).updateChildValues(values)
+    }
+    
+    // MARK: - Removing History from Firebase
+    func removeHistory(withID: String, userID: String, completion: @escaping (NetworkError?) -> Void) {
+        if isConnectedToInternet {
+            reference.child(userID).child(withID).removeValue { (error, reference) in
+                if let error = error {
+                    completion(.unowned(description: error.localizedDescription))
+                    return
+                }
+                completion(nil)
+            }
+        } else {
+            completion(.noInternet)
+        }
+    }
+    
     // MARK: - Getting weather data
     func getWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping(Weather?, NetworkError?) -> Void) {
         

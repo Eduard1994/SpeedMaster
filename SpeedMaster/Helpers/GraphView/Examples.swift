@@ -393,7 +393,7 @@ class Examples: ScrollableGraphViewDataSource {
         // Setup the graph
         graphView.backgroundFillColor = UIColor.colorFromHex(hexString: "#222222")
         
-        graphView.dataPointSpacing = 60
+        graphView.dataPointSpacing = 20
         graphView.shouldAdaptRange = true
         
         // Add everything

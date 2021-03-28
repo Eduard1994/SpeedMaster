@@ -23,6 +23,10 @@ class UpgradeFromSettingsViewController: UIViewController {
     @IBOutlet weak var weeklyLabel2: UILabel!
     @IBOutlet weak var notNowButton: UIButton!
     
+    // MARK: - Properties
+    let service = Service()
+    var subscriptions = Subscriptions()
+    
     // MARK: - Override properties
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if #available(iOS 13.0, *) {
@@ -46,6 +50,39 @@ class UpgradeFromSettingsViewController: UIViewController {
         stackView.subviews.forEach { (view) in
             view.cornerRadius(to: 15)
         }
+        
+        getSubscribeTitles()
+    }
+    
+    /// Get Subscribe Titles
+    private func getSubscribeTitles() {
+        service.getSubscribeTitles(for: PremiumTab.Subscribe.rawValue) { (subscribe, error) in
+            if let error = error {
+                DispatchQueue.main.async {
+                    ErrorHandling.showError(message: error.localizedDescription, controller: self)
+                    self.configureSubscribeTitles(subscribe: SubscribeTitle(), subscriptions: self.subscriptions)
+                }
+                return
+            }
+            if let subscribe = subscribe {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.configureSubscribeTitles(subscribe: subscribe, subscriptions: self.subscriptions)
+                }
+            }
+        }
+    }
+    
+    private func configureSubscribeTitles(subscribe: SubscribeTitle, subscriptions: Subscriptions) {
+        self.notNowButton.isHidden = !subscribe.closeButton
+        self.notNowButton.isEnabled = subscribe.closeButton
+        self.fullLabel.text = subscribe.firstTitle
+        self.annualLabel1.text = subscribe.annualFirstTitle
+        self.annualLabel2.text = "\(subscribe.annualSecondTitle) $\(subscriptions.annualProductPrice)/year"
+        self.monthlyLabel1.text = subscribe.monthlyFirstTitle
+        self.monthlyLabel2.text = "\(subscribe.monthlySecondTitle) $\(subscriptions.monthlyProductPrice)/month"
+        self.weeklyLabel1.text = subscribe.weeklyFirstTitle
+        self.weeklyLabel2.text = "\(subscribe.weeklySecondTitle) $\(subscriptions.weeklyProductPrice)/week"
     }
     
     // MARK: - Setting images for buttons

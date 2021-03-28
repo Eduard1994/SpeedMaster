@@ -23,6 +23,10 @@ class UpgradeToPremiumViewController: UIViewController {
     @IBOutlet weak var eulaButton: UIButton!
     @IBOutlet weak var notNowButton: UIButton!
     
+    // MARK: - Properties
+    let service = Service()
+    var subscriptions: Subscriptions = Subscriptions()
+    
     // MARK: - Override properties
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if #available(iOS 13.0, *) {
@@ -47,6 +51,39 @@ class UpgradeToPremiumViewController: UIViewController {
         proceedWithBasicButton.addLine(position: .LINE_POSITION_BOTTOM, color: .mainGray, width: 0.5)
         privacyButton.addLine(position: .LINE_POSITION_BOTTOM, color: .mainGray, width: 0.5)
         eulaButton.addLine(position: .LINE_POSITION_BOTTOM, color: .mainGray, width: 0.5)
+        
+        getOnboardingTitles()
+    }
+    
+    /// Get Onboarding Titles
+    private func getOnboardingTitles() {
+        service.getOnboardingTitles(for: PremiumTab.Onboarding.rawValue) { (onboarding, error) in
+            if let error = error {
+                DispatchQueue.main.async {
+                    ErrorHandling.showError(message: error.localizedDescription, controller: self)
+                    self.configureSubscribeTitles(for: OnboardingTitle(), subscriptions: self.subscriptions)
+                }
+                return
+            }
+            if let onboarding = onboarding {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.configureSubscribeTitles(for: onboarding, subscriptions: self.subscriptions)
+                }
+            }
+        }
+    }
+    
+    private func configureSubscribeTitles(for onboarding: OnboardingTitle, subscriptions: Subscriptions) {
+        self.notNowButton.isHidden = !onboarding.closeButton
+        self.notNowButton.isEnabled = onboarding.closeButton
+        self.upgradeLabel.text = onboarding.firstTitle
+        self.startFreeLabel.text = "\(onboarding.secondTitle) $\(subscriptions.monthlyProductPrice) a month"
+        self.proceedWithBasicButton.setTitle(onboarding.basicTitle, for: UIControl.State())
+        self.tryFreeButton.setTitle(onboarding.tryFreeTitle, for: UIControl.State())
+        self.startMonthlyButton.setTitle(onboarding.startMonthlyFirstTitle, for: UIControl.State())
+        self.priceAMonthButton.setTitle("$\(subscriptions.monthlyProductPrice) \(onboarding.startMonthlySecondTitle)", for: UIControl.State())
+        self.trialLabel.text = onboarding.privacyEulaTitle
     }
     
     // MARK: - IBActions

@@ -33,7 +33,8 @@ internal class BarDrawingLayer: ScrollableGraphViewDrawingLayer {
     
     private func createBarPath(centre: CGPoint) -> UIBezierPath {
         
-        let barWidthOffset: CGFloat = self.barWidth / 2
+//        let barWidthOffset: CGFloat = self.barWidth / 2
+        let barWidthOffset: CGFloat = 4
         
         let origin = CGPoint(x: centre.x - barWidthOffset, y: centre.y)
         let size = CGSize(width: barWidth, height: zeroYPosition - centre.y)
@@ -41,7 +42,8 @@ internal class BarDrawingLayer: ScrollableGraphViewDrawingLayer {
         
         let barPath: UIBezierPath = {
             if shouldRoundCorners {
-                return UIBezierPath(roundedRect: rect, cornerRadius: barWidthOffset)
+//                return UIBezierPath(roundedRect: rect, cornerRadius: barWidthOffset)
+                return UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: barWidthOffset, height: barWidthOffset))
             } else {
                 return UIBezierPath(rect: rect)
             }
