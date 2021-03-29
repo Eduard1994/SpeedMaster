@@ -35,8 +35,16 @@ class OnboardingViewController: UIViewController {
         configureView()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: dismissNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: subTypeNotificationIndex, object: nil)
+    }
+    
     // MARK: - Functions
     private func configureView() {
+        NotificationCenter.default.addObserver(self, selector: #selector(notifiedToDismiss), name: dismissNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(notifiedForProductIndex(notification:)), name: subTypeNotificationIndex, object: nil)
+        
         slides = Slide.slides
         
         scrollView.delegate = self
@@ -83,8 +91,6 @@ class OnboardingViewController: UIViewController {
         slide.notNowButton.isHidden = !onboarding.closeButton
         slide.notNowButton.isEnabled = onboarding.closeButton
         slide.upgradeLabel.text = onboarding.firstTitle
-//        slide.gpsLabel.text = onboarding.gpsTitle
-//        slide.trackLabel.text = onboarding.gpsSecondTitle
         slide.startFreeLabel.text = "\(onboarding.secondTitle) $\(subscriptions.monthlyProductPrice) a month"
         slide.proceedWithBasic.setTitle(onboarding.basicTitle, for: UIControl.State())
         slide.tryFreeButton.setTitle(onboarding.tryFreeTitle, for: UIControl.State())
@@ -154,6 +160,24 @@ class OnboardingViewController: UIViewController {
             nextButton.isEnabled = true
             snakePageControl.isHidden = false
         }
+    }
+    
+    // MARK: - OBJC Functions
+    @objc func notifiedToDismiss() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func notifiedForProductIndex(notification: Notification) {
+//        if let index = notification.userInfo?["index"] as? Int {  Will be updated soon
+//            self.productIndex = index
+//            if snakePageControl.currentPage == 2 {
+//                guard !products.isEmpty else {
+//                    print("Cannot purchase subscription because products is empty!")
+//                    return
+//                }
+//                self.purchaseItem(index: productIndex)
+//            }
+//        }
     }
     
     // MARK: - IBActions

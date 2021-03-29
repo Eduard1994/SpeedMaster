@@ -66,13 +66,19 @@ extension UITableView {
         self.separatorColor = .clear
     }
     
-    func scrollToBottom() {
+    func scrollToBottom(animated: Bool = true) {
         DispatchQueue.main.async {
             let indexPath = IndexPath(
                 row: self.numberOfRows(inSection:  self.numberOfSections-1) - 1,
                 section: self.numberOfSections - 1)
-            if self.hasRowAtIndexPath(indexPath: indexPath) {
-                self.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            if animated {
+                if self.hasRowAtIndexPath(indexPath: indexPath) {
+                    self.scrollToRow(at: indexPath, at: .bottom, animated: animated)
+                } else {
+                    UIView.performWithoutAnimation {
+                        self.scrollToRow(at: indexPath, at: .top, animated: false)
+                    }
+                }
             }
         }
     }
@@ -108,6 +114,22 @@ extension UITableView {
         }
     }
     
+    func reloadAndScrollTo(section: Int, animated: Bool = true) {
+        reloadSections(IndexSet(integer: section), with: .automatic)
+        DispatchQueue.main.after(1) {
+            guard self.numberOfSections > 0, self.numberOfRows(inSection: section) > 0 else { return }
+            
+            let indexPath = IndexPath(row: 0, section: section)
+
+            if animated {
+                self.scrollToRow(at: indexPath, at: .top, animated: true)
+            } else {
+                UIView.performWithoutAnimation {
+                    self.scrollToRow(at: indexPath, at: .top, animated: false)
+                }
+            }
+        }
+    }
     
     func hasRowAtIndexPath(indexPath: IndexPath) -> Bool {
         return indexPath.section < self.numberOfSections && indexPath.row < self.numberOfRows(inSection: indexPath.section)

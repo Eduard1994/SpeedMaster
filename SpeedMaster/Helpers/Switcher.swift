@@ -34,7 +34,6 @@ class Switcher {
         
         if status == true {
             rootVC = MainTabBarViewController.instantiate(from: .Main, with: MainTabBarViewController.typeName)
-//            rootVC = OnboardingViewController.instantiate(from: .Onboarding, with: OnboardingViewController.typeName)
         } else {
             rootVC = PrivacyViewController.instantiate(from: .Onboarding, with: PrivacyViewController.typeName)
         }

@@ -86,6 +86,11 @@ class SpeedometerViewController: UIViewController {
         return vc
     }()
     
+    private lazy var onBoardingVC: OnboardingViewController = {
+        let vc = OnboardingViewController.instantiate(from: .Onboarding, with: OnboardingViewController.typeName)
+        return vc
+    }()
+    
     // MARK: - Override properties
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if #available(iOS 13.0, *) {
@@ -98,9 +103,10 @@ class SpeedometerViewController: UIViewController {
     
     // MARK: - View LyfeCicle
     override func viewDidLoad() {
-        locationManager.delegate = self
         super.viewDidLoad()
+        locationManager.delegate = self
         configureView()
+        presentOnboarding()
     }
     
     deinit {
@@ -124,6 +130,19 @@ class SpeedometerViewController: UIViewController {
         speedometerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         speedometerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
         speedometerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -187).isActive = true
+    }
+    
+    // MARK: - Presenting Onboarding
+    private func presentOnboarding() {
+        if UserDefaults.standard.bool(forKey: kOnboardingStatus) != true {
+            onBoardingVC.modalPresentationStyle = .fullScreen
+//            onBoardingVC.store = self.store Will be updated soon
+            if presentedViewController != onBoardingVC {
+                self.present(onBoardingVC, animated: true) {
+                    UserDefaults.standard.set(true, forKey: kOnboardingStatus)
+                }
+            }
+        }
     }
     
     /// Preparing Location checking

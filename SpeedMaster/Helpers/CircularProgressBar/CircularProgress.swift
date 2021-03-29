@@ -294,6 +294,25 @@ public class CircularProgress: UIView, CAAnimationDelegate {
         private var gradientCache: CGGradient?
         private var locationsCache: [CGFloat]?
         
+        private let numOfDivisions = 180
+        private let numOfSubDivisions = 0
+        /// Minimum value.
+        private var minValue: Double = 180
+        
+        /// Maximum value.
+        private var maxValue: Double = 180
+        
+        private var divisionUnitAngle: Double = 5
+        private var divisionUnitValue: Double = 2
+        private var ringThickness: Double = 25
+        
+        private var divisionsPadding: Double = 12
+        private var divisionsRadius: Double = 0.5
+
+        private var subDivisionsRadius: Double = 0.75
+        private var subDivisionsColor: UIColor = UIColor(white: 0.5, alpha: 0.5)
+        private var divisionsColor: UIColor = .mainDarkGray
+        
         private enum GlowConstants {
             private static let sizeToGlowRatio: CGFloat = 0.00015
             static func glowAmount(forAngle angle: Double, glowAmount: CGFloat, glowMode: CircularProgressGlowMode, size: CGFloat) -> CGFloat {
@@ -393,6 +412,10 @@ public class CircularProgress: UIView, CAAnimationDelegate {
             imageCtx?.setLineWidth(progressLineWidth)
             imageCtx?.drawPath(using: .stroke)
             
+            for thickness in 24...46 {
+                drawLines(from: ctx, ringThickness: Double(thickness))
+            }
+            
             let drawMask: CGImage = UIGraphicsGetCurrentContext()!.makeImage()!
             UIGraphicsEndImageContext()
             
@@ -411,6 +434,45 @@ public class CircularProgress: UIView, CAAnimationDelegate {
 
             ctx.restoreGState()
             UIGraphicsPopContext()
+        }
+        
+        fileprivate func drawLines(from context: CGContext, ringThickness: Double) {
+            // Draw divisions and subdivisions
+            let center = CGPoint(x: bounds.width/2, y: bounds.height/2)
+            let ringRadius = Double(min(bounds.width, bounds.height))/2 - ringThickness/2
+            let dotRadius = ringRadius - ringThickness/2 - divisionsPadding - divisionsRadius/2
+            if numOfDivisions != 0 {
+                for i in 0...numOfDivisions {
+                    if i != numOfDivisions && numOfSubDivisions != 0 {
+                        for j in 0...numOfSubDivisions {
+                            
+                            // Subdivisions
+                            let value = Double(i) * divisionUnitValue + Double(j) * divisionUnitValue/Double(numOfSubDivisions) + minValue
+                            let angle = angleFromValue(value)
+                            let point = CGPoint(x: dotRadius * cos(angle) + Double(center.x),
+                                                y: dotRadius * sin(angle) + Double(center.y))
+                            context.drawDot(center: point,
+                                             radius: subDivisionsRadius,
+                                             fillColor: subDivisionsColor)
+                        }
+                    }
+                    
+                    // Divisions
+                    let value = Double(i) * divisionUnitValue + minValue
+                    let angle = angleFromValue(value)
+                    let point = CGPoint(x: dotRadius * cos(angle) + Double(center.x),
+                                        y: dotRadius * sin(angle) + Double(center.y))
+                    context.drawDot(center: point,
+                                     radius: divisionsRadius,
+                                     fillColor: divisionsColor)
+                }
+            }
+        }
+        
+        func angleFromValue(_ value: Double) -> Double {
+            let level = divisionUnitValue != 0 ? (value - minValue)/divisionUnitValue : 0
+            let angle = level * divisionUnitAngle + startAngle
+            return angle
         }
         
         private func lerp(withContext context: CGContext, colorsArray: [UIColor]) {
@@ -551,5 +613,18 @@ private extension BinaryFloatingPoint {
                        green: clampedValue.lerp(min: g0, max: g1),
                        blue: clampedValue.lerp(min: b0, max: b1),
                        alpha: clampedValue.lerp(min: a0, max: a1))
+    }
+}
+
+extension CGContext {
+    func drawDot(center: CGPoint, radius: Double, fillColor: UIColor) {
+        beginPath()
+        addArc(center: center,
+               radius: CGFloat(radius),
+               startAngle: 0,
+               endAngle: .pi * 2,
+               clockwise: false)
+        setFillColor(fillColor.cgColor)
+        fillPath()
     }
 }

@@ -36,7 +36,6 @@ class SpeedometerView: UIView {
     var progress: Double = 0.0 {
         willSet {
             circularSlider.angle = newValue < 0 ? 0.0 : newValue
-//            speedLabel.text = "\(Int(unit.calculateSpeed(for: newValue)))"
             speedLabel.text = "\(Int(newValue))"
         }
     }
@@ -49,9 +48,6 @@ class SpeedometerView: UIView {
     
     var counter: Double = 0.0 {
         willSet {
-//            let hours = Int(counter) / 3600
-//            let minutes = Int(counter) / 60 % 60
-//            let seconds = Int(counter) % 60
             durationLabel.text = counter.duration()
         }
     }
@@ -82,7 +78,7 @@ class SpeedometerView: UIView {
         
         addSubviews(speedLabel, speedMetric, circularSlider, weatherButton, distanceLabel, distance, averageSpeedLabel, averageSpeed, durationLabel, duration)
         
-        circularSlider.trackColor = .mainDarkGray
+        circularSlider.trackColor = .mainDark
         circularSlider.startAngle = 90
         circularSlider.progressThickness = 0.34
         circularSlider.trackThickness = 0.35

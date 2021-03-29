@@ -79,7 +79,6 @@ class SectionHeader: UITableViewHeaderFooterView {
         // Animate the arrow rotation
         DispatchQueue.main.async {
             self.arrow.image = collapsed ? imageNamed("collapsibleButtonUp") : imageNamed("collapsibleButtonDown")
-//            self.arrowButton.setImage(collapsed ? imageNamed("collapsibleButtonUp") : imageNamed("collapsibleButtonDown"), for: .normal)
         }
     }
     
