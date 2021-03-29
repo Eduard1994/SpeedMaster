@@ -49,7 +49,7 @@ extension UITableView {
             self.backgroundView = imageView
             tableViewHeight.constant = 250
         } else {
-            upcomingButton.setTitle("Upcoming", for: .normal)
+            upcomingButton.setTitle(Settings.sort.rawValue, for: .normal)
             upcomingButton.isEnabled = true
             upcomingArrow.isHidden = false
             upcomingArrow.isEnabled = true

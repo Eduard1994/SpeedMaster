@@ -28,6 +28,7 @@ let showErrorForSettings: Notification.Name = Notification.Name("ShowErrorForSet
 let dismissNotification: Notification.Name = Notification.Name(rawValue: "DismissNotification")
 let subTypeNotificationIndex: Notification.Name = Notification.Name("NotificationIndex")
 let unitChangedNotification: Notification.Name = Notification.Name("UnitChanged")
+let sortChangedNotification: Notification.Name = Notification.Name("SortChanged")
 
 // MARK: - Weather
 let kWeatherAPIKey = "7ac83b29202bdc37108dd156f49bdf2b"
@@ -35,3 +36,6 @@ let kWeatherURL = "https://api.openweathermap.org/data/2.5/onecall"
 
 // MARK: Units
 let kSelectedUnit = "unit"
+
+// MARK: - Sorting
+let kSelectedSort = "sort"

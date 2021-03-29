@@ -69,6 +69,8 @@ class HistoryViewController: UIViewController {
     
     // MARK: - Functions
     private func configureView() {
+        upcomingButton.setTitle(Settings.sort.rawValue, for: .normal)
+        
         tableView.register(UINib(nibName: HistoryTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: HistoryTableViewCell.identifier)
         
         tableView.backgroundColor = .mainBlack
@@ -112,18 +114,25 @@ class HistoryViewController: UIViewController {
                 }
             }
             if let sectioned = sectioned {
-                DispatchQueue.main.async {
-                    self.sectionedHistories = sectioned
-                    if self.sectionedHistories.count != 0 {
-                        self.historyHeight = self.sectionHeight * CGFloat(self.sectionedHistories.count)
-                    }
+                switch Settings.sort {
+                case .maxValue:
+                    self.sectionedHistories = sectioned.sorted(by: {$0.maxSpeed > $1.maxSpeed})
+                case .minValue:
+                    self.sectionedHistories = sectioned.sorted(by: {$0.maxSpeed < $1.maxSpeed})
+                case .newest:
+                    self.sectionedHistories = sectioned.sorted(by: {$0.date > $1.date})
+                case .earlier:
+                    self.sectionedHistories = sectioned.sorted(by: {$0.date < $1.date})
+                }
+                if self.sectionedHistories.count != 0 {
+                    self.historyHeight = self.sectionHeight * CGFloat(self.sectionedHistories.count)
                 }
             }
         }
         
-        DispatchQueue.main.after(1) {
-            self.presentOverFullScreen(self.upgradeToPremiumVC, animated: true)
-        }
+//        DispatchQueue.main.after(1) {
+//            self.presentOverFullScreen(self.upgradeToPremiumVC, animated: true)
+//        } WIll be updated soon
     }
     
     private func removeHistory(history: History) {
@@ -153,6 +162,7 @@ class HistoryViewController: UIViewController {
     // MARK: - IBActions
     @IBAction func upcomingTapped(_ sender: Any) {
         print("Upcoming tapped")
+        sortVC.delegate = self
         push(sortVC, animated: true)
     }
 }
@@ -244,5 +254,15 @@ extension HistoryViewController: SectionHeaderDelegate {
         
         tableView.reloadSections(IndexSet(integer: section), with: .automatic)
         historyHeight = collapsed ? historyHeight - 370 : historyHeight + 370
+    }
+}
+
+// MARK: - Sorting Delegate
+extension HistoryViewController: UpdatedSort {
+    func updatedSort(sort: Sorting) {
+        Settings.sort = sort
+        upcomingButton.setTitle(sort.rawValue, for: .normal)
+        reloadHistories()
+        NotificationCenter.default.post(name: sortChangedNotification, object: nil)
     }
 }

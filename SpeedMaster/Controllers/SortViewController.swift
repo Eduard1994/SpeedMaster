@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UpdatedSort: class {
-    func sortUpdated()
+    func updatedSort(sort: Sorting)
 }
 
 class SortViewController: UIViewController {
@@ -18,6 +18,7 @@ class SortViewController: UIViewController {
     @IBOutlet weak var okayButton: UIButton!
     
     // MARK: - Properties
+    var sort: Sorting = Sorting.selected
     weak var delegate: UpdatedSort?
     
     // MARK: - Override properties
@@ -51,8 +52,25 @@ class SortViewController: UIViewController {
         sortView.cornerRadius(to: 24)
         okayButton.cornerRadius(to: 10)
         
+        sort = .selected
+        prepareSorting()
+        
         linedViews.forEach { (view) in
             view.addLine(position: .LINE_POSITION_BOTTOM, color: .black, width: 1)
+        }
+    }
+    
+    /// Preparing Sorting
+    private func prepareSorting() {
+        switch sort {
+        case .maxValue:
+            setImagesForButton(tags: [100, 110, 120, 130])
+        case .minValue:
+            setImagesForButton(tags: [110, 100, 120, 130])
+        case .newest:
+            setImagesForButton(tags: [120, 100, 110, 130])
+        case .earlier:
+            setImagesForButton(tags: [130, 100, 110, 120])
         }
     }
     
@@ -80,22 +98,27 @@ class SortViewController: UIViewController {
     
     @IBAction func okayTapped(_ sender: Any) {
         print("Okay Tapped")
+        delegate?.updatedSort(sort: sort)
         pop(animated: true)
     }
     
     @IBAction func maximumTapped(_ sender: Any) {
         setImagesForButton(tags: [100, 110, 120, 130])
+        sort = sort.max
     }
     
     @IBAction func minimumTapped(_ sender: Any) {
         setImagesForButton(tags: [110, 100, 120, 130])
+        sort = sort.min
     }
     
     @IBAction func upcomingTapped(_ sender: Any) {
         setImagesForButton(tags: [120, 100, 110, 130])
+        sort = sort.new
     }
     
     @IBAction func earlierTapped(_ sender: Any) {
         setImagesForButton(tags: [130, 100, 110, 120])
+        sort = sort.early
     }
 }

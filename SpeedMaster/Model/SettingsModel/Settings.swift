@@ -19,6 +19,7 @@ struct Settings {
     }
     
     static var unit: Unit = Unit.selected
+    static var sort: Sorting = Sorting.selected
     
     static func settings() -> [Settings] {
         return [

@@ -50,6 +50,7 @@
 		FF282727260D23E300C6C7A8 /* LinePlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF282726260D23E300C6C7A8 /* LinePlot.swift */; };
 		FF28272A260D23FF00C6C7A8 /* DotDrawingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF282729260D23FF00C6C7A8 /* DotDrawingLayer.swift */; };
 		FF28272D260D241400C6C7A8 /* FillDrawingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF28272C260D241400C6C7A8 /* FillDrawingLayer.swift */; };
+		FF47FF9426116AF80074AC04 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF47FF9326116AF80074AC04 /* Sorting.swift */; };
 		FF6912D826045D2D0049DBA7 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF6912D726045D2D0049DBA7 /* LaunchView.xib */; };
 		FF6912DB260471CE0049DBA7 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6912DA260471CE0049DBA7 /* MainTabBarViewController.swift */; };
 		FF6912DE2604729B0049DBA7 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6912DD2604729B0049DBA7 /* HistoryViewController.swift */; };
@@ -173,6 +174,7 @@
 		FF282726260D23E300C6C7A8 /* LinePlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePlot.swift; sourceTree = "<group>"; };
 		FF282729260D23FF00C6C7A8 /* DotDrawingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotDrawingLayer.swift; sourceTree = "<group>"; };
 		FF28272C260D241400C6C7A8 /* FillDrawingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillDrawingLayer.swift; sourceTree = "<group>"; };
+		FF47FF9326116AF80074AC04 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		FF6912D726045D2D0049DBA7 /* LaunchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		FF6912DA260471CE0049DBA7 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		FF6912DD2604729B0049DBA7 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 			children = (
 				FF26C92E260D70930037965C /* Weather.swift */,
 				FFF1D3D5260E805B00133CBD /* Unit.swift */,
+				FF47FF9326116AF80074AC04 /* Sorting.swift */,
 			);
 			path = WeatherModel;
 			sourceTree = "<group>";
@@ -931,6 +934,7 @@
 				FF6912F4260480870049DBA7 /* UITabBar+Extension.swift in Sources */,
 				FFC5DAAF260545A700B8D5F6 /* Slide.swift in Sources */,
 				FF0A8984260231A600ADF896 /* UIColor+Extension.swift in Sources */,
+				FF47FF9426116AF80074AC04 /* Sorting.swift in Sources */,
 				FF6912E4260472B50049DBA7 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
