@@ -8,6 +8,8 @@
 import UIKit
 import AVFoundation
 
+// MARK: - GLobal Functions
+
 /**
  Returns image with a given name from the resource bundle.
  - Parameter name: Image name.
@@ -45,4 +47,20 @@ func fromIntToDate(time: Int) -> String {
     dateFormatter.timeZone = .current
     let localDate = dateFormatter.string(from: date)
     return localDate
+}
+
+func openURL(path: String) {
+    if let url = URL(string: path) {
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
+    }
+}
+
+func openSettings() {
+    DispatchQueue.main.async {
+        if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+        }
+    }
 }

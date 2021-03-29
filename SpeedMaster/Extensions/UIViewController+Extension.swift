@@ -26,15 +26,6 @@ extension DispatchQueue {
     }
 }
 
-// MARK: - GLobal Functions
-func openURL(path: String) {
-    if let url = URL(string: path) {
-        if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
-        }
-    }
-}
-
 // MARK: - UIViewController
 extension UIViewController: UIGestureRecognizerDelegate {
     // MARK: - Controller Instantiation

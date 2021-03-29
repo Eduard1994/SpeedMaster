@@ -122,7 +122,7 @@ class SpeedometerViewController: UIViewController {
         resetButton.isEnabled = started
         
         setupConstraints()
-        prepareLocation()
+        prepareLocation {_ in }
     }
     
     private func setupConstraints() {
@@ -146,7 +146,7 @@ class SpeedometerViewController: UIViewController {
     }
     
     /// Preparing Location checking
-    private func prepareLocation() {
+    private func prepareLocation(completion: @escaping (Bool) -> Void) {
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             print("Not determined")
@@ -154,20 +154,23 @@ class SpeedometerViewController: UIViewController {
             speedometerView.isHidden = true
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
-            print("restircted")
+            print("restricted")
             allowLocationView.isHidden = false
             speedometerView.isHidden = true
             locationManager.stopUpdatingLocation()
+            completion(false)
         case .denied:
             print("denied")
             allowLocationView.isHidden = false
             speedometerView.isHidden = true
             locationManager.stopUpdatingLocation()
+            completion(false)
         case .authorizedWhenInUse, .authorizedAlways:
             print("authorized")
             allowLocationView.isHidden = true
             speedometerView.isHidden = false
             startLocationManager()
+            completion(true)
         @unknown default:
             fatalError("has been detected an unsupported authorization status of the CLLocationManager instance")
         }
@@ -297,15 +300,23 @@ class SpeedometerViewController: UIViewController {
         let history = History(userID: userID, maxSpeed: maxSpeed, minSpeed: minSpeed, avrSpeed: avrSpeed, windSpeed: windSpeed, duration: duration, distance: distance, allSpeeds: allSpeeds, date: Date().formattedDateString(), collapsed: true, speedMetric: speedMetric, distanceMetric: distanceMetric)
         print("History = \(history)")
         
-        self.alert(title: nil, message: "Do you want to add the result to histories?", preferredStyle: .alert, cancelTitle: "Cancel", cancelHandler: nil, actionTitle: "Yes", actionHandler: {
-            self.service.addNewHistory(history: history) { (childUpdates, error) in
+        self.alert(title: nil, message: "Do you want to add the result to histories?", preferredStyle: .alert, cancelTitle: "No", cancelHandler: {
+            DispatchQueue.main.async {
+                self.reset()
+            }
+        }, actionTitle: "Yes", actionHandler: {
+            self.service.addNewHistory(history: history) { (sucess, error) in
                 if let error = error {
-                    ErrorHandling.showError(message: error.localizedDescription, controller: self)
+                    DispatchQueue.main.async {
+                        ErrorHandling.showError(message: error.localizedDescription, controller: self)
+                        self.reset()
+                    }
                     return
                 }
-                
-                if let updates = childUpdates {
-                    print(updates)
+                if sucess {
+                    DispatchQueue.main.async {
+                        self.reset()
+                    }
                 }
             }
         })
@@ -319,11 +330,18 @@ class SpeedometerViewController: UIViewController {
     // MARK: - IBActions
     @IBAction func playButtonTapped(_ sender: Any) {
         guard let sender = sender as? UIButton else { return }
-        sender.isSelected = !sender.isSelected
-        sender.setImage(sender.isSelected ? imageNamed("stopImage") : imageNamed("playImage"), for: .normal)
-        prepareLocation()
-        started = sender.isSelected
-        start()
+        prepareLocation{ success in
+            if success {
+                sender.isSelected = !sender.isSelected
+                sender.setImage(sender.isSelected ? imageNamed("stopImage") : imageNamed("playImage"), for: .normal)
+                self.started = sender.isSelected
+                self.start()
+            } else {
+                self.alert(title: nil, message: "In order to start using Speedometer, open Settings and Allow Location Services.", preferredStyle: .alert, cancelTitle: "Cancel", cancelHandler: nil, actionTitle: "Open Settings", actionHandler: {
+                    openSettings()
+                })
+            }
+        }
     }
     
     @IBAction func resetTapped(_ sender: Any) {
@@ -335,7 +353,7 @@ class SpeedometerViewController: UIViewController {
 extension SpeedometerViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print(status)
-        prepareLocation()
+        prepareLocation {_ in}
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

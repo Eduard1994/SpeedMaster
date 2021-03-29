@@ -170,7 +170,7 @@ class Service {
     }
     
     // MARK: - Adding history to Firebase
-    func addNewHistory(history: History, completion: @escaping (([String : [String : Any]]?, NetworkError?) -> Void)) {
+    func addNewHistory(history: History, completion: @escaping (Bool, NetworkError?) -> Void) {
         if isConnectedToInternet {
             guard let key = reference.childByAutoId().key else { return }
             let post = [
@@ -189,14 +189,23 @@ class Service {
                 "distanceMetric": history.distanceMetric
             ] as [String: Any]
             let childUpdates = [key: post]
-            updateValues(userID: history.userID, childUpdates)
+            updateValues(userID: history.userID, childUpdates, completion: completion)
         } else {
-            completion(nil, .noInternet)
+            completion(false, .noInternet)
         }
     }
     
-    private func updateValues(userID: String, _ values: [String : [String : Any]]) {
-        reference.child(userID).updateChildValues(values)
+    private func updateValues(userID: String, _ values: [String : [String : Any]], completion: @escaping (Bool, NetworkError?) -> Void) {
+        reference.child(userID).updateChildValues(values) { (error, reference) in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(false, .unowned(description: error.localizedDescription))
+                }
+            }
+            DispatchQueue.main.async {
+                completion(true, nil)
+            }
+        }
     }
     
     // MARK: - Removing History from Firebase

@@ -48,7 +48,7 @@ class SpeedometerView: UIView {
     
     var counter: Double = 0.0 {
         willSet {
-            durationLabel.text = counter.duration()
+            durationLabel.text = newValue.duration()
         }
     }
     
