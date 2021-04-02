@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 protocol SpeedometerDelegate {
     func speedChanged()
@@ -16,6 +17,7 @@ class SpeedometerView: UIView {
 
     // MARK: - Properties
     var delegate: SpeedometerDelegate?
+    var location: CLLocation!
     
     let circularSlider = CircularProgress(frame: .zero)
     
@@ -103,7 +105,6 @@ class SpeedometerView: UIView {
         
         weatherButton.backgroundColor = .mainBlue
         weatherButton.cornerRadius(to: 20)
-        weatherButton.setTitleColor(.mainWhite, for: .normal)
         let attributedString = NSAttributedString(string: "--", attributes: [NSAttributedString.Key.font: UIFont.sfProText(ofSize: 16, style: .semibold), NSAttributedString.Key.foregroundColor: UIColor.mainWhite])
         weatherButton.setAttributedTitle(attributedString, for: .normal)
         weatherButton.addTarget(self, action: #selector(weatherTapped), for: .touchUpInside)
@@ -204,7 +205,7 @@ class SpeedometerView: UIView {
     
     public func updateWeather(temp: Double?) {
         guard let temp = temp else {
-            let attributedString = NSAttributedString(string: "--", attributes: [NSAttributedString.Key.font: UIFont.sfProText(ofSize: 16, style: .semibold)])
+            let attributedString = NSAttributedString(string: "--", attributes: [NSAttributedString.Key.font: UIFont.sfProText(ofSize: 16, style: .semibold), NSAttributedString.Key.foregroundColor: UIColor.mainWhite])
             weatherButton.setAttributedTitle(attributedString, for: .normal)
             return
         }

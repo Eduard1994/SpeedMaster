@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		711477476963AFA8F2ED3064 /* Pods_SpeedMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4722208A4602E3B287827483 /* Pods_SpeedMaster.framework */; };
+		FF0A113E2612C1880090A846 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A113D2612C1880090A846 /* IAPHelper.swift */; };
 		FF0A8974260230CD00ADF896 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A8973260230CD00ADF896 /* Switcher.swift */; };
 		FF0A89782602313400ADF896 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A89772602313400ADF896 /* UIViewController+Extension.swift */; };
 		FF0A897B2602314D00ADF896 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A897A2602314D00ADF896 /* UIView+Extension.swift */; };
@@ -116,11 +117,11 @@
 		FFCDECA02608026A00C3A10D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDEC9F2608026A00C3A10D /* Constants.swift */; };
 		FFCDECA426080FCF00C3A10D /* MeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDECA326080FCF00C3A10D /* MeasureViewController.swift */; };
 		FFD5025F260BE880001A9C15 /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD5025E260BE880001A9C15 /* SortViewController.swift */; };
-		FFD50266260BF224001A9C15 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFD50265260BF224001A9C15 /* GoogleService-Info.plist */; };
 		FFD50269260BF2DC001A9C15 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD50268260BF2DC001A9C15 /* Cache.swift */; };
 		FFD50291260C2C03001A9C15 /* Examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD50290260C2C03001A9C15 /* Examples.swift */; };
 		FFD50294260C2C3F001A9C15 /* GraphType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD50293260C2C3F001A9C15 /* GraphType.swift */; };
 		FFD564CB2609245600BC4593 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD564CA2609245600BC4593 /* MainNavigationController.swift */; };
+		FFD7CA152614DA4F002FBED1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFD7CA142614DA4F002FBED1 /* GoogleService-Info.plist */; };
 		FFE56CD02606C29400A8370A /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE56CCF2606C29400A8370A /* UIDevice+Extension.swift */; };
 		FFF1D3D6260E805B00133CBD /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1D3D5260E805B00133CBD /* Unit.swift */; };
 		FFF1D3D9260EA68700133CBD /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1D3D8260EA68600133CBD /* Sequence+Extension.swift */; };
@@ -130,6 +131,7 @@
 		108DA1997D8FDD5F81296C83 /* Pods-SpeedMaster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeedMaster.release.xcconfig"; path = "Target Support Files/Pods-SpeedMaster/Pods-SpeedMaster.release.xcconfig"; sourceTree = "<group>"; };
 		4722208A4602E3B287827483 /* Pods_SpeedMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeedMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5E85D7C7F1E2F6CF0B6A7BF /* Pods-SpeedMaster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeedMaster.debug.xcconfig"; path = "Target Support Files/Pods-SpeedMaster/Pods-SpeedMaster.debug.xcconfig"; sourceTree = "<group>"; };
+		FF0A113D2612C1880090A846 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		FF0A8973260230CD00ADF896 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		FF0A89772602313400ADF896 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		FF0A897A2602314D00ADF896 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -240,11 +242,11 @@
 		FFCDEC9F2608026A00C3A10D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FFCDECA326080FCF00C3A10D /* MeasureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureViewController.swift; sourceTree = "<group>"; };
 		FFD5025E260BE880001A9C15 /* SortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
-		FFD50265260BF224001A9C15 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FFD50268260BF2DC001A9C15 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		FFD50290260C2C03001A9C15 /* Examples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Examples.swift; sourceTree = "<group>"; };
 		FFD50293260C2C3F001A9C15 /* GraphType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphType.swift; sourceTree = "<group>"; };
 		FFD564CA2609245600BC4593 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		FFD7CA142614DA4F002FBED1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FFE56CCF2606C29400A8370A /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		FFF1D3D5260E805B00133CBD /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		FFF1D3D8260EA68600133CBD /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
@@ -374,7 +376,7 @@
 				FF0EA9B026022E860051FFB7 /* AppDelegate.swift */,
 				FF0EA9B926022E890051FFB7 /* Assets.xcassets */,
 				FF0EA9BE26022E890051FFB7 /* Info.plist */,
-				FFD50265260BF224001A9C15 /* GoogleService-Info.plist */,
+				FFD7CA142614DA4F002FBED1 /* GoogleService-Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -697,6 +699,7 @@
 			isa = PBXGroup;
 			children = (
 				FFC5DA9B260539A100B8D5F6 /* IAPManager.swift */,
+				FF0A113D2612C1880090A846 /* IAPHelper.swift */,
 				FFC5DA9F260539D800B8D5F6 /* PremiumTitle.swift */,
 			);
 			path = IAP;
@@ -787,7 +790,6 @@
 				FFB74C872605257D0087AE07 /* SF-Pro-Display-Black.otf in Resources */,
 				FF0EA9BA26022E890051FFB7 /* Assets.xcassets in Resources */,
 				FFB74CA5260527F00087AE07 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
-				FFD50266260BF224001A9C15 /* GoogleService-Info.plist in Resources */,
 				FFB74C8E2605257D0087AE07 /* SF-Pro-Display-Bold.otf in Resources */,
 				FFB74C702605232D0087AE07 /* Onboarding.storyboard in Resources */,
 				FFB74CAD260527F00087AE07 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
@@ -809,6 +811,7 @@
 				FFB74CDB260538710087AE07 /* Premium.storyboard in Resources */,
 				FFB74C8D2605257D0087AE07 /* SF-Pro-Display-Regular.otf in Resources */,
 				FFB74CAB260527F00087AE07 /* SF-Pro-Text-BoldItalic.otf in Resources */,
+				FFD7CA152614DA4F002FBED1 /* GoogleService-Info.plist in Resources */,
 				FFB74C892605257D0087AE07 /* SF-Pro-Display-HeavyItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -905,6 +908,7 @@
 				FF28270A260D221F00C6C7A8 /* BarPlot.swift in Sources */,
 				FFB74CD3260538080087AE07 /* SettingsCellModel.swift in Sources */,
 				FF0A897B2602314D00ADF896 /* UIView+Extension.swift in Sources */,
+				FF0A113E2612C1880090A846 /* IAPHelper.swift in Sources */,
 				FF282727260D23E300C6C7A8 /* LinePlot.swift in Sources */,
 				FF28270E260D223B00C6C7A8 /* GraphPoint.swift in Sources */,
 				FFD50294260C2C3F001A9C15 /* GraphType.swift in Sources */,

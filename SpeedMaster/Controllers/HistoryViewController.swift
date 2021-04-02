@@ -6,6 +6,7 @@
 //
 
 import UIKit
+//import StoreKit
 
 class HistoryViewController: UIViewController {
     
@@ -67,6 +68,23 @@ class HistoryViewController: UIViewController {
         configureView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Will appear")
+        print("All Prices = \(allPrices)")
+        print("All Products = \(allProducts)")
+        print("All Product IDs = \(allProductIDs)")
+        print("Purchased = \(purchasedAny)")
+        
+        if !purchasedAny {
+            self.presentUpgradeToPremium(with: allProductIDs)
+        }
+    }
+    
     // MARK: - Functions
     private func configureView() {
         upcomingButton.setTitle(Settings.sort.rawValue, for: .normal)
@@ -92,6 +110,15 @@ class HistoryViewController: UIViewController {
         reloadHistories()
     }
     
+    // MARK: - Presenting UpgradeToPremiumVC
+    private func presentUpgradeToPremium(with productIDs: Set<ProductID>) {
+        upgradeToPremiumVC.productIDs = productIDs
+        upgradeToPremiumVC.delegate = self
+        if presentedViewController != upgradeToPremiumVC {
+            self.presentOverFullScreen(upgradeToPremiumVC, animated: true)
+        }
+    }
+    
     private func reloadTableView() {
         tableView.reload(for: sectionedHistories, upcomingButton: upcomingButton, upcomingArrow: upcomingArrow, tableViewHeight: tableViewHeight)
         
@@ -105,7 +132,27 @@ class HistoryViewController: UIViewController {
     }
     
     private func reloadHistories() {
-        let uid = currentUser?.uid ?? ""
+        guard let user = currentUser else {
+            service.checkUser { (user, error) in
+                if let error = error {
+                    DispatchQueue.main.async {
+                        ErrorHandling.showError(message: error.localizedDescription, controller: self)
+                        return
+                    }
+                }
+                if let user = user {
+                    self.currentUser = user
+                    self.reloadHistories()
+                } else {
+                    ErrorHandling.showError(message: "Server error, try again later", controller: self)
+                    return
+                }
+            }
+            return
+        }
+        
+        let uid = user.uid
+        
         service.getHistories(userID: uid) { (sectioned, error) in
             if let error = error {
                 DispatchQueue.main.async {
@@ -129,14 +176,10 @@ class HistoryViewController: UIViewController {
                 }
             }
         }
-        
-//        DispatchQueue.main.after(1) {
-//            self.presentOverFullScreen(self.upgradeToPremiumVC, animated: true)
-//        } WIll be updated soon
     }
     
     private func removeHistory(history: History) {
-        guard let userID = User.currentUser?.uid else {
+        guard let userID = currentUser?.uid else {
             ErrorHandling.showError(message: "No User found", controller: self)
             return
         }
@@ -264,5 +307,22 @@ extension HistoryViewController: UpdatedSort {
         upcomingButton.setTitle(sort.rawValue, for: .normal)
         reloadHistories()
         NotificationCenter.default.post(name: sortChangedNotification, object: nil)
+    }
+}
+
+// MARK: - Dismiss From Upgrade Delegate
+extension HistoryViewController: UpgradeFromHistoryDelegate {
+    func purchased(purchases: [ProductID]) {
+        print(purchases)
+        print("Purchased")
+        print("All Prices = \(allPrices)")
+        print("All Products = \(allProducts)")
+        print("All Product IDs = \(allProductIDs)")
+        print("Purchased = \(purchasedAny)")
+    }
+    
+    func dismissFromUpgrade() {
+        print("Dismissed")
+        self.tabBarController?.selectedIndex = 1
     }
 }

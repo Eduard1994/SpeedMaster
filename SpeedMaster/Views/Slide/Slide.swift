@@ -35,6 +35,13 @@ class Slide: UIView {
     @IBOutlet weak var startMonthlySecondButton: UIButton!
     @IBOutlet weak var proceedWithBasic: UIButton!
     
+    @IBOutlet weak var topConstraint: NSLayoutConstraint! // default 123
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint! // default 19
+    @IBOutlet weak var fromBlackToYellow: NSLayoutConstraint! // default 82
+    @IBOutlet weak var fromTryFreeToProceed: NSLayoutConstraint! //default 34
+    @IBOutlet weak var fromUpgradeToTop: NSLayoutConstraint! // default 76
+    @IBOutlet weak var fromNotNowToTop: NSLayoutConstraint! // default 35
+    
     // MARK: - Properties
     static var slides: [Slide] {
         let slide1: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
@@ -64,6 +71,67 @@ class Slide: UIView {
 //        slide1.gpsLabel.text = "First"
 //        slide1.trackLabel.text = "Label"
         
+        switch type {
+        case .iPhone5_5S_5C_SE:
+            slide1.topConstraint.constant = 123
+            slide1.bottomConstraint.constant = 19
+            slide1.fromBlackToYellow.constant = 82
+            slide1.fromTryFreeToProceed.constant = 34
+            slide1.fromUpgradeToTop.constant = 76
+            slide1.fromNotNowToTop.constant = 35
+        case .iPhone6_6S_7_8_SE2:
+            slide1.topConstraint.constant = 123
+            slide1.bottomConstraint.constant = 19
+            slide1.fromBlackToYellow.constant = 82
+            slide1.fromTryFreeToProceed.constant = 34
+            slide1.fromUpgradeToTop.constant = 76
+            slide1.fromNotNowToTop.constant = 35
+        case .iPhone6Plus_6SPlus_7Plus_8Plus:
+            slide1.topConstraint.constant = 123
+            slide1.bottomConstraint.constant = 19
+            slide1.fromBlackToYellow.constant = 110
+            slide1.fromTryFreeToProceed.constant = 71
+            slide1.fromUpgradeToTop.constant = 76
+            slide1.fromNotNowToTop.constant = 35
+        case .iPhone12Mini:
+            slide1.topConstraint.constant = 148
+            slide1.bottomConstraint.constant = 30
+            slide1.fromBlackToYellow.constant = 100
+            slide1.fromTryFreeToProceed.constant = 72
+            slide1.fromUpgradeToTop.constant = 76
+            slide1.fromNotNowToTop.constant = 35
+        case .iPhoneX_XS_11Pro:
+            slide1.topConstraint.constant = 170
+            slide1.bottomConstraint.constant = 30
+            slide1.fromBlackToYellow.constant = 110
+            slide1.fromTryFreeToProceed.constant = 72
+            slide1.fromUpgradeToTop.constant = 85
+            slide1.fromNotNowToTop.constant = 40
+        case .iPhone12_12Pro:
+            slide1.topConstraint.constant = 200
+            slide1.bottomConstraint.constant = 30
+            slide1.fromBlackToYellow.constant = 118
+            slide1.fromTryFreeToProceed.constant = 67
+            slide1.fromUpgradeToTop.constant = 90
+            slide1.fromNotNowToTop.constant = 45
+        case .iPhoneXR_XSMax_11_11ProMax:
+            slide1.topConstraint.constant = 185
+            slide1.bottomConstraint.constant = 30
+            slide1.fromBlackToYellow.constant = 185
+            slide1.fromTryFreeToProceed.constant = 68
+            slide1.fromUpgradeToTop.constant = 90
+            slide1.fromNotNowToTop.constant = 45
+        case .iPhone12ProMax:
+            slide1.topConstraint.constant = 200
+            slide1.bottomConstraint.constant = 30
+            slide1.fromBlackToYellow.constant = 200
+            slide1.fromTryFreeToProceed.constant = 69
+            slide1.fromUpgradeToTop.constant = 90
+            slide1.fromNotNowToTop.constant = 45
+        default:
+            break
+        }
+        
         let slide2: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide2.yellowView.cornerRadius(to: 25)
         slide2.blackView.cornerRadius(to: 25)
@@ -90,6 +158,59 @@ class Slide: UIView {
         slide2.eulaButton.isEnabled = false
 //        slide2.gpsLabel.text = "Second"
 //        slide2.trackLabel.text = "Label"
+        
+        switch type {
+        case .iPhone5_5S_5C_SE:
+            slide2.topConstraint.constant = 123
+            slide2.bottomConstraint.constant = 19
+            slide2.fromBlackToYellow.constant = 82
+            slide2.fromTryFreeToProceed.constant = 34
+        case .iPhone6_6S_7_8_SE2:
+            slide2.topConstraint.constant = 123
+            slide2.bottomConstraint.constant = 19
+            slide2.fromBlackToYellow.constant = 82
+            slide2.fromTryFreeToProceed.constant = 34
+        case .iPhone6Plus_6SPlus_7Plus_8Plus:
+            slide2.topConstraint.constant = 123
+            slide2.bottomConstraint.constant = 19
+            slide2.fromBlackToYellow.constant = 110
+            slide2.fromTryFreeToProceed.constant = 71
+        case .iPhone12Mini:
+            slide2.topConstraint.constant = 148
+            slide2.bottomConstraint.constant = 30
+            slide2.fromBlackToYellow.constant = 100
+            slide2.fromTryFreeToProceed.constant = 72
+        case .iPhoneX_XS_11Pro:
+            slide2.topConstraint.constant = 170
+            slide2.bottomConstraint.constant = 30
+            slide2.fromBlackToYellow.constant = 110
+            slide2.fromTryFreeToProceed.constant = 72
+            slide2.fromUpgradeToTop.constant = 85
+            slide2.fromNotNowToTop.constant = 40
+        case .iPhone12_12Pro:
+            slide2.topConstraint.constant = 200
+            slide2.bottomConstraint.constant = 30
+            slide2.fromBlackToYellow.constant = 118
+            slide2.fromTryFreeToProceed.constant = 67
+            slide2.fromUpgradeToTop.constant = 90
+            slide2.fromNotNowToTop.constant = 45
+        case .iPhoneXR_XSMax_11_11ProMax:
+            slide2.topConstraint.constant = 185
+            slide2.bottomConstraint.constant = 30
+            slide2.fromBlackToYellow.constant = 185
+            slide2.fromTryFreeToProceed.constant = 68
+            slide2.fromUpgradeToTop.constant = 90
+            slide2.fromNotNowToTop.constant = 45
+        case .iPhone12ProMax:
+            slide2.topConstraint.constant = 200
+            slide2.bottomConstraint.constant = 30
+            slide2.fromBlackToYellow.constant = 200
+            slide2.fromTryFreeToProceed.constant = 69
+            slide2.fromUpgradeToTop.constant = 90
+            slide2.fromNotNowToTop.constant = 45
+        default:
+            break
+        }
         
         let slide3: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide3.yellowView.cornerRadius(to: 0)
@@ -122,6 +243,59 @@ class Slide: UIView {
         slide3.privacyButton.addLine(position: .LINE_POSITION_BOTTOM, color: .mainGray, width: 0.5)
         slide3.eulaButton.isEnabled = true
         slide3.eulaButton.addLine(position: .LINE_POSITION_BOTTOM, color: .mainGray, width: 0.5)
+        
+        switch type {
+        case .iPhone5_5S_5C_SE:
+            slide3.topConstraint.constant = 123
+            slide3.bottomConstraint.constant = 19
+            slide3.fromBlackToYellow.constant = 82
+            slide3.fromTryFreeToProceed.constant = 34
+        case .iPhone6_6S_7_8_SE2:
+            slide3.topConstraint.constant = 123
+            slide3.bottomConstraint.constant = 19
+            slide3.fromBlackToYellow.constant = 82
+            slide3.fromTryFreeToProceed.constant = 34
+        case .iPhone6Plus_6SPlus_7Plus_8Plus:
+            slide3.topConstraint.constant = 123
+            slide3.bottomConstraint.constant = 19
+            slide3.fromBlackToYellow.constant = 110
+            slide3.fromTryFreeToProceed.constant = 71
+        case .iPhone12Mini:
+            slide3.topConstraint.constant = 148
+            slide3.bottomConstraint.constant = 30
+            slide3.fromBlackToYellow.constant = 100
+            slide3.fromTryFreeToProceed.constant = 72
+        case .iPhoneX_XS_11Pro:
+            slide3.topConstraint.constant = 170
+            slide3.bottomConstraint.constant = 30
+            slide3.fromBlackToYellow.constant = 110
+            slide3.fromTryFreeToProceed.constant = 72
+            slide3.fromUpgradeToTop.constant = 85 // ++9
+            slide3.fromNotNowToTop.constant = 40 // ++5
+        case .iPhone12_12Pro:
+            slide3.topConstraint.constant = 200
+            slide3.bottomConstraint.constant = 30
+            slide3.fromBlackToYellow.constant = 118
+            slide3.fromTryFreeToProceed.constant = 67
+            slide3.fromUpgradeToTop.constant = 90 // ++14
+            slide3.fromNotNowToTop.constant = 45 // ++10
+        case .iPhoneXR_XSMax_11_11ProMax:
+            slide3.topConstraint.constant = 185
+            slide3.bottomConstraint.constant = 30
+            slide3.fromBlackToYellow.constant = 185
+            slide3.fromTryFreeToProceed.constant = 68
+            slide3.fromUpgradeToTop.constant = 90 // ++14
+            slide3.fromNotNowToTop.constant = 45 // ++10
+        case .iPhone12ProMax:
+            slide3.topConstraint.constant = 200
+            slide3.bottomConstraint.constant = 30
+            slide3.fromBlackToYellow.constant = 200
+            slide3.fromTryFreeToProceed.constant = 69
+            slide3.fromUpgradeToTop.constant = 90 // ++14
+            slide3.fromNotNowToTop.constant = 45 // ++10
+        default:
+            break
+        }
         
         return [slide1, slide2, slide3]
     }

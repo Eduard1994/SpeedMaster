@@ -40,9 +40,10 @@ class HistoryTableViewCell: UITableViewCell {
             distanceLabel.text = historyModel.historyDistance
             durationLabel.text = historyModel.historyDuration
             data = historyModel.historyAllSpeeds.maximum() > 0 ? historyModel.historyAllSpeeds : [0, 1]
-            graphView.removeFromSuperview()
             calendarView.addSubview(graphView)
             setupConstraints()
+            
+            print("Data is = \(data)")
         }
     }
     

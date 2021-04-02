@@ -146,9 +146,9 @@ fileprivate let activityIndicatorViewTag: Int = 1000
 
 // Public interface
 extension UIView {
-    func displayAnimatedActivityIndicatorView() {
+    func displayAnimatedActivityIndicatorView(with backgroundColor: UIColor, alpha: CGFloat) {
         DispatchQueue.main.async {
-            self.setActivityIndicatorView()
+            self.setActivityIndicatorView(with: backgroundColor, alpha: alpha)
         }
     }
 
@@ -187,9 +187,11 @@ extension UIView {
         return view
     }
 
-    private func setActivityIndicatorView() {
+    private func setActivityIndicatorView(with backgroundColor: UIColor, alpha: CGFloat) {
         guard !isDisplayingActivityIndicatorOverlay() else { return }
         let overlayView: UIView = self.overlayView
+        overlayView.backgroundColor = backgroundColor
+        overlayView.alpha = alpha
         let activityIndicatorView: UIActivityIndicatorView = self.activityIndicatorView
 
         //add subviews

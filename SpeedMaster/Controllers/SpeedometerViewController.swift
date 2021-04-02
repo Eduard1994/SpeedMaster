@@ -7,9 +7,11 @@
 
 import CoreLocation
 import UIKit
+//import StoreKit
+//import SwiftyStoreKit
 
 class SpeedometerViewController: UIViewController {
-
+    
     // MARK: - IBOutlets
     @IBOutlet weak var allowLocationView: UIView!
     @IBOutlet weak var resetButton: UIButton!
@@ -18,9 +20,11 @@ class SpeedometerViewController: UIViewController {
     private let locationManager = CLLocationManager()
     private let service = Service()
     private var weather: Weather!
+    private var iapHelper: IAPHelper!
     
     /// Main Timer
     var timer = Timer()
+    var user = User.currentUser
     
     /// Boolean to check if the speedometer started
     var started: Bool = false {
@@ -59,18 +63,16 @@ class SpeedometerViewController: UIViewController {
         }
     }
     
+    /// Current Location
+    var location: CLLocation! {
+        willSet {
+            speedometerView.location = newValue
+        }
+    }
+    
     var startLocation: CLLocation!
     var lastLocation: CLLocation!
-    
-    /// Total Data
-    var currentDate: Date = Date()
-    var maxSpeed: Double!
-    var minSpeed: Double!
-    var avrSpeed: Double!
-    var windSpeed: Double!
-    var duration: Double!
-    var distance: Double!
-    var allSpeeds: [Double]!
+    var weatherCallTimesPerApp = 0
     
     /// Main Speedometer View
     lazy var speedometerView: SpeedometerView = {
@@ -106,7 +108,14 @@ class SpeedometerViewController: UIViewController {
         super.viewDidLoad()
         locationManager.delegate = self
         configureView()
-        presentOnboarding()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     deinit {
@@ -115,6 +124,9 @@ class SpeedometerViewController: UIViewController {
     
     // MARK: - Functions
     private func configureView() {
+        NotificationCenter.default.addObserver(self, selector: #selector(launchRemoved), name: launchRemovedNotification, object: nil)
+        iapHelper = IAPHelper.shared
+        
         view.addSubview(speedometerView)
         resetButton.cornerRadius(to: 20)
         resetButton.addBorder(width: 2.0, color: .mainWhite)
@@ -128,17 +140,58 @@ class SpeedometerViewController: UIViewController {
     private func setupConstraints() {
         speedometerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         speedometerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        speedometerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
-        speedometerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -187).isActive = true
+        
+        switch type {
+        case .iPhone5_5S_5C_SE:
+            speedometerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
+            speedometerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -187).isActive = true
+        case .iPhone6_6S_7_8_SE2:
+            speedometerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
+            speedometerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -187).isActive = true
+        case .iPhone6Plus_6SPlus_7Plus_8Plus:
+            speedometerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
+            speedometerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -245).isActive = true
+        case .iPhone12Mini:
+            speedometerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 45).isActive = true
+            speedometerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -245).isActive = true
+        case .iPhoneX_XS_11Pro:
+            speedometerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 45).isActive = true
+            speedometerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -257).isActive = true
+        case .iPhone12_12Pro:
+            speedometerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 45).isActive = true
+            speedometerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -327).isActive = true
+        case .iPhoneXR_XSMax_11_11ProMax:
+            speedometerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 45).isActive = true
+            speedometerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -327).isActive = true
+        case .iPhone12ProMax:
+            speedometerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 45).isActive = true
+            speedometerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -347).isActive = true
+        default:
+            speedometerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 45).isActive = true
+            speedometerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -187).isActive = true
+        }
+    }
+    
+    // MARK: - Removed LaunchView
+    @objc func launchRemoved() {
+        print("All Prices = \(allPrices)")
+        print("All Products = \(allProducts)")
+        print("All Product IDs = \(allProductIDs)")
+        print("Purchased = \(purchasedAny)")
+        
+        if !purchasedAny {//&& service.isConnectedToInternet {
+            self.presentOnboarding(with: allProductIDs)
+        }
     }
     
     // MARK: - Presenting Onboarding
-    private func presentOnboarding() {
+    private func presentOnboarding(with productIDs: Set<ProductID>) {
         if UserDefaults.standard.bool(forKey: kOnboardingStatus) != true {
-            onBoardingVC.modalPresentationStyle = .fullScreen
-//            onBoardingVC.store = self.store Will be updated soon
+            onBoardingVC.productIDs = productIDs
+            onBoardingVC.delegate = self
             if presentedViewController != onBoardingVC {
-                self.present(onBoardingVC, animated: true) {
+                presentedViewController?.removeFromParent()
+                self.presentOverFullScreen(onBoardingVC, animated: true) {
                     UserDefaults.standard.set(true, forKey: kOnboardingStatus)
                 }
             }
@@ -177,23 +230,21 @@ class SpeedometerViewController: UIViewController {
     }
     
     /// Updating Weather data
-    private func updateWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        DispatchQueue.global(qos: .userInitiated).async {
+    private func updateWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (Weather?) -> Void) {
+        DispatchQueue.global().async {
             self.service.getWeather(latitude: latitude, longitude: longitude) { (weather, error) in
                 if let error = error {
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
                         ErrorHandling.showError(message: error.localizedDescription, controller: self)
                         self.locationManager.stopUpdatingLocation()
+                        completion(nil)
                     }
                     return
                 }
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
+                DispatchQueue.main.async {
                     if let weather = weather {
-                        let temp = weather.current?.temp
-                        self.weather = weather
-                        self.speedometerView.updateWeather(temp: temp)
+                        completion(weather)
                     }
                 }
             }
@@ -240,7 +291,21 @@ class SpeedometerViewController: UIViewController {
         
         updateDistance(locations: locations)
         update(with: speed, at: latitude, longitude: longitude)
-        updateWeather(latitude: latitude, longitude: longitude)
+        if weatherCallTimesPerApp < 1 {
+            self.weatherCallTimesPerApp += 1
+            updateWeather(latitude: latitude, longitude: longitude) { weather in
+                DispatchQueue.main.async {
+                    if let weather = weather {
+                        let temp = weather.current?.temp
+                        self.weather = weather
+                        self.speedometerView.updateWeather(temp: temp)
+                    }
+                }
+            }
+        }
+        
+        self.location = location
+        self.weatherVC.location = location
     }
     
     private func startLocationManager() {
@@ -282,8 +347,24 @@ class SpeedometerViewController: UIViewController {
     
     /// Adding History
     private func addHistory() {
-        guard let userID = User.currentUser?.uid else {
-            ErrorHandling.showError(message: "No User found", controller: self)
+        guard let userID = user?.uid else {
+            service.checkUser { (user, error) in
+                if let error = error {
+                    DispatchQueue.main.async {
+                        ErrorHandling.showError(message: error.localizedDescription, controller: self)
+                        self.reset()
+                        return
+                    }
+                }
+                if let user = user {
+                    self.user = user
+                    self.addHistory()
+                } else {
+                    ErrorHandling.showError(title: "No User found", message: "Check Internet Connectivity and Try Again.", controller: self)
+                    self.reset()
+                    return
+                }
+            }
             return
         }
         
@@ -296,7 +377,7 @@ class SpeedometerViewController: UIViewController {
         let allSpeeds = average.map { $0.rounded(toPlaces: 1) }
         let speedMetric = Settings.unit.rawValue
         let distanceMetric = Settings.unit.distanceMetric
-
+        
         let history = History(userID: userID, maxSpeed: maxSpeed, minSpeed: minSpeed, avrSpeed: avrSpeed, windSpeed: windSpeed, duration: duration, distance: distance, allSpeeds: allSpeeds, date: Date().formattedDateString(), collapsed: true, speedMetric: speedMetric, distanceMetric: distanceMetric)
         print("History = \(history)")
         
@@ -316,6 +397,7 @@ class SpeedometerViewController: UIViewController {
                 if sucess {
                     DispatchQueue.main.async {
                         self.reset()
+                        self.tabBarController?.selectedIndex = 0
                     }
                 }
             }
@@ -376,16 +458,24 @@ extension SpeedometerViewController: SpeedometerDelegate {
     
     func tappedWeather() {
         print("Tapped weather")
-        if let weather = weather {
-            weatherVC.temperature = weather.current?.temp
-            weatherVC.windSpeed = weather.current?.windSpeed
-            weatherVC.uvIndex = weather.current?.uvi
-            weatherVC.sunset = weather.current?.sunset
-            weatherVC.sunrise = weather.current?.sunrise
-            weatherVC.windDegree = weather.current?.windDeg
-            weatherVC.pressure = weather.current?.pressure
-            weatherVC.type = weather.current?.weather?.last?.main?.rawValue
+        print(weatherCallTimesPerApp)
+        
+        guard let location = location else {
+            presentPopover(weatherVC, animated: true)
+            return
         }
+        weatherVC.location = location
         presentPopover(weatherVC, animated: true)
+    }
+}
+
+// MARK: - Upgrade From Onboarding Delegate {
+extension SpeedometerViewController: UpgradeFromOnboardingDelegate {
+    func dismissFromUpgrade() {
+        print("Dismissed")
+    }
+    
+    func purchased(purchases: [ProductID]) {
+        print(purchases)
     }
 }

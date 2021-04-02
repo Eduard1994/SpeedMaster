@@ -29,9 +29,11 @@ let dismissNotification: Notification.Name = Notification.Name(rawValue: "Dismis
 let subTypeNotificationIndex: Notification.Name = Notification.Name("NotificationIndex")
 let unitChangedNotification: Notification.Name = Notification.Name("UnitChanged")
 let sortChangedNotification: Notification.Name = Notification.Name("SortChanged")
+let removeLaunchNotification: Notification.Name = Notification.Name("RemoveLaunch")
+let launchRemovedNotification: Notification.Name = Notification.Name("LaunchRemoved")
 
 // MARK: - Weather
-let kWeatherAPIKey = "7ac83b29202bdc37108dd156f49bdf2b"
+let kWeatherAPIKey = "fe1a72d54b0969886af54e8261882ead" // Last One 7ac83b29202bdc37108dd156f49bdf2b
 let kWeatherURL = "https://api.openweathermap.org/data/2.5/onecall"
 
 // MARK: Units
@@ -39,3 +41,6 @@ let kSelectedUnit = "unit"
 
 // MARK: - Sorting
 let kSelectedSort = "sort"
+
+// MARK: - Apple Shared Secret
+let kAppleSharedSecret = "1ae62ca01d8b4aedbc80bdd16c9e7e47"

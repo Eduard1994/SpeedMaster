@@ -988,7 +988,7 @@ fileprivate class SGVQueue<T> {
 
 // We have to be our own data source for interface builder.
 #if TARGET_INTERFACE_BUILDER
-public extension ScrollableGraphView : ScrollableGraphViewDataSource {
+extension ScrollableGraphView : ScrollableGraphViewDataSource {
     
     var numberOfDisplayItems: Int {
         get {
@@ -1002,15 +1002,15 @@ public extension ScrollableGraphView : ScrollableGraphViewDataSource {
         }
     }
     
-    public func value(forPlot plot: Plot, atIndex pointIndex: Int) -> Double {
+    func value(forPlot plot: Plot, atIndex pointIndex: Int) -> Double {
         return linePlotData[pointIndex]
     }
     
-    public func label(atIndex pointIndex: Int) -> String {
+    func label(atIndex pointIndex: Int) -> String {
         return "\(pointIndex)"
     }
     
-    public func numberOfPoints() -> Int {
+    func numberOfPoints() -> Int {
         return numberOfDisplayItems
     }
     

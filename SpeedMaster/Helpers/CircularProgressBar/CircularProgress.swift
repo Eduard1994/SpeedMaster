@@ -412,7 +412,20 @@ public class CircularProgress: UIView, CAAnimationDelegate {
             imageCtx?.setLineWidth(progressLineWidth)
             imageCtx?.drawPath(using: .stroke)
             
-            for thickness in 24...46 {
+            var range = 24...46
+            
+            switch type {
+            case .iPhone12_12Pro:
+                range = 26...48
+            case .iPhoneXR_XSMax_11_11ProMax:
+                range = 28...55
+            case .iPhone12ProMax:
+                range = 28...55
+            default:
+                range = 24...46
+            }
+            
+            for thickness in range {
                 drawLines(from: ctx, ringThickness: Double(thickness))
             }
             
@@ -441,6 +454,7 @@ public class CircularProgress: UIView, CAAnimationDelegate {
             let center = CGPoint(x: bounds.width/2, y: bounds.height/2)
             let ringRadius = Double(min(bounds.width, bounds.height))/2 - ringThickness/2
             let dotRadius = ringRadius - ringThickness/2 - divisionsPadding - divisionsRadius/2
+            
             if numOfDivisions != 0 {
                 for i in 0...numOfDivisions {
                     if i != numOfDivisions && numOfSubDivisions != 0 {

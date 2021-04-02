@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import StoreKit
+//import StoreKit
 import MessageUI
 
 let scrollViewContentHeight = 1200 as CGFloat
@@ -37,6 +37,7 @@ class SettingsViewController: UIViewController {
     
     var settings: [Settings] = [] {
         didSet {
+            tableViewHeight.constant = tableView.estimatedRowHeight * CGFloat(settings.count)
             self.reloadTableView()
         }
     }
@@ -51,15 +52,26 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    var products: [SKProduct] = []
-    var store: IAPManager!
-    var subscriptions: Subscriptions = Subscriptions()
     let service = Service()
     
     // MARK: - View LyfeCicle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("All Prices = \(allPrices)")
+        print("All Products = \(allProducts)")
+        print("All Product IDs = \(allProductIDs)")
+        print("Purchased = \(purchasedAny)")
+        
+        reloadViewIfUpgraded()
     }
     
     // MARK: - Functions
@@ -75,7 +87,7 @@ class SettingsViewController: UIViewController {
         tableView.estimatedRowHeight = 65
         tableView.rowHeight = UITableView.automaticDimension
         
-        tableViewHeight.constant = view.frame.height - 200
+//        tableViewHeight.constant = view.frame.height - 200
         tableView.isScrollEnabled = false
         
         scrollView.isScrollEnabled = true
@@ -127,6 +139,16 @@ class SettingsViewController: UIViewController {
         settings = Settings.settings()
     }
     
+    /// Reloading view after upgrading/restoring products
+    private func reloadViewIfUpgraded() {
+        if purchasedAny {
+            tableView.isScrollEnabled = true
+            upgradeViewHeight.constant = 0
+            tableViewTop.constant = 60
+            reloadSettings()
+        }
+    }
+    
     private func contactUs() {
         self.alert(title: nil, message: "Do you want to contact us?", preferredStyle: .actionSheet, cancelTitle: "Cancel", cancelHandler: nil, actionTitle: "Contact via Email") {
             if MFMailComposeViewController.canSendMail() {
@@ -153,23 +175,62 @@ class SettingsViewController: UIViewController {
         self.present(activityVC, animated: true, completion: nil)
     }
     
-    // MARK: - OBJC Functions
-    @objc private func notifiedToUpgrade() {
+    // MARK: - Presenting UpgradeFromSettingsVC
+    private func presentUpgradeFromSettingsVC(with productIDs: Set<ProductID>, allPrices: [String: String]) {
+        var annualPrice: String = "--"
+        var monthlyPrice: String = "--"
+        var weeklyPrice: String = "--"
+        for (title, price) in allPrices {
+            if title.contains("Monthly") {
+                monthlyPrice = price
+            } else if title.contains("Yearly") {
+                annualPrice = price
+            } else if title.contains("Weekly") {
+                weeklyPrice = price
+            }
+        }
+        upgradeFromSettingsVC.productIDs = productIDs
+        upgradeFromSettingsVC.monthlyPrice = monthlyPrice
+        upgradeFromSettingsVC.annualPrice = annualPrice
+        upgradeFromSettingsVC.weeklyPrice = weeklyPrice
         
+        upgradeFromSettingsVC.delegate = self
+        if presentedViewController != upgradeFromSettingsVC {
+            self.presentOverFullScreen(upgradeFromSettingsVC, animated: true)
+        }
     }
     
-    @objc private func notifiedToShowError() {
-        ErrorHandling.showError(message: NetworkError.noInternet.localizedDescription, controller: self)
+    /// Trying to restore purchases
+    private func restorePurchases() {
+        displayAnimatedActivityIndicatorView()
+        IAPHelper.shared.restorePurchases { (results) in
+            IAPHelper.shared.finishingRestoring(restoreResults: results)
+            if results.restoreFailedPurchases.count > 0 {
+                self.hideAnimatedActivityIndicatorView()
+                ErrorHandling.showError(title: "Restore Failed", message: "Please check Internet Connectivity and try again or Contact Support", controller: self)
+                print("Restore Failed: \(results.restoreFailedPurchases), Please contact support")
+            } else if results.restoredPurchases.count > 0 {
+                self.hideAnimatedActivityIndicatorView()
+                purchasedAny = true
+                self.alert(title: "Restored Successfully", message: nil, preferredStyle: .alert, cancelTitle: nil, cancelHandler: nil, actionTitle: "OK", actionHandler: {
+                    self.reloadViewIfUpgraded()
+                })
+                print("Restore Success: \(results.restoredPurchases), All purchases have been restored")
+            } else {
+                print("Nothing to Restore, No previous purchases were found")
+                self.hideAnimatedActivityIndicatorView()
+                ErrorHandling.showError(title: "Nothing to Restore", message: "No previous purchases were found", controller: self)
+            }
+        }
     }
+    
+    // MARK: - OBJC Functions
     
     // MARK: - IBActions
     @IBAction func upgradeTapped(_ sender: Any) {
-        presentOverFullScreen(upgradeFromSettingsVC, animated: true)
-//        print("Upgrade tapped")
-//        upgradeViewHeight.constant = 0
-//        upgradeView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-//        tableViewTop.constant = 60
-//        self.reloadSettings()
+//        presentOverFullScreen(upgradeFromSettingsVC, animated: true)
+        presentUpgradeFromSettingsVC(with: allProductIDs, allPrices: allPrices)
+        print("Upgrade tapped")
     }
 }
 
@@ -199,13 +260,15 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             measureVC.delegate = self
             push(measureVC, animated: true)
         case 1:
-            print("Restoring...") // Will be updated
+            print("Restoring...")
+            restorePurchases()
         case 2:
             openURL(path: kPolicyURL)
         case 3:
             openURL(path: kTermsURL)
         case 4:
-            print("Rate Tapped") // Will be updated
+            print("Rate Tapped")
+            self.alert(title: "Rate the App Feature Coming Soon", message: nil, preferredStyle: .alert, cancelTitle: nil, cancelHandler: nil, actionTitle: "OK", actionHandler: nil)
         case 5:
             print("Share Tapped")
             shareApp()
@@ -233,3 +296,22 @@ extension SettingsViewController: UpdateUnit {
         NotificationCenter.default.post(name: unitChangedNotification, object: nil)
     }
 }
+
+// MARK: - Dismiss From Upgrade Delegate
+extension SettingsViewController: UpgradeFromSettingsDelegate {
+    func purchased(purchases: [ProductID]) {
+        print(purchases)
+        print("Purchased")
+        print("All Prices = \(allPrices)")
+        print("All Products = \(allProducts)")
+        print("All Product IDs = \(allProductIDs)")
+        print("Purchased = \(purchasedAny)")
+        
+        reloadViewIfUpgraded()
+    }
+    
+    func dismissFromUpgrade() {
+        print("Dismissed")
+    }
+}
+

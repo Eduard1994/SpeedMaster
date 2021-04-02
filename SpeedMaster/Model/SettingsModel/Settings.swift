@@ -26,10 +26,10 @@ struct Settings {
             Settings(title: "Measure units", imageName: "settingsMeasureImage", speed: unit.rawValue),
             Settings(title: "Restore purchases", imageName: "settingsRestoreImage", speed: nil),
             Settings(title: "Privacy policy", imageName: "settingsPrivacyImage", speed: nil),
-            Settings(title: "Terms of service", imageName: "settingsPrivacyImage", speed: nil), // Will be changed soon
+            Settings(title: "Terms of service", imageName: "settingsTermsImage", speed: nil),
             Settings(title: "Rate the app", imageName: "settingsRateImage", speed: nil),
             Settings(title: "Share with friends", imageName: "settingsShareImage", speed: nil),
-            Settings(title: "Support", imageName: "settingsShareImage", speed: nil)  // Will be changed soon
+            Settings(title: "Support", imageName: "settingsSupportImage", speed: nil)
         ]
     }
 }

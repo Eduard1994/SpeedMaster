@@ -31,7 +31,7 @@ struct OnboardingTitle {
     var startMonthlySecondTitle: String
     var privacyEulaTitle: String
     
-    init(closeButton: Bool = false, firstTitle: String = "Upgrade to premium", secondTitle: String = "Enjoy full version of app without ads", gpsTitle: String = "GPS Speedometer", gpsSecondTitle: String = "Track your daily travelling activities with accurate speed data", tripTitle: String = "Trip History", tripSecondTitle: String = "Trip history is the automatic feature that will help you to save information within app", basicTitle: String = "Proceed with Basic", tryFreeTitle: String = "Try Free and subscribe", startMonthlyFirstTitle: String = "Start Monthly Plan", startMonthlySecondTitle: String = "$99.99 a month", privacyEulaTitle: String = "This trial automatically renews into a paidsubscribtion and will continue to automatically renew until you cancel. Please see our") {
+    init(closeButton: Bool = true, firstTitle: String = "Upgrade to premium", secondTitle: String = "Start your 3-day free trial. Then ", gpsTitle: String = "GPS Speedometer", gpsSecondTitle: String = "Track your daily travelling activities with accurate speed data", tripTitle: String = "Trip History", tripSecondTitle: String = "Trip history is the automatic feature that will help you to save information within app", basicTitle: String = "Proceed with Basic", tryFreeTitle: String = "Try Free and Subscribe", startMonthlyFirstTitle: String = "Start Monthly Plan", startMonthlySecondTitle: String = "-- a month", privacyEulaTitle: String = "This trial automatically renews into a paidsubscribtion and will continue to automatically renew until you cancel. Please see our") {
         self.ref = nil
         self.key = nil
         self.closeButton = closeButton
@@ -116,7 +116,7 @@ struct SubscribeTitle {
     var weeklyFirstTitle: String
     var weeklySecondTitle: String
     
-    init(closeButton: Bool = false, firstTitle: String = "Upgrade to premium", annualFirstTitle: String = "Annual", annualSecondTitle: String = "3 day trial - then 9.99/month", monthlyFirstTitle: String = "Monthly", monthlySecondTitle: String = "3 day trial - then 9.99/month", weeklyFirstTitle: String = "Weekly", weeklySecondTitle: String = "3 day trial - then 6.99/month") {
+    init(closeButton: Bool = true, firstTitle: String = "Full access", annualFirstTitle: String = "Annual", annualSecondTitle: String = "3 day trial - then", monthlyFirstTitle: String = "Monthly", monthlySecondTitle: String = "3 day trial - then", weeklyFirstTitle: String = "Weekly", weeklySecondTitle: String = "3 day trial - then") {
         self.ref = nil
         self.key = nil
         self.closeButton = closeButton

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class WeatherViewController: UIViewController {
     
@@ -20,14 +21,37 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var pressureLabel: UILabel!
     @IBOutlet weak var sunriseLabel: UILabel!
     
-    var temperature: Double!
-    var windSpeed: Double!
-    var uvIndex: Double!
-    var sunset: Int!
-    var sunrise: Int!
-    var windDegree: Int!
-    var pressure: Int!
-    var type: String!
+    var emptyData = "--"
+    var location: CLLocation?
+    
+    var weather: Weather! {
+        willSet {
+            if let temperature = newValue.current?.temp {
+                weatherDegree.text = convertTemp(temp: temperature, from: .kelvin, to: .celsius)
+            }
+            if let windSpeed = newValue.current?.windSpeed {
+                windLabel.text = "\(windSpeed) m/s"
+            }
+            if let uvIndex = newValue.current?.uvi {
+                uvLabel.text = "\(uvIndex)"
+            }
+            if let sunset = newValue.current?.sunset {
+                sunsetLabel.text = fromIntToDate(time: sunset)
+            }
+            if let sunrise = newValue.current?.sunrise {
+                sunriseLabel.text = fromIntToDate(time: sunrise)
+            }
+            if let windDegree = newValue.current?.windDeg {
+                wDirectionLabel.text = "\(Double(windDegree).direction)"
+            }
+            if let pressure = newValue.current?.pressure {
+                pressureLabel.text = "\(pressure) hPa"
+            }
+            if let type = newValue.current?.weather?.last?.weatherDescription?.rawValue {
+                weatherType.text = type.uppercased()
+            }
+        }
+    }
     
     // MARK: - View LyfeCicle
     override func viewDidLoad() {
@@ -37,48 +61,39 @@ class WeatherViewController: UIViewController {
     
     // MARK: - Functions
     private func configureView() {
-        var tempDegree: String = "--"
-        var windSpeedText: String = "--"
-        var uvIndexText: String = "--"
-        var sunsetText: String = "--"
-        var sunriseText: String = "--"
-        var windDegreeText: String = "--"
-        var pressureText: String = "--"
-        var weatherType: String = "--"
-        
-        if let temperature = temperature {
-            tempDegree = convertTemp(temp: temperature, from: .kelvin, to: .celsius)
+        guard let location = location else {
+            weatherDegree.text = emptyData
+            windLabel.text = emptyData
+            uvLabel.text = emptyData
+            sunsetLabel.text = emptyData
+            sunriseLabel.text = emptyData
+            wDirectionLabel.text = emptyData
+            pressureLabel.text = emptyData
+            weatherType.text = emptyData
+            return
         }
-        if let windSpeed = windSpeed {
-            windSpeedText = "\(windSpeed) meter/s"
+        getWeather(from: location)
+    }
+    
+    private func getWeather(from location: CLLocation) {
+        DispatchQueue.global().async {
+            Service().getWeather(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) { (weather, error) in
+                if let error = error {
+                    DispatchQueue.main.async {
+                        ErrorHandling.showError(message: error.localizedDescription, controller: self)
+                    }
+                    return
+                }
+                
+                if let weather = weather {
+                    print("Here")
+                    print(weather)
+                    DispatchQueue.main.async {
+                        self.weather = weather
+                    }
+                }
+            }
         }
-        if let uvIndex = uvIndex {
-            uvIndexText = "\(uvIndex)"
-        }
-        if let sunset = sunset {
-            sunsetText = fromIntToDate(time: sunset)
-        }
-        if let sunrise = sunrise {
-            sunriseText = fromIntToDate(time: sunrise)
-        }
-        if let windDegree = windDegree {
-            windDegreeText = "\(Double(windDegree).direction)"
-        }
-        if let pressure = pressure {
-            pressureText = "\(pressure) hPa"
-        }
-        if let type = type {
-            weatherType = type
-        }
-        
-        self.weatherType.text = weatherType
-        weatherDegree.text = tempDegree
-        windLabel.text = windSpeedText
-        uvLabel.text = uvIndexText
-        sunsetLabel.text = sunsetText
-        sunriseLabel.text = sunriseText
-        wDirectionLabel.text = windDegreeText
-        pressureLabel.text = pressureText
     }
     
     // MARK: - IBActions

@@ -252,9 +252,9 @@ extension UIViewController {
         return view
     }
 
-    func displayAnimatedActivityIndicatorView() {
+    func displayAnimatedActivityIndicatorView(with backgroundColor: UIColor = .black, alpha: CGFloat = 0.5) {
         DispatchQueue.main.async {
-            self.overlayContainerView.displayAnimatedActivityIndicatorView()
+            self.overlayContainerView.displayAnimatedActivityIndicatorView(with: backgroundColor, alpha: alpha)
         }
     }
 

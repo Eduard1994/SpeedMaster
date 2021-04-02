@@ -57,6 +57,7 @@ class MainTabBarViewController: UITabBarController {
 
         let tabBarList = [historyVC, speedometerVC, settingsVC]
         
+        print("tab bar height = \(tabBar.frame.size.height)")
         viewControllers = tabBarList
         
         selectedIndex = 1

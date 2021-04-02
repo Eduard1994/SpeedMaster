@@ -123,7 +123,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmr-13-NKz">
                                     <rect key="frame" x="15" y="27" width="219" height="29"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
-                                    <state key="normal" title="$99.99 a month">
+                                    <state key="normal" title="-- a month">
                                         <color key="titleColor" red="0.52549019607843139" green="0.52549019607843139" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
@@ -214,7 +214,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upgrade to premium" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qA4-4A-Ago">
-                    <rect key="frame" x="10" y="76" width="355" height="84"/>
+                    <rect key="frame" x="40" y="76" width="295" height="84"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-BlackItalic" family="SF Pro Display" pointSize="35"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -233,8 +233,8 @@
                         <constraint firstAttribute="height" constant="70" id="n0B-Z2-v83"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start your 7-day free trial.  Then $99.99 a month" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywf-9z-Ppp">
-                    <rect key="frame" x="15" y="251" width="345" height="43"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start your ---day free trial.  Then -- a month" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywf-9z-Ppp">
+                    <rect key="frame" x="40" y="251" width="295" height="43"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="18"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -242,7 +242,7 @@
             </subviews>
             <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="qA4-4A-Ago" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="0h5-IK-4Sl"/>
+                <constraint firstItem="qA4-4A-Ago" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="0h5-IK-4Sl"/>
                 <constraint firstAttribute="bottom" secondItem="jdh-VE-Ciw" secondAttribute="bottom" constant="15" id="3kg-am-Cav"/>
                 <constraint firstItem="iQ3-Nx-3eg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="6nz-Y8-zKY"/>
                 <constraint firstItem="81V-C3-Jdv" firstAttribute="trailing" secondItem="cEx-iq-gch" secondAttribute="trailing" constant="37.5" id="8UK-EL-pFz"/>
@@ -258,10 +258,10 @@
                 <constraint firstItem="cEx-iq-gch" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="123" id="jXH-c7-6DM"/>
                 <constraint firstItem="81V-C3-Jdv" firstAttribute="top" secondItem="cEx-iq-gch" secondAttribute="top" constant="-37.5" id="jmM-3K-Kad"/>
                 <constraint firstItem="UgZ-XA-Lt8" firstAttribute="trailing" secondItem="qmx-c1-OWa" secondAttribute="trailing" constant="10" id="swK-MC-226"/>
-                <constraint firstAttribute="trailing" secondItem="qA4-4A-Ago" secondAttribute="trailing" constant="10" id="tNv-bv-Lel"/>
+                <constraint firstAttribute="trailing" secondItem="qA4-4A-Ago" secondAttribute="trailing" constant="40" id="tNv-bv-Lel"/>
                 <constraint firstItem="ywf-9z-Ppp" firstAttribute="top" secondItem="UgZ-XA-Lt8" secondAttribute="bottom" id="uCK-UC-JUE"/>
                 <constraint firstItem="ywf-9z-Ppp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vv2-63-2Qu"/>
-                <constraint firstItem="ywf-9z-Ppp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="z1L-4z-Vrx"/>
+                <constraint firstItem="ywf-9z-Ppp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="z1L-4z-Vrx"/>
             </constraints>
             <connections>
                 <outlet property="barImage" destination="UgZ-XA-Lt8" id="bq1-uv-5De"/>
@@ -269,7 +269,12 @@
                 <outlet property="blackViewBottom" destination="3kg-am-Cav" id="oIY-Uz-qKW"/>
                 <outlet property="blackViewLeading" destination="LL2-vX-R4J" id="PPb-S5-Vfu"/>
                 <outlet property="blackViewTrailing" destination="Hu4-Yd-Mka" id="Vd3-Zq-mv0"/>
+                <outlet property="bottomConstraint" destination="jeP-9V-SU7" id="2S0-ee-tk8"/>
                 <outlet property="eulaButton" destination="tk5-Th-uTp" id="TWA-Eq-0Er"/>
+                <outlet property="fromBlackToYellow" destination="TOm-5K-sg6" id="dA8-lh-F2d"/>
+                <outlet property="fromNotNowToTop" destination="6nz-Y8-zKY" id="gxo-D4-UDl"/>
+                <outlet property="fromTryFreeToProceed" destination="iPa-Qo-lIr" id="U39-1o-HXj"/>
+                <outlet property="fromUpgradeToTop" destination="enh-Ah-Btn" id="NIK-rC-Vzo"/>
                 <outlet property="gpsLabel" destination="aM0-su-VQF" id="2Zx-RH-tA3"/>
                 <outlet property="imageView" destination="6wn-MO-7ek" id="S6H-qz-0Gh"/>
                 <outlet property="imageViewLeading" destination="iMj-eU-PCi" id="zWX-zE-Myn"/>
@@ -285,6 +290,7 @@
                 <outlet property="startMonthlyButton" destination="yUy-ud-cUd" id="oME-q2-dwR"/>
                 <outlet property="startMonthlySecondButton" destination="bmr-13-NKz" id="gyC-MB-IyP"/>
                 <outlet property="startMonthlyView" destination="7Pu-Ls-VS9" id="dEc-28-SF2"/>
+                <outlet property="topConstraint" destination="jXH-c7-6DM" id="t0Q-yA-MYf"/>
                 <outlet property="trackLabel" destination="0Kz-K4-wry" id="M3c-Ih-NJq"/>
                 <outlet property="tryFreeButton" destination="0bE-Xs-6CS" id="9cT-FH-uW4"/>
                 <outlet property="upgradeLabel" destination="qA4-4A-Ago" id="sOV-Pf-DSZ"/>

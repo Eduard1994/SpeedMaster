@@ -9,22 +9,22 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
-import SwiftyStoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var iapHelper: IAPHelper!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        UITabBar.setTransparentTabBar()
         FirebaseApp.configure()
         
-        checkUser()
+//        checkUser()
+        setupIAP()
         
-        UITabBar.setTransparentTabBar()
-        
-        Switcher.updateRootVC()
+        Switcher.shared.updateRootVC()
         return true
     }
     
@@ -37,6 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(error!.localizedDescription)
             }
         }
+    }
+    
+    // MARK: - Setup IAP
+    func setupIAP() {
+        iapHelper = IAPHelper.shared
+        
+        iapHelper.setupIAP()
+        
     }
 }
 

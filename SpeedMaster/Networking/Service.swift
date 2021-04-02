@@ -47,9 +47,6 @@ class Service {
     
     let path = URL(fileURLWithPath: NSTemporaryDirectory())
     
-    let queue = DispatchQueue.global(qos: .userInitiated)
-    let group = DispatchGroup()
-    
     var isConnectedToInternet: Bool {
         return NetworkReachabilityManager()!.isReachable
     }
@@ -67,6 +64,8 @@ class Service {
                 }
                 
                 guard let user = authResult?.user else {
+                    print("User is nil")
+                    completion(nil, .unowned(description: "Couldn't connect to Firebase"))
                     return
                 }
                 
@@ -84,6 +83,8 @@ class Service {
                 currentUserReference.setValue(uniqueDeviceID)
                 
                 print("User is = \(uniqueDeviceID), \(currentUser.uid)")
+                
+                User.currentUser = currentUser
                 
                 completion(currentUser, nil)
             }
@@ -104,6 +105,8 @@ class Service {
                     let productIDs: Set<ProductID> = [annualProductID, monthlyProductID, weeklyProductID]
                     
                     completion(productIDs, nil)
+                } else {
+                    completion(nil, .unowned(description: "Couldn't connect to Firebase"))
                 }
             }
         } else {
@@ -117,6 +120,8 @@ class Service {
             premiumTitlesReference.child(premium).observe(.value) { (snapshot) in
                 if let title = OnboardingTitle(snapshot: snapshot) {
                     completion(title, nil)
+                } else {
+                    completion(nil, .unowned(description: "Couldn't connect to Firebase"))
                 }
             }
         } else {
@@ -130,6 +135,8 @@ class Service {
             premiumTitlesReference.child(premium).observe(.value) { (snapshot) in
                 if let title = SubscribeTitle(snapshot: snapshot) {
                     completion(title, nil)
+                } else {
+                    completion(nil, .unowned(description: "Couldn't connect to Firebase"))
                 }
             }
         } else {
@@ -143,6 +150,8 @@ class Service {
             premiumTitlesReference.child(premium).observe(.value) { (snapshot) in
                 if let title = SettingsTitle(snapshot: snapshot) {
                     completion(title, nil)
+                } else {
+                    completion(nil, .unowned(description: "Couldn't connect to Firebase"))
                 }
             }
         } else {
@@ -225,7 +234,6 @@ class Service {
     
     // MARK: - Getting weather data
     func getWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping(Weather?, NetworkError?) -> Void) {
-        
         let semaphore = DispatchSemaphore (value: 0)
         let session = URLSession.shared
         
@@ -241,6 +249,10 @@ class Service {
                 }
             }
             
+            if let response = response {
+                print(response)
+            }
+            
             guard let weather = weather else {
                 completion(nil, nil)
                 return
@@ -252,10 +264,5 @@ class Service {
         }
         task.resume()
         semaphore.wait()
-//        if isConnectedToInternet {
-//
-//        } else {
-//            completion(nil, .noInternet)
-//        }
     }
 }
