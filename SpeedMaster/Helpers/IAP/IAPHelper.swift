@@ -9,6 +9,8 @@ import Foundation
 import SwiftyStoreKit
 import StoreKit
 
+public typealias ProductID = String
+
 var allPrices: [String: String] = [:]
 var allProducts: Set<SKProduct> = []
 var allProductIDs: Set<ProductID> = []

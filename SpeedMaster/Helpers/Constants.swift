@@ -29,7 +29,6 @@ let dismissNotification: Notification.Name = Notification.Name(rawValue: "Dismis
 let subTypeNotificationIndex: Notification.Name = Notification.Name("NotificationIndex")
 let unitChangedNotification: Notification.Name = Notification.Name("UnitChanged")
 let sortChangedNotification: Notification.Name = Notification.Name("SortChanged")
-let removeLaunchNotification: Notification.Name = Notification.Name("RemoveLaunch")
 let launchRemovedNotification: Notification.Name = Notification.Name("LaunchRemoved")
 
 // MARK: - Weather

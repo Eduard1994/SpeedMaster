@@ -107,7 +107,6 @@
 		FFB74CD3260538080087AE07 /* SettingsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB74CD2260538080087AE07 /* SettingsCellModel.swift */; };
 		FFB74CDB260538710087AE07 /* Premium.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFB74CDA260538710087AE07 /* Premium.storyboard */; };
 		FFBBD8B126100879006E678D /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBBD8B026100879006E678D /* Graph.swift */; };
-		FFC5DA9C260539A100B8D5F6 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5DA9B260539A100B8D5F6 /* IAPManager.swift */; };
 		FFC5DAA0260539D800B8D5F6 /* PremiumTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5DA9F260539D800B8D5F6 /* PremiumTitle.swift */; };
 		FFC5DAA92605426C00B8D5F6 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5DAA82605426C00B8D5F6 /* FooterView.swift */; };
 		FFC5DAAF260545A700B8D5F6 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5DAAE260545A700B8D5F6 /* Slide.swift */; };
@@ -921,7 +920,6 @@
 				FFF1D3D9260EA68700133CBD /* Sequence+Extension.swift in Sources */,
 				FF28272A260D23FF00C6C7A8 /* DotDrawingLayer.swift in Sources */,
 				FF282720260D239A00C6C7A8 /* LineDrawingLayer.swift in Sources */,
-				FFC5DA9C260539A100B8D5F6 /* IAPManager.swift in Sources */,
 				FFB74CB7260536EC0087AE07 /* SnakePageControl.swift in Sources */,
 				FFB74CCC260537E30087AE07 /* SpeedMasterProducts.swift in Sources */,
 				FFCDECA426080FCF00C3A10D /* MeasureViewController.swift in Sources */,

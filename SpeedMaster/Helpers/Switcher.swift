@@ -12,11 +12,16 @@ class Switcher: NSObject {
     // MARK: - Properties
     /// Shared Singleton
     static let shared = Switcher()
+    
     /// RootVC
     var rootVC: UIViewController?
+    
     /// In-App Purchase Helper
     var iapHelper: IAPHelper!
+    
+    /// Background Color For Activity Indicator
     var background: UIColor = .black
+    /// Alfa For Activity Indicator
     var alphaForBackground: CGFloat = 0.5
     
     /// LaunchView
@@ -102,7 +107,12 @@ class Switcher: NSObject {
         appDelegate.window?.backgroundColor = .mainWhite
         appDelegate.window?.makeKeyAndVisible()
         
-        /// Getting Info about products
+        getInfoAndVerify()
+    }
+    
+    // MARK: - In-App Get Info and Verify
+    /// Getting Info about products
+    private func getInfoAndVerify() {
         iapHelper.getInfo { (productIDs, result, error) in
             if let error = error {
                 DispatchQueue.main.async { [weak self] in
@@ -126,7 +136,6 @@ class Switcher: NSObject {
                 allProducts = products
                 for product in products {
                     if let priceString = product.localizedPrice {
-//                        allPrices.append(priceString)
                         allPrices[product.localizedTitle] = priceString
                         print(product.localizedTitle, "\(product.localizedDescription) - \(priceString)")
                     }
@@ -142,6 +151,7 @@ class Switcher: NSObject {
         }
     }
     
+    // MARK: - Verify
     /// Verifying Subscriptions
     private func verifySubscriptions(_ purchases: Set<ProductID>) {
         iapHelper.verifySubscriptions(purchases) { (purchaseResult, productIds, verifyReceiptResult) in

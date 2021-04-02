@@ -13,7 +13,6 @@ protocol UpgradeFromOnboardingDelegate: class {
     func purchased(purchases: [ProductID])
 }
 
-
 class OnboardingViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var scrollView: UIScrollView!

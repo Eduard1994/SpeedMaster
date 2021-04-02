@@ -18,33 +18,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        /// TabBar Transparency Configuration
         UITabBar.setTransparentTabBar()
+        /// Firebase App Config
         FirebaseApp.configure()
-        
-//        checkUser()
+        /// Setting Up In-App Purchase
         setupIAP()
-        
+        /// Setting Main Switcher for App
         Switcher.shared.updateRootVC()
+        
         return true
-    }
-    
-    // MARK: - Functions
-    private func checkUser() {
-        Service().checkUser { (user, error) in
-            if let user = user, error == nil {
-                print(user)
-            } else {
-                print(error!.localizedDescription)
-            }
-        }
     }
     
     // MARK: - Setup IAP
     func setupIAP() {
         iapHelper = IAPHelper.shared
-        
         iapHelper.setupIAP()
-        
     }
 }
 
