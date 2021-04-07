@@ -31,14 +31,17 @@ class Slide: UIView {
     @IBOutlet weak var eulaButton: UIButton!
     @IBOutlet weak var tryFreeButton: UIButton!
     @IBOutlet weak var startMonthlyView: UIView!
-    @IBOutlet weak var startMonthlyButton: UIButton!
-    @IBOutlet weak var startMonthlySecondButton: UIButton!
+//    @IBOutlet weak var startMonthlyButton: UIButton!
+//    @IBOutlet weak var startMonthlySecondButton: UIButton!
+    @IBOutlet weak var startYearlyButton: UIButton!
+    @IBOutlet weak var startYearlySecondButton: UIButton!
     @IBOutlet weak var proceedWithBasic: UIButton!
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint! // default 123
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint! // default 19
     @IBOutlet weak var fromBlackToYellow: NSLayoutConstraint! // default 82
-    @IBOutlet weak var fromTryFreeToProceed: NSLayoutConstraint! //default 34
+//    @IBOutlet weak var fromTryFreeToProceed: NSLayoutConstraint! //default 34
+    @IBOutlet weak var fromStartYearlyToProceed: NSLayoutConstraint! // default 34
     @IBOutlet weak var fromUpgradeToTop: NSLayoutConstraint! // default 76
     @IBOutlet weak var fromNotNowToTop: NSLayoutConstraint! // default 35
     
@@ -55,8 +58,8 @@ class Slide: UIView {
         slide1.proceedWithBasic.isEnabled = false
         slide1.tryFreeButton.isHidden = true
         slide1.tryFreeButton.isEnabled = false
-        slide1.startMonthlyButton.isEnabled = false
-        slide1.startMonthlySecondButton.isEnabled = false
+        slide1.startYearlyButton.isEnabled = false
+        slide1.startYearlySecondButton.isEnabled = false
         slide1.startMonthlyView.isHidden = true
         slide1.yellowView.isHidden = false
         slide1.imageView.isHidden = false
@@ -76,56 +79,56 @@ class Slide: UIView {
             slide1.topConstraint.constant = 123
             slide1.bottomConstraint.constant = 19
             slide1.fromBlackToYellow.constant = 82
-            slide1.fromTryFreeToProceed.constant = 34
+            slide1.fromStartYearlyToProceed.constant = 34
             slide1.fromUpgradeToTop.constant = 76
             slide1.fromNotNowToTop.constant = 35
         case .iPhone6_6S_7_8_SE2:
             slide1.topConstraint.constant = 123
             slide1.bottomConstraint.constant = 19
             slide1.fromBlackToYellow.constant = 82
-            slide1.fromTryFreeToProceed.constant = 34
+            slide1.fromStartYearlyToProceed.constant = 34
             slide1.fromUpgradeToTop.constant = 76
             slide1.fromNotNowToTop.constant = 35
         case .iPhone6Plus_6SPlus_7Plus_8Plus:
             slide1.topConstraint.constant = 123
             slide1.bottomConstraint.constant = 19
             slide1.fromBlackToYellow.constant = 110
-            slide1.fromTryFreeToProceed.constant = 71
+            slide1.fromStartYearlyToProceed.constant = 71
             slide1.fromUpgradeToTop.constant = 76
             slide1.fromNotNowToTop.constant = 35
         case .iPhone12Mini:
             slide1.topConstraint.constant = 148
             slide1.bottomConstraint.constant = 30
             slide1.fromBlackToYellow.constant = 100
-            slide1.fromTryFreeToProceed.constant = 72
+            slide1.fromStartYearlyToProceed.constant = 72
             slide1.fromUpgradeToTop.constant = 76
             slide1.fromNotNowToTop.constant = 35
         case .iPhoneX_XS_11Pro:
             slide1.topConstraint.constant = 170
             slide1.bottomConstraint.constant = 30
             slide1.fromBlackToYellow.constant = 110
-            slide1.fromTryFreeToProceed.constant = 72
+            slide1.fromStartYearlyToProceed.constant = 72
             slide1.fromUpgradeToTop.constant = 85
             slide1.fromNotNowToTop.constant = 40
         case .iPhone12_12Pro:
             slide1.topConstraint.constant = 200
             slide1.bottomConstraint.constant = 30
             slide1.fromBlackToYellow.constant = 118
-            slide1.fromTryFreeToProceed.constant = 67
+            slide1.fromStartYearlyToProceed.constant = 67
             slide1.fromUpgradeToTop.constant = 90
             slide1.fromNotNowToTop.constant = 45
         case .iPhoneXR_XSMax_11_11ProMax:
             slide1.topConstraint.constant = 185
             slide1.bottomConstraint.constant = 30
             slide1.fromBlackToYellow.constant = 185
-            slide1.fromTryFreeToProceed.constant = 68
+            slide1.fromStartYearlyToProceed.constant = 68
             slide1.fromUpgradeToTop.constant = 90
             slide1.fromNotNowToTop.constant = 45
         case .iPhone12ProMax:
             slide1.topConstraint.constant = 200
             slide1.bottomConstraint.constant = 30
             slide1.fromBlackToYellow.constant = 200
-            slide1.fromTryFreeToProceed.constant = 69
+            slide1.fromStartYearlyToProceed.constant = 69
             slide1.fromUpgradeToTop.constant = 90
             slide1.fromNotNowToTop.constant = 45
         default:
@@ -143,8 +146,8 @@ class Slide: UIView {
         slide2.proceedWithBasic.isEnabled = false
         slide2.tryFreeButton.isHidden = true
         slide2.tryFreeButton.isEnabled = false
-        slide2.startMonthlyButton.isEnabled = false
-        slide2.startMonthlySecondButton.isEnabled = false
+        slide2.startYearlyButton.isEnabled = false
+        slide2.startYearlySecondButton.isEnabled = false
         slide2.startMonthlyView.isHidden = true
         slide2.yellowView.isHidden = false
         slide2.imageView.isHidden = false
@@ -164,48 +167,48 @@ class Slide: UIView {
             slide2.topConstraint.constant = 123
             slide2.bottomConstraint.constant = 19
             slide2.fromBlackToYellow.constant = 82
-            slide2.fromTryFreeToProceed.constant = 34
+            slide2.fromStartYearlyToProceed.constant = 34
         case .iPhone6_6S_7_8_SE2:
             slide2.topConstraint.constant = 123
             slide2.bottomConstraint.constant = 19
             slide2.fromBlackToYellow.constant = 82
-            slide2.fromTryFreeToProceed.constant = 34
+            slide2.fromStartYearlyToProceed.constant = 34
         case .iPhone6Plus_6SPlus_7Plus_8Plus:
             slide2.topConstraint.constant = 123
             slide2.bottomConstraint.constant = 19
             slide2.fromBlackToYellow.constant = 110
-            slide2.fromTryFreeToProceed.constant = 71
+            slide2.fromStartYearlyToProceed.constant = 71
         case .iPhone12Mini:
             slide2.topConstraint.constant = 148
             slide2.bottomConstraint.constant = 30
             slide2.fromBlackToYellow.constant = 100
-            slide2.fromTryFreeToProceed.constant = 72
+            slide2.fromStartYearlyToProceed.constant = 72
         case .iPhoneX_XS_11Pro:
             slide2.topConstraint.constant = 170
             slide2.bottomConstraint.constant = 30
             slide2.fromBlackToYellow.constant = 110
-            slide2.fromTryFreeToProceed.constant = 72
+            slide2.fromStartYearlyToProceed.constant = 72
             slide2.fromUpgradeToTop.constant = 85
             slide2.fromNotNowToTop.constant = 40
         case .iPhone12_12Pro:
             slide2.topConstraint.constant = 200
             slide2.bottomConstraint.constant = 30
             slide2.fromBlackToYellow.constant = 118
-            slide2.fromTryFreeToProceed.constant = 67
+            slide2.fromStartYearlyToProceed.constant = 67
             slide2.fromUpgradeToTop.constant = 90
             slide2.fromNotNowToTop.constant = 45
         case .iPhoneXR_XSMax_11_11ProMax:
             slide2.topConstraint.constant = 185
             slide2.bottomConstraint.constant = 30
             slide2.fromBlackToYellow.constant = 185
-            slide2.fromTryFreeToProceed.constant = 68
+            slide2.fromStartYearlyToProceed.constant = 68
             slide2.fromUpgradeToTop.constant = 90
             slide2.fromNotNowToTop.constant = 45
         case .iPhone12ProMax:
             slide2.topConstraint.constant = 200
             slide2.bottomConstraint.constant = 30
             slide2.fromBlackToYellow.constant = 200
-            slide2.fromTryFreeToProceed.constant = 69
+            slide2.fromStartYearlyToProceed.constant = 69
             slide2.fromUpgradeToTop.constant = 90
             slide2.fromNotNowToTop.constant = 45
         default:
@@ -227,8 +230,8 @@ class Slide: UIView {
         slide3.tryFreeButton.cornerRadius(to: 10)
         slide3.startMonthlyView.cornerRadius(to: 20)
         slide3.startMonthlyView.addBorder(width: 2.0, color: .mainYellow)
-        slide3.startMonthlyButton.isEnabled = true
-        slide3.startMonthlySecondButton.isEnabled = true
+        slide3.startYearlyButton.isEnabled = true
+        slide3.startYearlySecondButton.isEnabled = true
         slide3.startMonthlyView.isHidden = false
         slide3.yellowView.isHidden = true
         slide3.imageView.isHidden = true
@@ -249,48 +252,48 @@ class Slide: UIView {
             slide3.topConstraint.constant = 123
             slide3.bottomConstraint.constant = 19
             slide3.fromBlackToYellow.constant = 82
-            slide3.fromTryFreeToProceed.constant = 34
+            slide3.fromStartYearlyToProceed.constant = 34
         case .iPhone6_6S_7_8_SE2:
             slide3.topConstraint.constant = 123
             slide3.bottomConstraint.constant = 19
             slide3.fromBlackToYellow.constant = 82
-            slide3.fromTryFreeToProceed.constant = 34
+            slide3.fromStartYearlyToProceed.constant = 34
         case .iPhone6Plus_6SPlus_7Plus_8Plus:
             slide3.topConstraint.constant = 123
             slide3.bottomConstraint.constant = 19
             slide3.fromBlackToYellow.constant = 110
-            slide3.fromTryFreeToProceed.constant = 71
+            slide3.fromStartYearlyToProceed.constant = 71
         case .iPhone12Mini:
             slide3.topConstraint.constant = 148
             slide3.bottomConstraint.constant = 30
             slide3.fromBlackToYellow.constant = 100
-            slide3.fromTryFreeToProceed.constant = 72
+            slide3.fromStartYearlyToProceed.constant = 72
         case .iPhoneX_XS_11Pro:
             slide3.topConstraint.constant = 170
             slide3.bottomConstraint.constant = 30
             slide3.fromBlackToYellow.constant = 110
-            slide3.fromTryFreeToProceed.constant = 72
+            slide3.fromStartYearlyToProceed.constant = 72
             slide3.fromUpgradeToTop.constant = 85 // ++9
             slide3.fromNotNowToTop.constant = 40 // ++5
         case .iPhone12_12Pro:
             slide3.topConstraint.constant = 200
             slide3.bottomConstraint.constant = 30
             slide3.fromBlackToYellow.constant = 118
-            slide3.fromTryFreeToProceed.constant = 67
+            slide3.fromStartYearlyToProceed.constant = 67
             slide3.fromUpgradeToTop.constant = 90 // ++14
             slide3.fromNotNowToTop.constant = 45 // ++10
         case .iPhoneXR_XSMax_11_11ProMax:
             slide3.topConstraint.constant = 185
             slide3.bottomConstraint.constant = 30
             slide3.fromBlackToYellow.constant = 185
-            slide3.fromTryFreeToProceed.constant = 68
+            slide3.fromStartYearlyToProceed.constant = 68
             slide3.fromUpgradeToTop.constant = 90 // ++14
             slide3.fromNotNowToTop.constant = 45 // ++10
         case .iPhone12ProMax:
             slide3.topConstraint.constant = 200
             slide3.bottomConstraint.constant = 30
             slide3.fromBlackToYellow.constant = 200
-            slide3.fromTryFreeToProceed.constant = 69
+            slide3.fromStartYearlyToProceed.constant = 69
             slide3.fromUpgradeToTop.constant = 90 // ++14
             slide3.fromNotNowToTop.constant = 45 // ++10
         default:
@@ -312,14 +315,19 @@ class Slide: UIView {
     
     @IBAction func tryFreeTapped(_ sender: Any) {
         print("Try free tapped")
+        let userInfo = ["index": 0]
+        NotificationCenter.default.post(name: subTypeNotificationIndex, object: nil, userInfo: userInfo)
+    }
+    
+    @IBAction func startYearlyTapped(_ sender: Any) {
+        print("Start Yearly tapped")
         let userInfo = ["index": 2]
         NotificationCenter.default.post(name: subTypeNotificationIndex, object: nil, userInfo: userInfo)
     }
     
     @IBAction func startMonthlyTapped(_ sender: Any) {
         print("StartMonthly tapped")
-        let userInfo = ["index": 0]
-        NotificationCenter.default.post(name: subTypeNotificationIndex, object: nil, userInfo: userInfo)
+        
     }
     
     @IBAction func privacyTapped(_ sender: Any) {

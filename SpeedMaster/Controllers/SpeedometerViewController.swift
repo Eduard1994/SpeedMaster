@@ -175,6 +175,7 @@ class SpeedometerViewController: UIViewController {
     // MARK: - Removed LaunchView
     @objc func launchRemoved() {
         print("All Prices = \(allPrices)")
+        print("All Prices in Double = \(allPricesInDouble)")
         print("All Products = \(allProducts)")
         print("All Product IDs = \(allProductIDs)")
         print("Purchased = \(purchasedAny)")

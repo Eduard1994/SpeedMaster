@@ -27,11 +27,11 @@ struct OnboardingTitle {
     var tripTitle: String
     var tripSecondTitle: String
     var tryFreeTitle: String
-    var startMonthlyFirstTitle: String
-    var startMonthlySecondTitle: String
+    var startYearlyFirstTitle: String
+    var startYearlySecondTitle: String
     var privacyEulaTitle: String
     
-    init(closeButton: Bool = true, firstTitle: String = "Upgrade to premium", secondTitle: String = "Start your 3-day free trial. Then ", gpsTitle: String = "GPS Speedometer", gpsSecondTitle: String = "Track your daily travelling activities with accurate speed data", tripTitle: String = "Trip History", tripSecondTitle: String = "Trip history is the automatic feature that will help you to save information within app", basicTitle: String = "Proceed with Basic", tryFreeTitle: String = "Try Free and Subscribe", startMonthlyFirstTitle: String = "Start Monthly Plan", startMonthlySecondTitle: String = "-- a month", privacyEulaTitle: String = "This trial automatically renews into a paidsubscribtion and will continue to automatically renew until you cancel. Please see our") {
+    init(closeButton: Bool = true, firstTitle: String = "Upgrade to premium", secondTitle: String = "Start your 3-day free trial. Then ", gpsTitle: String = "GPS Speedometer", gpsSecondTitle: String = "Track your daily travelling activities with accurate speed data", tripTitle: String = "Trip History", tripSecondTitle: String = "Trip history is the automatic feature that will help you to save information within app", basicTitle: String = "Proceed with Basic", tryFreeTitle: String = "Try Free and Subscribe", startYearlyFirstTitle: String = "Start Yearly Plan", startYearlySecondTitle: String = "-- a year", privacyEulaTitle: String = "This trial automatically renews into a paidsubscribtion and will continue to automatically renew until you cancel. Please see our") {
         self.ref = nil
         self.key = nil
         self.closeButton = closeButton
@@ -43,8 +43,8 @@ struct OnboardingTitle {
         self.tripSecondTitle = tripSecondTitle
         self.basicTitle = basicTitle
         self.tryFreeTitle = tryFreeTitle
-        self.startMonthlyFirstTitle = startMonthlyFirstTitle
-        self.startMonthlySecondTitle = startMonthlySecondTitle
+        self.startYearlyFirstTitle = startYearlyFirstTitle
+        self.startYearlySecondTitle = startYearlySecondTitle
         self.privacyEulaTitle = privacyEulaTitle
     }
     
@@ -61,8 +61,8 @@ struct OnboardingTitle {
             let tripSecondTitle = value["tripSecondTitle"] as? String,
             let basicTitle = value["basicTitle"] as? String,
             let tryFreeTitle = value["tryFreeTitle"] as? String,
-            let startMonthlyFirstTitle = value["startMonthlyFirstTitle"] as? String,
-            let startMonthlySecondTitle = value["startMonthlySecondTitle"] as? String,
+            let startYearlyFirstTitle = value["startYearlyFirstTitle"] as? String,
+            let startYearlySecondTitle = value["startYearlySecondTitle"] as? String,
             let privacyEulaTitle = value["privacyEulaTitle"] as? String
         else {
             return nil
@@ -80,8 +80,8 @@ struct OnboardingTitle {
         self.tripSecondTitle = tripSecondTitle
         self.basicTitle = basicTitle
         self.tryFreeTitle = tryFreeTitle
-        self.startMonthlyFirstTitle = startMonthlyFirstTitle
-        self.startMonthlySecondTitle = startMonthlySecondTitle
+        self.startYearlyFirstTitle = startYearlyFirstTitle
+        self.startYearlySecondTitle = startYearlySecondTitle
         self.privacyEulaTitle = privacyEulaTitle
     }
     
@@ -96,8 +96,8 @@ struct OnboardingTitle {
             "tripSecondTitle": tripSecondTitle,
             "basicTitle": basicTitle,
             "tryFreeTitle": tryFreeTitle,
-            "startMonthlyFirstTitle": startMonthlyFirstTitle,
-            "startMonthlySecondTitle": startMonthlySecondTitle,
+            "startYearlyFirstTitle": startYearlyFirstTitle,
+            "startYearlySecondTitle": startYearlySecondTitle,
             "privacyEulaTitle": privacyEulaTitle
         ]
     }

@@ -12,6 +12,7 @@ import StoreKit
 public typealias ProductID = String
 
 var allPrices: [String: String] = [:]
+var allPricesInDouble: [Double] = []
 var allProducts: Set<SKProduct> = []
 var allProductIDs: Set<ProductID> = []
 var purchasedAny = false

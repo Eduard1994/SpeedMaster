@@ -73,26 +73,26 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXj-eS-qEH">
-                                        <rect key="frame" x="48" y="160" width="279" height="64"/>
+                                        <rect key="frame" x="48" y="80" width="279" height="64"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfA-wL-pMg">
                                                 <rect key="frame" x="15" y="8" width="249" height="33"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
-                                                <state key="normal" title="Start Monthly Plan">
+                                                <state key="normal" title="Start Yearly Plan">
                                                     <color key="titleColor" red="0.87843137250000003" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="startMonthlyTapped:" destination="F4d-N8-ta5" eventType="touchUpInside" id="vRF-yb-y4q"/>
+                                                    <action selector="startYearlyTapped:" destination="F4d-N8-ta5" eventType="touchUpInside" id="upj-Wb-2XW"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1T-Vq-tkI">
                                                 <rect key="frame" x="15" y="27" width="249" height="29"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
-                                                <state key="normal" title="-- a month">
+                                                <state key="normal" title="-- a year">
                                                     <color key="titleColor" red="0.52549019610000003" green="0.52549019610000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="startMonthlyTapped:" destination="F4d-N8-ta5" eventType="touchUpInside" id="y0W-Vc-Df8"/>
+                                                    <action selector="startYearlyTapped:" destination="F4d-N8-ta5" eventType="touchUpInside" id="sIv-HO-xeR"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -155,7 +155,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHh-xk-MvP">
-                                        <rect key="frame" x="48" y="80" width="279" height="64"/>
+                                        <rect key="frame" x="48" y="160" width="279" height="64"/>
                                         <color key="backgroundColor" red="0.87843137250000003" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="y0M-p3-IeY"/>
@@ -172,10 +172,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="UXj-eS-qEH" firstAttribute="centerX" secondItem="qHh-xk-MvP" secondAttribute="centerX" id="47E-sN-4bd"/>
-                                    <constraint firstItem="qHh-xk-MvP" firstAttribute="top" secondItem="Fz9-gN-fsQ" secondAttribute="bottom" constant="24" id="4BR-Hc-b6j"/>
-                                    <constraint firstItem="UXj-eS-qEH" firstAttribute="top" secondItem="qHh-xk-MvP" secondAttribute="bottom" constant="16" id="GCV-vY-vlO"/>
+                                    <constraint firstItem="qHh-xk-MvP" firstAttribute="top" secondItem="UXj-eS-qEH" secondAttribute="bottom" constant="16" id="DMG-q6-Ghb"/>
                                     <constraint firstItem="UXj-eS-qEH" firstAttribute="height" secondItem="qHh-xk-MvP" secondAttribute="height" id="Jyy-jU-q63"/>
                                     <constraint firstItem="qHh-xk-MvP" firstAttribute="centerX" secondItem="OLC-rw-Nb6" secondAttribute="centerX" id="Lbz-Ok-jOY"/>
+                                    <constraint firstItem="UXj-eS-qEH" firstAttribute="top" secondItem="Fz9-gN-fsQ" secondAttribute="bottom" constant="24" id="MUB-Mi-Wcm"/>
                                     <constraint firstItem="Fz9-gN-fsQ" firstAttribute="centerX" secondItem="OLC-rw-Nb6" secondAttribute="centerX" id="PaI-RQ-Nrc"/>
                                     <constraint firstItem="qHh-xk-MvP" firstAttribute="leading" secondItem="OLC-rw-Nb6" secondAttribute="leading" constant="48" id="RFD-Gk-sXj"/>
                                     <constraint firstItem="UXj-eS-qEH" firstAttribute="leading" secondItem="qHh-xk-MvP" secondAttribute="leading" id="YFO-75-gDX"/>
@@ -221,14 +221,14 @@
                     <connections>
                         <outlet property="eulaButton" destination="pkQ-r1-ndJ" id="Svm-re-XIf"/>
                         <outlet property="fromBlackToStart" destination="ZPq-St-dmR" id="RrX-C1-VBk"/>
-                        <outlet property="fromTryFreeToProceed" destination="4BR-Hc-b6j" id="wZb-Df-ARt"/>
+                        <outlet property="fromStartYearlyToProceed" destination="MUB-Mi-Wcm" id="WHJ-LY-yPZ"/>
                         <outlet property="notNowButton" destination="4xU-QV-Hpx" id="Ifc-Uk-HYg"/>
-                        <outlet property="priceAMonthButton" destination="l1T-Vq-tkI" id="jXM-RE-tk1"/>
+                        <outlet property="priceAYearButton" destination="l1T-Vq-tkI" id="SN0-LC-hWT"/>
                         <outlet property="privacyButton" destination="h9o-kq-BXX" id="WI7-Ft-act"/>
                         <outlet property="proceedWithBasicButton" destination="Fz9-gN-fsQ" id="ZXQ-kH-WpR"/>
                         <outlet property="startFreeLabel" destination="J2u-me-x95" id="w5c-oN-ypk"/>
-                        <outlet property="startMonthlyButton" destination="WfA-wL-pMg" id="2EZ-ce-F0b"/>
                         <outlet property="startMonthlyView" destination="UXj-eS-qEH" id="gzl-9y-gLQ"/>
+                        <outlet property="startYearlyButton" destination="WfA-wL-pMg" id="qy2-xi-1tI"/>
                         <outlet property="trialLabel" destination="tLe-8e-aRi" id="Z53-N5-BVC"/>
                         <outlet property="tryFreeButton" destination="qHh-xk-MvP" id="LrH-nn-6G6"/>
                         <outlet property="upgradeLabel" destination="B06-yr-mfk" id="DQo-ec-wWE"/>

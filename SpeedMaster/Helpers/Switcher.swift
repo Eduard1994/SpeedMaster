@@ -137,6 +137,7 @@ class Switcher: NSObject {
                 for product in products {
                     if let priceString = product.localizedPrice {
                         allPrices[product.localizedTitle] = priceString
+                        allPricesInDouble.append(Double(truncating: product.price))
                         print(product.localizedTitle, "\(product.localizedDescription) - \(priceString)")
                     }
                 }

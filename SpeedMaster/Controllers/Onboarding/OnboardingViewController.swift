@@ -101,12 +101,13 @@ class OnboardingViewController: UIViewController {
             for (title, price) in allPrices {
                 if title.contains("Monthly") {
                     slide.startFreeLabel.text = "\(onboarding.secondTitle) \(price) a month"
-                    slide.startMonthlySecondButton.setTitle("\(price) \(onboarding.startMonthlySecondTitle)", for: UIControl.State())
+                } else if title.contains("Yearly") {
+                    slide.startYearlySecondButton.setTitle("\(price) \(onboarding.startYearlySecondTitle)", for: UIControl.State())
                 }
             }
         } else {
             slide.startFreeLabel.text = "\(onboarding.secondTitle) -- a month"
-            slide.startMonthlySecondButton.setTitle("-- \(onboarding.startMonthlySecondTitle)", for: UIControl.State())
+            slide.startYearlySecondButton.setTitle("-- \(onboarding.startYearlySecondTitle)", for: UIControl.State())
         }
         
         slide.notNowButton.isHidden = !onboarding.closeButton
@@ -115,7 +116,7 @@ class OnboardingViewController: UIViewController {
 //        slide.startFreeLabel.text = "\(onboarding.secondTitle) $\(subscriptions.monthlyProductPrice) a month"
         slide.proceedWithBasic.setTitle(onboarding.basicTitle, for: UIControl.State())
         slide.tryFreeButton.setTitle(onboarding.tryFreeTitle, for: UIControl.State())
-        slide.startMonthlyButton.setTitle(onboarding.startMonthlyFirstTitle, for: UIControl.State())
+        slide.startYearlyButton.setTitle(onboarding.startYearlyFirstTitle, for: UIControl.State())
 //        slide.startMonthlySecondButton.setTitle("$\(subscriptions.monthlyProductPrice) \(onboarding.startMonthlySecondTitle)", for: UIControl.State())
         
         slide.privacyLabel.text = onboarding.privacyEulaTitle
