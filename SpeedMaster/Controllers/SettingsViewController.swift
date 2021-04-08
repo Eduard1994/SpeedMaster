@@ -155,7 +155,6 @@ class SettingsViewController: UIViewController {
                 let mail = MFMailComposeViewController()
                 mail.mailComposeDelegate = self
                 mail.setToRecipients([kEmail])
-                mail.setCcRecipients([kCCRecipentEmail])
                 mail.setSubject("Subject of the Mail.")
                 self.present(mail, animated: true)
             } else {
