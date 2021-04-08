@@ -129,8 +129,8 @@ class UpgradeToPremiumViewController: UIViewController {
                 }
             }
         } else {
-            self.startFreeLabel.text = "\(onboarding.secondTitle) -- a month"
-            self.priceAYearButton.setTitle("-- \(onboarding.startYearlySecondTitle)", for: UIControl.State())
+            self.startFreeLabel.text = "\(onboarding.secondTitle) $11.49 a month"
+            self.priceAYearButton.setTitle("$33.99 \(onboarding.startYearlySecondTitle)", for: UIControl.State())
         }
         
         self.notNowButton.isHidden = !onboarding.closeButton

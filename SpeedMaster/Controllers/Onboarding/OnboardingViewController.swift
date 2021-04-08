@@ -106,8 +106,8 @@ class OnboardingViewController: UIViewController {
                 }
             }
         } else {
-            slide.startFreeLabel.text = "\(onboarding.secondTitle) -- a month"
-            slide.startYearlySecondButton.setTitle("-- \(onboarding.startYearlySecondTitle)", for: UIControl.State())
+            slide.startFreeLabel.text = "\(onboarding.secondTitle) $11.49 a month"
+            slide.startYearlySecondButton.setTitle("$33.99 \(onboarding.startYearlySecondTitle)", for: UIControl.State())
         }
         
         slide.notNowButton.isHidden = !onboarding.closeButton

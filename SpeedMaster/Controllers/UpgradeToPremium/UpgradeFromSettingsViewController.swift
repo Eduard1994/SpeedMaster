@@ -33,9 +33,9 @@ class UpgradeFromSettingsViewController: UIViewController {
     // MARK: - Properties
     let service = Service()
     var productIDs: Set<ProductID> = []
-    var monthlyPrice: String = ""
-    var annualPrice: String = ""
-    var weeklyPrice: String = ""
+    var monthlyPrice: String = "$11.49"
+    var annualPrice: String = "$33.99"
+    var weeklyPrice: String = "$3.49"
     var subscriptions = Subscriptions()
     
     var tapped: (annual: Bool, monthly: Bool, weekly: Bool) = (true, false, false)

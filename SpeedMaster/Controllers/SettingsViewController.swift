@@ -176,9 +176,9 @@ class SettingsViewController: UIViewController {
     
     // MARK: - Presenting UpgradeFromSettingsVC
     private func presentUpgradeFromSettingsVC(with productIDs: Set<ProductID>, allPrices: [String: String]) {
-        var annualPrice: String = "--"
-        var monthlyPrice: String = "--"
-        var weeklyPrice: String = "--"
+        var annualPrice: String = "$33.99"
+        var monthlyPrice: String = "$11.49"
+        var weeklyPrice: String = "$3.49"
         for (title, price) in allPrices {
             if title.contains("Monthly") {
                 monthlyPrice = price
