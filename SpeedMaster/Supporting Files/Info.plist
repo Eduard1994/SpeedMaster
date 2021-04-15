@@ -23,9 +23,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>$(NSLocationAlwaysAndWhenInUseUsageDescription)</string>
+	<string>'Speed-Bar' Would like to access your location to make it possible for you to attach your weather conditions and track your speed.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>$(NSLocationWhenInUseUsageDescription)</string>
+	<string>"Speed-Bar" Would like to access Your location to track your speed and weather correctly.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
