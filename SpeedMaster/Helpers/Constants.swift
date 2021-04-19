@@ -42,4 +42,4 @@ let kSelectedUnit = "unit"
 let kSelectedSort = "sort"
 
 // MARK: - Apple Shared Secret
-let kAppleSharedSecret = "1ae62ca01d8b4aedbc80bdd16c9e7e47"
+let kAppleSharedSecret = "780a0d80d0d04274ae918911d34c8a12"
