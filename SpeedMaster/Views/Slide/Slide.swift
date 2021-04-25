@@ -23,6 +23,7 @@ class Slide: UIView {
     @IBOutlet weak var speedImage: UIImageView!
     @IBOutlet weak var barImage: UIImageView!
     @IBOutlet weak var startFreeLabel: UILabel!
+    @IBOutlet weak var thenLabel: UILabel!
     @IBOutlet weak var gpsLabel: UILabel!
     @IBOutlet weak var trackLabel: UILabel!
     @IBOutlet weak var privacyEulaStackView: UIStackView!
@@ -54,6 +55,7 @@ class Slide: UIView {
         slide1.speedImage.isHidden = true
         slide1.barImage.isHidden = true
         slide1.startFreeLabel.isHidden = true
+        slide1.thenLabel.isHidden = true
         slide1.proceedWithBasic.isHidden = true
         slide1.proceedWithBasic.isEnabled = false
         slide1.tryFreeButton.isHidden = true
@@ -142,6 +144,7 @@ class Slide: UIView {
         slide2.speedImage.isHidden = true
         slide2.barImage.isHidden = true
         slide2.startFreeLabel.isHidden = true
+        slide2.thenLabel.isHidden = true
         slide2.proceedWithBasic.isHidden = true
         slide2.proceedWithBasic.isEnabled = false
         slide2.tryFreeButton.isHidden = true
@@ -222,6 +225,7 @@ class Slide: UIView {
         slide3.speedImage.isHidden = false
         slide3.barImage.isHidden = false
         slide3.startFreeLabel.isHidden = false
+        slide3.thenLabel.isHidden = false
         slide3.proceedWithBasic.isHidden = false
         slide3.proceedWithBasic.isEnabled = true
         slide3.proceedWithBasic.addLine(position: .LINE_POSITION_BOTTOM, color: .mainGray, width: 0.5)

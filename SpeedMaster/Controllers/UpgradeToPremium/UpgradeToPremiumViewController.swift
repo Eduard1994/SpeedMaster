@@ -17,6 +17,7 @@ class UpgradeToPremiumViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var upgradeLabel: UILabel!
     @IBOutlet weak var startFreeLabel: UILabel!
+    @IBOutlet weak var thenLabel: UILabel!
     
     @IBOutlet weak var proceedWithBasicButton: UIButton!
     @IBOutlet weak var tryFreeButton: UIButton!
@@ -29,8 +30,9 @@ class UpgradeToPremiumViewController: UIViewController {
     @IBOutlet weak var privacyButton: UIButton!
     @IBOutlet weak var eulaButton: UIButton!
     @IBOutlet weak var notNowButton: UIButton!
-    @IBOutlet weak var fromBlackToStart: NSLayoutConstraint! // default 61
-//    @IBOutlet weak var fromTryFreeToProceed: NSLayoutConstraint! //default 24
+//    @IBOutlet weak var fromBlackToStart: NSLayoutConstraint! // default 61
+    @IBOutlet weak var fromBlackToThen: NSLayoutConstraint! //default 61
+    //    @IBOutlet weak var fromTryFreeToProceed: NSLayoutConstraint! //default 24
     @IBOutlet weak var fromStartYearlyToProceed: NSLayoutConstraint! // default 24
     
     // MARK: - Properties
@@ -69,31 +71,31 @@ class UpgradeToPremiumViewController: UIViewController {
         
         switch type {
         case .iPhone5_5S_5C_SE:
-            fromBlackToStart.constant = 40
+            fromBlackToThen.constant = 40
             fromStartYearlyToProceed.constant = 24
         case .iPhone6_6S_7_8_SE2:
-            fromBlackToStart.constant = 61
+            fromBlackToThen.constant = 61
             fromStartYearlyToProceed.constant = 24
         case .iPhone6Plus_6SPlus_7Plus_8Plus:
-            fromBlackToStart.constant = 100
+            fromBlackToThen.constant = 100
             fromStartYearlyToProceed.constant = 30
         case .iPhone12Mini:
-            fromBlackToStart.constant = 130
+            fromBlackToThen.constant = 130
             fromStartYearlyToProceed.constant = 40
         case .iPhoneX_XS_11Pro:
-            fromBlackToStart.constant = 120
+            fromBlackToThen.constant = 120
             fromStartYearlyToProceed.constant = 40
         case .iPhone12_12Pro:
-            fromBlackToStart.constant = 130
+            fromBlackToThen.constant = 130
             fromStartYearlyToProceed.constant = 50
         case .iPhoneXR_XSMax_11_11ProMax:
-            fromBlackToStart.constant = 130
+            fromBlackToThen.constant = 130
             fromStartYearlyToProceed.constant = 70
         case .iPhone12ProMax:
-            fromBlackToStart.constant = 135
+            fromBlackToThen.constant = 135
             fromStartYearlyToProceed.constant = 75
         default:
-            fromBlackToStart.constant = 61
+            fromBlackToThen.constant = 61
             fromStartYearlyToProceed.constant = 24
         }
         
@@ -123,25 +125,28 @@ class UpgradeToPremiumViewController: UIViewController {
         if allPrices.count > 0 {
             for (title, price) in allPrices {
                 if title.contains("Monthly") {
-                    self.startFreeLabel.text = "\(onboarding.secondTitle) \(price) a month"
+                    self.thenLabel.text = "\(onboarding.thirdTitle) \(price) a month"
                 } else if title.contains("Yearly") {
                     self.priceAYearButton.setTitle("\(price) \(onboarding.startYearlySecondTitle)", for: UIControl.State())
                 }
             }
         } else {
-            self.startFreeLabel.text = "\(onboarding.secondTitle) $11.49 a month"
+            self.thenLabel.text = "\(onboarding.thirdTitle) $11.49 a month"
             self.priceAYearButton.setTitle("$33.99 \(onboarding.startYearlySecondTitle)", for: UIControl.State())
         }
         
         self.notNowButton.isHidden = !onboarding.closeButton
         self.notNowButton.isEnabled = onboarding.closeButton
         self.upgradeLabel.text = onboarding.firstTitle
-        
+        self.startFreeLabel.text = onboarding.secondTitle
         self.proceedWithBasicButton.setTitle(onboarding.basicTitle, for: UIControl.State())
         self.tryFreeButton.setTitle(onboarding.tryFreeTitle, for: UIControl.State())
         self.startYearlyButton.setTitle(onboarding.startYearlyFirstTitle, for: UIControl.State())
         
         self.trialLabel.text = onboarding.privacyEulaTitle
+        
+        self.thenLabel.isHidden = onboarding.thirdTitleIsHidden
+        self.priceAYearButton.isHidden = onboarding.startYearlySecondTitleIsHidden
     }
     
     /// Purchasing product
@@ -155,12 +160,16 @@ class UpgradeToPremiumViewController: UIViewController {
                 self.hideAnimatedActivityIndicatorView()
                 purchasedAny = true
                 self.alert(title: "Purchase Success", message: "\(purchase.product.localizedTitle), \(purchase.product.localizedPrice ?? "")", preferredStyle: .alert, cancelTitle: nil, cancelHandler: nil, actionTitle: "OK", actionHandler: {
+                    /// Firebase Analytics
+                    SpeedAnalytics.shared.purchaseAnalytics(userID: User.currentUser?.uid ?? "", paymentType: purchase.product.localizedTitle, totalPrice: purchase.product.localizedPrice ?? "", success: "1", currency: purchase.product.priceLocale.currencySymbol ?? "USD")
                     self.dismiss(animated: true, completion: nil)
                     self.delegate?.purchased(purchases: [purchase.productId])
                 })
             case .error(let error):
                 self.hideAnimatedActivityIndicatorView()
                 ErrorHandling.showError(title: "Purchase failed", message: error.localizedDescription, controller: self)
+                /// Firebase Analytics
+                SpeedAnalytics.shared.purchaseAnalytics(userID: User.currentUser?.uid ?? "", paymentType: error.localizedDescription, totalPrice: "", success: "0", currency: "USD")
                 print("Purchase Failed: \(error)")
                 switch error.code {
                 case .unknown:
@@ -197,6 +206,7 @@ class UpgradeToPremiumViewController: UIViewController {
     
     @IBAction func tryFreeTapped(_ sender: Any) {
         print("Try free tapped")
+        SpeedAnalytics.shared.tappedToSubscribeButton(userID: User.currentUser?.uid ?? "", button: "Try Free Button")
         if service.isConnectedToInternet {
             for productID in productIDs {
                 if productID.contains("month") {
@@ -211,6 +221,7 @@ class UpgradeToPremiumViewController: UIViewController {
     
     @IBAction func startYearlyTapped(_ sender: Any) {
         print("Start Yearly Tapped")
+        SpeedAnalytics.shared.tappedToSubscribeButton(userID: User.currentUser?.uid ?? "", button: "Start Yearly Button")
         if service.isConnectedToInternet {
             for productID in productIDs {
                 if productID.contains("year") {
@@ -222,10 +233,10 @@ class UpgradeToPremiumViewController: UIViewController {
         }
     }
     
-    @IBAction func startMonthlyTapped(_ sender: Any) {
-        print("Start Monthly Tapped")
-        
-    }
+//    @IBAction func startMonthlyTapped(_ sender: Any) {
+//        print("Start Monthly Tapped")
+//
+//    }
     
     @IBAction func notNowTapped(_ sender: Any) {
         print("Not now tapped")

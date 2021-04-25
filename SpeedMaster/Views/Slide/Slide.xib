@@ -233,8 +233,14 @@
                         <constraint firstAttribute="height" constant="70" id="n0B-Z2-v83"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start your 3-day free trial.  Then $11.49 a month" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywf-9z-Ppp">
-                    <rect key="frame" x="40" y="251" width="295" height="43"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start your 3-day free trial." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywf-9z-Ppp">
+                    <rect key="frame" x="40" y="251" width="295" height="21.5"/>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Then $11.49 a month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mA-26-T5M">
+                    <rect key="frame" x="40" y="273.5" width="295" height="21.5"/>
                     <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="18"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -243,7 +249,9 @@
             <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="qA4-4A-Ago" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="0h5-IK-4Sl"/>
+                <constraint firstItem="4mA-26-T5M" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="2Wr-8J-ILF"/>
                 <constraint firstAttribute="bottom" secondItem="jdh-VE-Ciw" secondAttribute="bottom" constant="15" id="3kg-am-Cav"/>
+                <constraint firstItem="4mA-26-T5M" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="6Db-Rb-SjP"/>
                 <constraint firstItem="iQ3-Nx-3eg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="6nz-Y8-zKY"/>
                 <constraint firstItem="81V-C3-Jdv" firstAttribute="trailing" secondItem="cEx-iq-gch" secondAttribute="trailing" constant="37.5" id="8UK-EL-pFz"/>
                 <constraint firstItem="UgZ-XA-Lt8" firstAttribute="top" secondItem="qmx-c1-OWa" secondAttribute="top" constant="20" id="Ge6-ME-0Yz"/>
@@ -257,6 +265,7 @@
                 <constraint firstItem="cEx-iq-gch" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gry-sg-b2i"/>
                 <constraint firstItem="cEx-iq-gch" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="123" id="jXH-c7-6DM"/>
                 <constraint firstItem="81V-C3-Jdv" firstAttribute="top" secondItem="cEx-iq-gch" secondAttribute="top" constant="-37.5" id="jmM-3K-Kad"/>
+                <constraint firstItem="4mA-26-T5M" firstAttribute="top" secondItem="ywf-9z-Ppp" secondAttribute="bottom" constant="1" id="m9q-NY-gEf"/>
                 <constraint firstItem="UgZ-XA-Lt8" firstAttribute="trailing" secondItem="qmx-c1-OWa" secondAttribute="trailing" constant="10" id="swK-MC-226"/>
                 <constraint firstAttribute="trailing" secondItem="qA4-4A-Ago" secondAttribute="trailing" constant="40" id="tNv-bv-Lel"/>
                 <constraint firstItem="ywf-9z-Ppp" firstAttribute="top" secondItem="UgZ-XA-Lt8" secondAttribute="bottom" id="uCK-UC-JUE"/>
@@ -290,6 +299,7 @@
                 <outlet property="startMonthlyView" destination="7Pu-Ls-VS9" id="dEc-28-SF2"/>
                 <outlet property="startYearlyButton" destination="yUy-ud-cUd" id="LhD-Xo-xyV"/>
                 <outlet property="startYearlySecondButton" destination="bmr-13-NKz" id="8yq-yk-NB2"/>
+                <outlet property="thenLabel" destination="4mA-26-T5M" id="R1K-db-ePk"/>
                 <outlet property="topConstraint" destination="jXH-c7-6DM" id="t0Q-yA-MYf"/>
                 <outlet property="trackLabel" destination="0Kz-K4-wry" id="M3c-Ih-NJq"/>
                 <outlet property="tryFreeButton" destination="0bE-Xs-6CS" id="9cT-FH-uW4"/>

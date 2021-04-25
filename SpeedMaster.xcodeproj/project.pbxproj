@@ -52,6 +52,7 @@
 		FF28272A260D23FF00C6C7A8 /* DotDrawingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF282729260D23FF00C6C7A8 /* DotDrawingLayer.swift */; };
 		FF28272D260D241400C6C7A8 /* FillDrawingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF28272C260D241400C6C7A8 /* FillDrawingLayer.swift */; };
 		FF47FF9426116AF80074AC04 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF47FF9326116AF80074AC04 /* Sorting.swift */; };
+		FF4884FA2635E33C001F7D9C /* SpeedAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4884F92635E33C001F7D9C /* SpeedAnalytics.swift */; };
 		FF6912D826045D2D0049DBA7 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF6912D726045D2D0049DBA7 /* LaunchView.xib */; };
 		FF6912DB260471CE0049DBA7 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6912DA260471CE0049DBA7 /* MainTabBarViewController.swift */; };
 		FF6912DE2604729B0049DBA7 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6912DD2604729B0049DBA7 /* HistoryViewController.swift */; };
@@ -176,6 +177,7 @@
 		FF282729260D23FF00C6C7A8 /* DotDrawingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotDrawingLayer.swift; sourceTree = "<group>"; };
 		FF28272C260D241400C6C7A8 /* FillDrawingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillDrawingLayer.swift; sourceTree = "<group>"; };
 		FF47FF9326116AF80074AC04 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
+		FF4884F92635E33C001F7D9C /* SpeedAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedAnalytics.swift; sourceTree = "<group>"; };
 		FF6912D726045D2D0049DBA7 /* LaunchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		FF6912DA260471CE0049DBA7 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		FF6912DD2604729B0049DBA7 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 		FF0EA9D226022F5D0051FFB7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FF4884F82635E31A001F7D9C /* FirebaseAnalytics */,
 				FF0A8973260230CD00ADF896 /* Switcher.swift */,
 				FFD50268260BF2DC001A9C15 /* Cache.swift */,
 				FF6912F02604742D0049DBA7 /* Functions.swift */,
@@ -597,6 +600,14 @@
 				FF282710260D225000C6C7A8 /* GraphPointAnimation.swift */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		FF4884F82635E31A001F7D9C /* FirebaseAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				FF4884F92635E33C001F7D9C /* SpeedAnalytics.swift */,
+			);
+			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
 		FF6912E7260472F70049DBA7 /* UpgradeToPremium */ = {
@@ -902,6 +913,7 @@
 				FF6912E1260472AB0049DBA7 /* SpeedometerViewController.swift in Sources */,
 				FF0EA9D826022FBC0051FFB7 /* PrivacyViewController.swift in Sources */,
 				FFCDECA02608026A00C3A10D /* Constants.swift in Sources */,
+				FF4884FA2635E33C001F7D9C /* SpeedAnalytics.swift in Sources */,
 				FF282723260D23D100C6C7A8 /* DotPlot.swift in Sources */,
 				FF0A897E2602316900ADF896 /* UITextField+Extension.swift in Sources */,
 				FF28270A260D221F00C6C7A8 /* BarPlot.swift in Sources */,
@@ -1092,7 +1104,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.3;
+				MARKETING_VERSION = 1.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mpsdev.speed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1113,7 +1125,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.3;
+				MARKETING_VERSION = 1.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mpsdev.speed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

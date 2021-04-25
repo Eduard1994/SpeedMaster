@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 protocol UpgradeFromSettingsDelegate: class {
     func dismissFromUpgrade()
@@ -22,10 +23,16 @@ class UpgradeFromSettingsViewController: UIViewController {
     
     @IBOutlet weak var annualLabel1: UILabel!
     @IBOutlet weak var annualLabel2: UILabel!
+    @IBOutlet weak var annualPriceLabel: UILabel!
+    
     @IBOutlet weak var monthlyLabel1: UILabel!
     @IBOutlet weak var monthlyLabel2: UILabel!
+    @IBOutlet weak var monthlyPriceLabel: UILabel!
+    
     @IBOutlet weak var weeklyLabel1: UILabel!
     @IBOutlet weak var weeklyLabel2: UILabel!
+    @IBOutlet weak var weeklyPriceLabel: UILabel!
+    
     @IBOutlet weak var notNowButton: UIButton!
     
     @IBOutlet weak var fullToTop: NSLayoutConstraint! //default 50
@@ -118,13 +125,16 @@ class UpgradeFromSettingsViewController: UIViewController {
         self.fullLabel.text = subscribe.firstTitle
         self.annualLabel1.text = subscribe.annualFirstTitle
 //        self.annualLabel2.text = "\(subscribe.annualSecondTitle) $\(subscriptions.annualProductPrice)/year"
-        self.annualLabel2.text = "\(subscribe.annualSecondTitle) \(annualPrice)/year"
+        self.annualLabel2.text = "\(subscribe.annualSecondTitle)"
+        self.annualPriceLabel.text = "\(annualPrice)/year"
         self.monthlyLabel1.text = subscribe.monthlyFirstTitle
 //        self.monthlyLabel2.text = "\(subscribe.monthlySecondTitle) $\(subscriptions.monthlyProductPrice)/month"
-        self.monthlyLabel2.text = "\(subscribe.monthlySecondTitle) \(monthlyPrice)/month"
+        self.monthlyLabel2.text = "\(subscribe.monthlySecondTitle)"
+        self.monthlyPriceLabel.text = "\(monthlyPrice)/month"
         self.weeklyLabel1.text = subscribe.weeklyFirstTitle
 //        self.weeklyLabel2.text = "\(subscribe.weeklySecondTitle) $\(subscriptions.weeklyProductPrice)/week"
-        self.weeklyLabel2.text = "\(subscribe.weeklySecondTitle) \(weeklyPrice)/week"
+        self.weeklyLabel2.text = "\(subscribe.weeklySecondTitle)"
+        self.weeklyPriceLabel.text = "\(weeklyPrice)/week"
     }
     
     /// Purchasing product
@@ -138,12 +148,16 @@ class UpgradeFromSettingsViewController: UIViewController {
                 self.hideAnimatedActivityIndicatorView()
                 purchasedAny = true
                 self.alert(title: "Purchase Success", message: "\(purchase.product.localizedTitle), \(purchase.product.localizedPrice ?? "")", preferredStyle: .alert, cancelTitle: nil, cancelHandler: nil, actionTitle: "OK", actionHandler: {
+                    /// Firebase Analytics
+                    SpeedAnalytics.shared.purchaseAnalytics(userID: User.currentUser?.uid ?? "", paymentType: purchase.product.localizedTitle, totalPrice: purchase.product.localizedPrice ?? "", success: "1", currency: purchase.product.priceLocale.currencySymbol ?? "USD")
                     self.dismiss(animated: true, completion: nil)
                     self.delegate?.purchased(purchases: [purchase.productId])
                 })
             case .error(let error):
                 self.hideAnimatedActivityIndicatorView()
                 ErrorHandling.showError(title: "Purchase failed", message: error.localizedDescription, controller: self)
+                /// Firebase Analytics
+                SpeedAnalytics.shared.purchaseAnalytics(userID: User.currentUser?.uid ?? "", paymentType: error.localizedDescription, totalPrice: "", success: "0", currency: "USD")
                 print("Purchase Failed: \(error)")
                 switch error.code {
                 case .unknown:
@@ -220,6 +234,7 @@ class UpgradeFromSettingsViewController: UIViewController {
         tapped.annual = true
         tapped.monthly = false
         tapped.weekly = false
+        SpeedAnalytics.shared.tappedToSubscribeButton(userID: User.currentUser?.uid ?? "", button: "Annual Button")
     }
     
     @IBAction func monthlyTapped(_ sender: Any) {
@@ -227,6 +242,7 @@ class UpgradeFromSettingsViewController: UIViewController {
         tapped.annual = false
         tapped.monthly = true
         tapped.weekly = false
+        SpeedAnalytics.shared.tappedToSubscribeButton(userID: User.currentUser?.uid ?? "", button: "Monthly Button")
     }
     
     @IBAction func weeklyTapped(_ sender: Any) {
@@ -234,6 +250,7 @@ class UpgradeFromSettingsViewController: UIViewController {
         tapped.annual = false
         tapped.monthly = false
         tapped.weekly = true
+        SpeedAnalytics.shared.tappedToSubscribeButton(userID: User.currentUser?.uid ?? "", button: "Weekly Button")
     }
     
     @IBAction func subscribeTapped(_ sender: Any) {

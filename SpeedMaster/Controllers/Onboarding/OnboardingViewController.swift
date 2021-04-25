@@ -71,6 +71,21 @@ class OnboardingViewController: UIViewController {
         snakePageControl.previousTint = .mainDarkGray
         
         view.bringSubviewToFront(snakePageControl)
+        
+        // Firebase Analytics
+        DispatchQueue.global(qos: .default).async {
+            Service().checkUser { (user, error) in
+                if let user = user, error == nil {
+                    print(user)
+                    DispatchQueue.main.async {
+                        SpeedAnalytics.shared.onboardingBegan(userID: user.uid, success: "1")
+                    }
+                } else {
+                    SpeedAnalytics.shared.onboardingBegan(userID: "user.uid", success: "0")
+                    print(error!.localizedDescription)
+                }
+            }
+        }
     }
     
     /// Get Onboarding Titles
@@ -100,19 +115,20 @@ class OnboardingViewController: UIViewController {
         if allPrices.count > 0 {
             for (title, price) in allPrices {
                 if title.contains("Monthly") {
-                    slide.startFreeLabel.text = "\(onboarding.secondTitle) \(price) a month"
+                    slide.thenLabel.text = "\(onboarding.thirdTitle) \(price) a month"
                 } else if title.contains("Yearly") {
                     slide.startYearlySecondButton.setTitle("\(price) \(onboarding.startYearlySecondTitle)", for: UIControl.State())
                 }
             }
         } else {
-            slide.startFreeLabel.text = "\(onboarding.secondTitle) $11.49 a month"
+            slide.thenLabel.text = "\(onboarding.thirdTitle) $11.49 a month"
             slide.startYearlySecondButton.setTitle("$33.99 \(onboarding.startYearlySecondTitle)", for: UIControl.State())
         }
         
         slide.notNowButton.isHidden = !onboarding.closeButton
         slide.notNowButton.isEnabled = onboarding.closeButton
         slide.upgradeLabel.text = onboarding.firstTitle
+        slide.startFreeLabel.text = onboarding.secondTitle
 //        slide.startFreeLabel.text = "\(onboarding.secondTitle) $\(subscriptions.monthlyProductPrice) a month"
         slide.proceedWithBasic.setTitle(onboarding.basicTitle, for: UIControl.State())
         slide.tryFreeButton.setTitle(onboarding.tryFreeTitle, for: UIControl.State())
@@ -124,6 +140,9 @@ class OnboardingViewController: UIViewController {
         slides[0].trackLabel.text = onboarding.gpsSecondTitle
         slides[1].gpsLabel.text = onboarding.tripTitle
         slides[1].trackLabel.text = onboarding.tripSecondTitle
+        
+        slides.last?.thenLabel.isHidden = onboarding.thirdTitleIsHidden
+        slides.last?.startYearlySecondButton.isHidden = onboarding.startYearlySecondTitleIsHidden
     }
     
     /// Setting up Slide Scroll View
@@ -196,12 +215,16 @@ class OnboardingViewController: UIViewController {
                 self.hideAnimatedActivityIndicatorView()
                 purchasedAny = true
                 self.alert(title: "Purchase Success", message: "\(purchase.product.localizedTitle), \(purchase.product.localizedPrice ?? "")", preferredStyle: .alert, cancelTitle: nil, cancelHandler: nil, actionTitle: "OK", actionHandler: {
+                    /// Firebase Analytics
+                    SpeedAnalytics.shared.purchaseAnalytics(userID: User.currentUser?.uid ?? "", paymentType: purchase.product.localizedTitle, totalPrice: purchase.product.localizedPrice ?? "", success: "1", currency: purchase.product.priceLocale.currencySymbol ?? "USD")
                     self.dismiss(animated: true, completion: nil)
                     self.delegate?.purchased(purchases: [purchase.productId])
                 })
             case .error(let error):
                 self.hideAnimatedActivityIndicatorView()
                 ErrorHandling.showError(title: "Purchase failed", message: error.localizedDescription, controller: self)
+                /// Firebase Analytics
+                SpeedAnalytics.shared.purchaseAnalytics(userID: User.currentUser?.uid ?? "", paymentType: error.localizedDescription, totalPrice: "", success: "0", currency: "USD")
                 print("Purchase Failed: \(error)")
                 switch error.code {
                 case .unknown:
@@ -240,8 +263,10 @@ class OnboardingViewController: UIViewController {
                 if service.isConnectedToInternet {
                     for productID in productIDs {
                         if productID.contains("month") && index == 0 {
+                            SpeedAnalytics.shared.tappedToSubscribeButton(userID: User.currentUser?.uid ?? "", button: "Try Free Button")
                             purchaseItem(productID: productID)
                         } else if productID.contains("year") && index == 2 {
+                            SpeedAnalytics.shared.tappedToSubscribeButton(userID: User.currentUser?.uid ?? "", button: "Start Yearly Button")
                             purchaseItem(productID: productID)
                         }
                     }
@@ -254,6 +279,7 @@ class OnboardingViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func nextTapped(_ sender: Any) {
+        SpeedAnalytics.shared.nextTapped(userID: User.currentUser?.uid ?? "", slidePage: "\(snakePageControl.currentPage + 1)")
         var frame = scrollView.frame
         frame.origin.x = frame.size.width * CGFloat((snakePageControl.currentPage + 1))
         frame.origin.y = 0
