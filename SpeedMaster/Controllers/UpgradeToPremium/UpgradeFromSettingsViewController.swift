@@ -260,7 +260,7 @@ class UpgradeFromSettingsViewController: UIViewController {
             for productID in productIDs {
                 if productID.contains("week") && tapped.weekly {
                     purchaseItem(productID: productID)
-                } else if productID.contains("month") && tapped.monthly {
+                } else if productID.contains("moth") && tapped.monthly {
                     purchaseItem(productID: productID)
                 } else if productID.contains("year") && tapped.annual {
                     purchaseItem(productID: productID)

@@ -262,7 +262,7 @@ class OnboardingViewController: UIViewController {
             if snakePageControl.currentPage == 2 {
                 if service.isConnectedToInternet {
                     for productID in productIDs {
-                        if productID.contains("month") && index == 0 {
+                        if productID.contains("moth") && index == 0 {
                             SpeedAnalytics.shared.tappedToSubscribeButton(userID: User.currentUser?.uid ?? "", button: "Try Free Button")
                             purchaseItem(productID: productID)
                         } else if productID.contains("year") && index == 2 {

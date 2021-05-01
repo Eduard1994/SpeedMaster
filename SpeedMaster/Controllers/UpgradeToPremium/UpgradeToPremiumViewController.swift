@@ -209,7 +209,7 @@ class UpgradeToPremiumViewController: UIViewController {
         SpeedAnalytics.shared.tappedToSubscribeButton(userID: User.currentUser?.uid ?? "", button: "Try Free Button")
         if service.isConnectedToInternet {
             for productID in productIDs {
-                if productID.contains("month") {
+                if productID.contains("moth") {
                     purchaseItem(productID: productID)
                 }
             }
