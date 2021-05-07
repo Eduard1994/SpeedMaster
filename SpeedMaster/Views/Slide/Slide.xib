@@ -100,7 +100,7 @@
                                 <constraint firstAttribute="height" constant="64" id="eg3-DH-X0w"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
-                            <state key="normal" title="Try Free and subscribe">
+                            <state key="normal" title="Start Monthly Plan">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
